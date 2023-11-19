@@ -6,15 +6,19 @@ package bulibrary;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
 
 /**
  *
  * @author Mr.Phiphat
  */
 public class JFregister extends javax.swing.JFrame {
-
+    
+    public List<UserData>  userList = new ArrayList<>();
+    
     public JFregister() {
         initComponents();
         setPreferredSize(new Dimension(1536, 864)); // กำหนดขนาด JFrame เป็น 800x600 pixels
@@ -33,8 +37,8 @@ public class JFregister extends javax.swing.JFrame {
         txtEmailRegis = new javax.swing.JTextField();
         txtID = new javax.swing.JTextField();
         txtTell = new javax.swing.JTextField();
-        txtPass = new javax.swing.JTextField();
-        txtConpass = new javax.swing.JTextField();
+        txtPass = new javax.swing.JPasswordField();
+        txtConpass = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
@@ -86,6 +90,9 @@ public class JFregister extends javax.swing.JFrame {
         txtLname.setText("Last name");
         txtLname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtLname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtLnameMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 txtLnameMouseEntered(evt);
             }
@@ -105,6 +112,9 @@ public class JFregister extends javax.swing.JFrame {
         txtEmailRegis.setToolTipText("");
         txtEmailRegis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtEmailRegis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtEmailRegisMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 txtEmailRegisMouseEntered(evt);
             }
@@ -129,6 +139,9 @@ public class JFregister extends javax.swing.JFrame {
         txtID.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtID.setCaretColor(new java.awt.Color(204, 204, 204));
         txtID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtIDMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 txtIDMouseEntered(evt);
             }
@@ -152,6 +165,9 @@ public class JFregister extends javax.swing.JFrame {
         txtTell.setText("Tellnumber");
         txtTell.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtTell.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTellMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 txtTellMouseEntered(evt);
             }
@@ -168,33 +184,30 @@ public class JFregister extends javax.swing.JFrame {
 
         txtPass.setForeground(new java.awt.Color(204, 204, 204));
         txtPass.setText("Your Password");
-        txtPass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtPass.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        txtPass.setEchoChar('\u0000');
+        txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPassFocusGained(evt);
+            }
+        });
         txtPass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txtPassMouseEntered(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPassMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 txtPassMouseExited(evt);
             }
         });
-        txtPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPassActionPerformed(evt);
-            }
-        });
-        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtPassKeyPressed(evt);
-            }
-        });
-        jP_Register.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 570, 290, 30));
+        jP_Register.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 572, 280, 30));
 
         txtConpass.setForeground(new java.awt.Color(204, 204, 204));
         txtConpass.setText("Confirm Password");
-        txtConpass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtConpass.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        txtConpass.setEchoChar('\u0000');
         txtConpass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txtConpassMouseEntered(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtConpassMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 txtConpassMouseExited(evt);
@@ -205,12 +218,7 @@ public class JFregister extends javax.swing.JFrame {
                 txtConpassActionPerformed(evt);
             }
         });
-        txtConpass.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtConpassKeyPressed(evt);
-            }
-        });
-        jP_Register.add(txtConpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 620, 290, 40));
+        jP_Register.add(txtConpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 625, 280, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Submit.png"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -342,11 +350,7 @@ public class JFregister extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFnameActionPerformed
 
     private void txtFnameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFnameMouseEntered
-        if (txtFname.getText().equals("First name")) {
-            txtFname.setText("");
-            txtFname.setForeground(new Color(204, 204, 204));
-        }
-            
+    
     }//GEN-LAST:event_txtFnameMouseEntered
 
     private void txtFnameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFnameMouseExited
@@ -357,14 +361,11 @@ public class JFregister extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFnameMouseExited
 
     private void txtLnameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLnameMouseEntered
-        if (txtLname.getText().equals("Last name")) {
-            txtLname.setText("");
-            txtLname.setForeground(new Color(204, 204, 204));
-        }
+
     }//GEN-LAST:event_txtLnameMouseEntered
 
     private void txtLnameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLnameMouseExited
-        if (txtLname.getText().equals("")) {
+        if (txtLname.getText().equals(" ")) {
             txtLname.setText("Last name");
             txtLname.setForeground(new Color(204, 204, 204));
         }
@@ -375,10 +376,7 @@ public class JFregister extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailRegisActionPerformed
 
     private void txtEmailRegisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailRegisMouseEntered
-        if (txtEmailRegis.getText().equals("Email")) {
-            txtEmailRegis.setText("");
-            txtEmailRegis.setForeground(new Color(204, 204, 204));
-        }
+
     }//GEN-LAST:event_txtEmailRegisMouseEntered
 
     private void txtEmailRegisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailRegisMouseExited
@@ -388,43 +386,47 @@ public class JFregister extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEmailRegisMouseExited
 
-    private void txtConpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConpassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtConpassActionPerformed
-
-    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassActionPerformed
-
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void txtFnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFnameMouseClicked
-        txtFname.setForeground(Color.BLACK);
+        if (txtFname.getText().equals("First name")){
+            txtFname.setText("");
+            txtFname.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_txtFnameMouseClicked
 
     private void txtFnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFnameKeyPressed
-        txtFname.setForeground(Color.BLACK);
+        if (txtFname.getText().equals("First name")){
+            txtFname.setText("");
+            txtFname.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_txtFnameKeyPressed
 
     private void txtLnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLnameKeyPressed
-        txtLname.setForeground(Color.BLACK);
+        if (txtLname.getText().equals("Last name")){
+            txtLname.setText("");
+            txtLname.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_txtLnameKeyPressed
 
     private void txtEmailRegisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailRegisKeyPressed
-        txtEmailRegis.setForeground(Color.BLACK);
+        if (txtEmailRegis.getText().equals("Email")){
+            txtEmailRegis.setText("");
+            txtEmailRegis.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_txtEmailRegisKeyPressed
 
     private void txtIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyPressed
-        txtID.setForeground(Color.BLACK);
+        if (txtID.getText().equals("Student ID")) {
+            txtID.setText("");
+            txtID.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_txtIDKeyPressed
 
     private void txtIDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDMouseEntered
-        if (txtID.getText().equals("Student ID")) {
-            txtID.setText("");
-            txtID.setForeground(new Color(204, 204, 204));
-        }
+        
     }//GEN-LAST:event_txtIDMouseEntered
 
     private void txtIDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDMouseExited
@@ -435,15 +437,14 @@ public class JFregister extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIDMouseExited
 
     private void txtTellKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTellKeyPressed
-         txtTell.setForeground(Color.BLACK);
+        if (txtTell.getText().equals("Tellnumber")){
+            txtTell.setText("");
+            txtTell.setForeground(Color.black);
+       }
     }//GEN-LAST:event_txtTellKeyPressed
 
     private void txtTellMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTellMouseEntered
-        if (txtTell.getText().equals("Tellnumber")){
-            txtTell.setText("");
-            txtTell.setForeground(new Color(204, 204, 204));
-       }
-            
+ 
     }//GEN-LAST:event_txtTellMouseEntered
 
     private void txtTellMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTellMouseExited
@@ -452,43 +453,6 @@ public class JFregister extends javax.swing.JFrame {
             txtTell.setForeground(new Color(204, 204, 204));
        }
     }//GEN-LAST:event_txtTellMouseExited
-
-    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
-         txtPass.setForeground(Color.black);
-         
-    }//GEN-LAST:event_txtPassKeyPressed
-
-    private void txtPassMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMouseEntered
-        if (txtPass.getText().equals("Your Password")){
-            txtPass.setText("");
-            txtPass.setForeground(new Color(204, 204, 204));
-        }
-    }//GEN-LAST:event_txtPassMouseEntered
-
-    private void txtPassMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMouseExited
-        if (txtPass.getText().equals("")){
-            txtPass.setText("Your Password");
-            txtPass.setForeground(new Color(204, 204, 204));
-        }
-    }//GEN-LAST:event_txtPassMouseExited
-
-    private void txtConpassMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConpassMouseEntered
-        if (txtConpass.getText().equals("Confirm Password")){
-            txtConpass.setText("");
-            txtConpass.setForeground(new Color(204, 204, 204));
-        }
-    }//GEN-LAST:event_txtConpassMouseEntered
-
-    private void txtConpassMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConpassMouseExited
-        if (txtConpass.getText().equals("")){
-            txtConpass.setText("Confirm Password");
-            txtConpass.setForeground(new Color(204, 204, 204));
-        }
-    }//GEN-LAST:event_txtConpassMouseExited
-
-    private void txtConpassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConpassKeyPressed
-        txtConpass.setForeground(Color.black);
-    }//GEN-LAST:event_txtConpassKeyPressed
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
         jLabel1.setForeground(Color.red);
@@ -514,7 +478,34 @@ public class JFregister extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        System.out.println("user clicked button.");
+        String fname = txtFname.getText();
+        String lname = txtLname.getText();
+        String email = txtEmailRegis.getText();
+        String id = txtID.getText();
+        String tell = txtTell.getText();
+        String pass = txtPass.getText();
+        String confirmpass = txtConpass.getText();
         
+        
+        if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || id.isEmpty() || tell.isEmpty() || pass.isEmpty() || confirmpass.isEmpty()) {
+            // กรุณากรอกข้อมูลให้ครบทุกช่อง
+            // โปรดแจ้งผู้ใช้งานให้กรอกข้อมูลให้ครบทุกช่อง
+        } else if (!pass.equals(confirmpass)) {
+            // กรุณายืนยันรหัสผ่านให้ตรงกัน
+            // โปรดแจ้งผู้ใช้งานให้ตรวจสอบและยืนยันรหัสผ่านให้ตรงกัน
+        } else {
+            // นำข้อมูลไปเพิ่มลงในรายชื่อผู้ใช้
+            UserData user = new UserData();
+            user.setFirstName(fname);
+            user.setLastName(lname);
+            user.setEmail(email);
+            user.setPhoneNumber(tell);
+            user.setStudentId(id);
+            user.setPassword(pass);
+            userList.add(user);
+            // ทำการลงทะเบียนผู้ใช้งานเสร็จสิ้น
+        }
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -597,6 +588,75 @@ public class JFregister extends javax.swing.JFrame {
         btnSign.setText("<html>Don't have an account <font color='black'>Sign up</font></html>");
     }//GEN-LAST:event_btnSignMouseExited
 
+    private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassFocusGained
+
+    private void txtConpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConpassActionPerformed
+
+    private void txtPassMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMouseExited
+        if (txtPass.getText().equals("")){
+            txtPass.setText("Your Password");
+            txtPass.setForeground(new Color(204, 204, 204));
+            txtPass.setEchoChar('\0');
+            
+        }
+    }//GEN-LAST:event_txtPassMouseExited
+
+    private void txtPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMouseClicked
+        if (txtPass.getText().equals("Your Password")) {
+            txtPass.setText("");
+            txtPass.setForeground(Color.black);
+            txtPass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_txtPassMouseClicked
+
+    private void txtConpassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConpassMouseClicked
+        if (txtConpass.getText().equals("Confirm Password")) {
+            txtConpass.setText("");
+            txtConpass.setForeground(Color.black);
+            txtConpass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_txtConpassMouseClicked
+
+    private void txtConpassMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConpassMouseExited
+        if (txtConpass.getText().equals("")) {
+            txtConpass.setText("Confirm Password");
+            txtConpass.setForeground(new Color(204, 204, 204));
+            txtConpass.setEchoChar('\0');
+        }
+    }//GEN-LAST:event_txtConpassMouseExited
+
+    private void txtTellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTellMouseClicked
+        if (txtTell.getText().equals("Tellnumber")){
+            txtTell.setText("");
+            txtTell.setForeground(Color.BLACK);
+       }
+    }//GEN-LAST:event_txtTellMouseClicked
+
+    private void txtIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDMouseClicked
+        if (txtID.getText().equals("Student ID")) {
+            txtID.setText("");
+            txtID.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtIDMouseClicked
+
+    private void txtEmailRegisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailRegisMouseClicked
+        if (txtEmailRegis.getText().equals("Email")){
+            txtEmailRegis.setText("");
+            txtEmailRegis.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtEmailRegisMouseClicked
+
+    private void txtLnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLnameMouseClicked
+        if (txtLname.getText().equals("Last name")){
+            txtLname.setText("");
+            txtLname.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtLnameMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -644,13 +704,13 @@ public class JFregister extends javax.swing.JFrame {
     private javax.swing.JPanel jP_Login_regis;
     private javax.swing.JPanel jP_Register;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField txtConpass;
+    private javax.swing.JPasswordField txtConpass;
     private javax.swing.JTextField txtEmailLogin;
     private javax.swing.JTextField txtEmailRegis;
     private javax.swing.JTextField txtFname;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLname;
-    private javax.swing.JTextField txtPass;
+    private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtTell;
     // End of variables declaration//GEN-END:variables
 

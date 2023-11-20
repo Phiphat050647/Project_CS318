@@ -7,14 +7,20 @@ package bulibrary;
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 
 /**
  *
  * @author Mr.Phiphat
  */
 public class DialogRegister extends javax.swing.JDialog {
-
+        private String firstName;
+        private String lastName;
+        private String email;
+        private String studentId;
+        private String phoneNumber;
+        private String password;
     /**
      * Creates new form DialogRegister
      */
@@ -30,16 +36,14 @@ public class DialogRegister extends javax.swing.JDialog {
     "<font color='gray'>Student ID:</font> " + user.getStudentId() + "<br>" +
     "<font color='gray'>Tel:</font> " + user.getPhoneNumber() +
     "</div></html>");
+        firstName = user.getFirstName();
+        lastName = user.getLastName();
+        email = user.getEmail();
+        studentId = user.getStudentId();
+        phoneNumber = user.getPhoneNumber();
+        password = user.getPassword();
     }
-    
-    public void setfname(String p1){
-         try {
-            String query = String.format("Select * from user where fname ='%s'", p1);
-            
-        }catch(Exception ex){
-            
-        }
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,6 +134,64 @@ public class DialogRegister extends javax.swing.JDialog {
     }//GEN-LAST:event_btnConfirmMouseExited
 
     private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
+
+
+        String selectQuery = "SELECT COUNT(*) FROM user WHERE email = ? OR studentid = ? OR phone = ?";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(selectQuery);
+            statement.setString(1, email);
+            statement.setString(2, studentId);
+            statement.setString(3, phoneNumber);
+            rs = statement.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                if (count > 0) {
+                    System.out.println("Data already exists!");
+                } else {
+                    String insertQuery = "INSERT INTO user (email, studentid, phone, fname, lname, password) VALUES (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement insertStatement = conn.prepareStatement(insertQuery);
+                    insertStatement.setString(1, email);
+                    insertStatement.setString(2, studentId);
+                    insertStatement.setString(3, phoneNumber);
+                    insertStatement.setString(4, firstName);
+                    insertStatement.setString(5, lastName);
+                    insertStatement.setString(6, password);
+
+                    int rowsAffected = insertStatement.executeUpdate();
+                    if (rowsAffected > 0) {
+                        System.out.println("Data inserted successfully.");
+                        conn.close();
+                        dispose();
+                        String text = "Successfully Registered.";
+                        String url = "/bulibrary/image/tickAnimat.png";
+                        WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+                        warnmessage.setVisible(true);
+                    } else {
+                        System.out.println("Failed to insert data.");
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            conn.close();
+        }
+
+
+
+
+
         
     }//GEN-LAST:event_btnConfirmMouseClicked
 

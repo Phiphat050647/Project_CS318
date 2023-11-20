@@ -6,42 +6,76 @@ package bulibrary;
 import java.sql.*;
 
 public class DBConnect {
-     private Connection conn;
-     private Statement st;
-     private String url = "jdbc:mysql://localhost:3306/bulibrarydatabeses";
-     private String user = "root";
-     private String password = "";
-     
-     public ResultSet getResult(String query)  {
-         ResultSet rs;
-         try{
-             conn = DriverManager.getConnection(url,user,password);
-             st = conn.createStatement();
-             rs = st.executeQuery(query);
-         }catch(Exception ex){
-             rs = null;
-         }
+    private Connection conn;
+    private PreparedStatement ps;
+    private String url = "jdbc:mysql://localhost:3306/bulibrarydatabeses";
+    private String user = "root";
+    private String password = "";
+
+    public ResultSet getResult(String query, String... params) {
+        ResultSet rs = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            ps = conn.prepareStatement(query);
+            
+            // Set parameters for PreparedStatement
+            for (int i = 0; i < params.length; i++) {
+                ps.setString(i + 1, params[i]);
+            }
+            
+            rs = ps.executeQuery();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return rs;
     }
-     
-     public boolean execute(String query){
-         boolean rs;
-         try{
-             conn = DriverManager.getConnection(url,user,password);
-             st = conn.createStatement();
-             st.execute(query);
-             rs = true;
-         }catch(Exception ex){
-             rs = false;
-         }
-         return rs;
-     }
-     
-     public void close(){
-         try{
-             conn.close();
-         }catch(Exception ex){
-             System.out.print("Can't close");
-         }
-     }
+
+    public boolean execute(String query, String... params) {
+        boolean success = false;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            ps = conn.prepareStatement(query);
+            
+            // Set parameters for PreparedStatement
+            for (int i = 0; i < params.length; i++) {
+                ps.setString(i + 1, params[i]);
+            }
+            
+            success = ps.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return success;
+    }
+
+    public void close() {
+        try {
+            if (ps != null) {
+                ps.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    Object getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
+    public PreparedStatement prepareStatement(String query) {
+        PreparedStatement pstmt = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            pstmt = conn.prepareStatement(query);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return pstmt;
+    }
+
 }
+

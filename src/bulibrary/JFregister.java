@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.util.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -20,8 +21,11 @@ public class JFregister extends javax.swing.JFrame {
     public List<UserData>  userList = new ArrayList<>();
     
     public JFregister() {
+        setUndecorated(true);
         initComponents();
         setPreferredSize(new Dimension(1536, 864)); // กำหนดขนาด JFrame เป็น 800x600 pixels
+        this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        jP_Register.setOpaque(false);
         jP_Login.setVisible(false);
         pack(); // บรรจุขนาดที่กำหนดเข้าไปใน JFrame
     
@@ -30,6 +34,7 @@ public class JFregister extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnclose = new javax.swing.JLabel();
         jP_Login_regis = new javax.swing.JPanel();
         jP_Register = new javax.swing.JPanel();
         txtFname = new javax.swing.JTextField();
@@ -53,8 +58,19 @@ public class JFregister extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnclose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/CrossExit.png"))); // NOI18N
+        btnclose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnclose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btncloseMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 10, -1, -1));
+
+        jP_Login_regis.setOpaque(false);
         jP_Login_regis.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jP_Register.setOpaque(false);
         jP_Register.setPreferredSize(new java.awt.Dimension(1536, 864));
         jP_Register.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -111,6 +127,7 @@ public class JFregister extends javax.swing.JFrame {
         txtEmailRegis.setText("Email");
         txtEmailRegis.setToolTipText("");
         txtEmailRegis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtEmailRegis.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtEmailRegis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtEmailRegisMouseClicked(evt);
@@ -184,7 +201,7 @@ public class JFregister extends javax.swing.JFrame {
 
         txtPass.setForeground(new java.awt.Color(204, 204, 204));
         txtPass.setText("Your Password");
-        txtPass.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        txtPass.setBorder(null);
         txtPass.setEchoChar('\u0000');
         txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -197,6 +214,11 @@ public class JFregister extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 txtPassMouseExited(evt);
+            }
+        });
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
             }
         });
         jP_Register.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 572, 280, 30));
@@ -216,6 +238,11 @@ public class JFregister extends javax.swing.JFrame {
         txtConpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtConpassActionPerformed(evt);
+            }
+        });
+        txtConpass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtConpassKeyPressed(evt);
             }
         });
         jP_Register.add(txtConpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 625, 280, 30));
@@ -256,6 +283,7 @@ public class JFregister extends javax.swing.JFrame {
 
         jP_Login_regis.add(jP_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, -1, 870));
 
+        jP_Login.setOpaque(false);
         jP_Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtEmailLogin.setForeground(new java.awt.Color(204, 204, 204));
@@ -478,7 +506,8 @@ public class JFregister extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        System.out.println("user clicked button.");
+        System.out.println("User clicked button.");
+        
         String fname = txtFname.getText();
         String lname = txtLname.getText();
         String email = txtEmailRegis.getText();
@@ -487,15 +516,60 @@ public class JFregister extends javax.swing.JFrame {
         String pass = txtPass.getText();
         String confirmpass = txtConpass.getText();
         
-        
-        if (fname.isEmpty() || lname.isEmpty() || email.isEmpty() || id.isEmpty() || tell.isEmpty() || pass.isEmpty() || confirmpass.isEmpty()) {
-            // กรุณากรอกข้อมูลให้ครบทุกช่อง
-            // โปรดแจ้งผู้ใช้งานให้กรอกข้อมูลให้ครบทุกช่อง
+
+        if (fname.isEmpty() || fname.equals("First name")) {
+            String text = "Please enter first name.";
+            String url = "/bulibrary/image/crossAnimat.png";
+            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+            warnmessage.setVisible(true);
+        } else if (lname.isEmpty() || lname.equals("Last name")) {
+            String text = "Please enter last name. .";
+            String url = "/bulibrary/image/crossAnimat.png";
+            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+            warnmessage.setVisible(true);
+        } else if (email.isEmpty() || email.equals("Email")) {
+            String text = "Please enter email address.";
+            String url = "/bulibrary/image/crossAnimat.png";
+            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+            warnmessage.setVisible(true);
+  
+        } else if (id.isEmpty() || id.equals("Student ID"))  {
+            String text = "Please enter student ID.";
+            String url = "/bulibrary/image/crossAnimat.png";
+            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+            warnmessage.setVisible(true);
+        } else if (tell.isEmpty() || tell.equals("Tellnumber")) {
+            String text = "Please enter telephone number.";
+            String url = "/bulibrary/image/crossAnimat.png";
+            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+            warnmessage.setVisible(true);
+        } else if (pass.isEmpty() || confirmpass.isEmpty() || pass.equals("Your Password") || confirmpass.equals("Confirm Password")) {
+            String text = "Please enter your password.";
+            String url = "/bulibrary/image/crossAnimat.png";
+            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+            warnmessage.setVisible(true);
         } else if (!pass.equals(confirmpass)) {
-            // กรุณายืนยันรหัสผ่านให้ตรงกัน
-            // โปรดแจ้งผู้ใช้งานให้ตรวจสอบและยืนยันรหัสผ่านให้ตรงกัน
+            String text = "Please confirm the password correctly.";
+            String url = "/bulibrary/image/crossAnimat.png";
+            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+            warnmessage.setVisible(true);
+//        } else if (!id.equals("Student ID") || id.length() != 10 || !id.matches("\\d+")) {
+//            if (!id.matches("\\d+")) {
+//                // กรณี ID ไม่เป็น "Student ID" และไม่เป็นตัวเลขทั้งหมด
+//                String text = "Student ID is incorrect!!";
+//                String url = "/bulibrary/image/crossAnimat.png";
+//                WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+//                warnmessage.setVisible(true);
+//            }
+//        } else if (!tell.equals("Tellnumber") || tell.length() != 10 || !tell.matches("\\d+")) {
+//            if (!tell.matches("\\d+")) {
+//                // กรณี ID ไม่เป็น "Student ID" และไม่เป็นตัวเลขทั้งหมด
+//                String text = "Telephone number is incorrect!!";
+//                String url = "/bulibrary/image/crossAnimat.png";
+//                WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+//                warnmessage.setVisible(true);
+//            }
         } else {
-            // นำข้อมูลไปเพิ่มลงในรายชื่อผู้ใช้
             UserData user = new UserData();
             user.setFirstName(fname);
             user.setLastName(lname);
@@ -504,7 +578,12 @@ public class JFregister extends javax.swing.JFrame {
             user.setStudentId(id);
             user.setPassword(pass);
             userList.add(user);
+            System.out.println(user.getFirstName());
+
             // ทำการลงทะเบียนผู้ใช้งานเสร็จสิ้น
+            String warning = "Are you confirm Register";
+            DialogRegister dialog = new DialogRegister(new javax.swing.JFrame(), true, user,warning);
+            dialog.setVisible(true);
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
@@ -657,6 +736,19 @@ public class JFregister extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtLnameMouseClicked
 
+    private void btncloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncloseMouseClicked
+        dispose();
+        System.exit(0);
+    }//GEN-LAST:event_btncloseMouseClicked
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        txtPass.setForeground(Color.black);
+    }//GEN-LAST:event_txtPassKeyPressed
+
+    private void txtConpassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConpassKeyPressed
+        txtPass.setForeground(Color.black);
+    }//GEN-LAST:event_txtConpassKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -698,6 +790,7 @@ public class JFregister extends javax.swing.JFrame {
     private javax.swing.JLabel BG1;
     private javax.swing.JLabel btnLogin;
     private javax.swing.JLabel btnSign;
+    private javax.swing.JLabel btnclose;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jP_Login;

@@ -10,10 +10,11 @@ import java.util.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
- *
+ *S
  * @author Mr.Phiphat
  */
 public class JFregister extends javax.swing.JFrame {
@@ -36,6 +37,12 @@ public class JFregister extends javax.swing.JFrame {
 
         btnclose = new javax.swing.JLabel();
         jP_Login_regis = new javax.swing.JPanel();
+        jP_Login = new javax.swing.JPanel();
+        txtEmailLogin = new javax.swing.JTextField();
+        txtpasslogin = new javax.swing.JPasswordField();
+        btnSign = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JLabel();
+        BG1 = new javax.swing.JLabel();
         jP_Register = new javax.swing.JPanel();
         txtFname = new javax.swing.JTextField();
         txtLname = new javax.swing.JTextField();
@@ -47,12 +54,6 @@ public class JFregister extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
-        jP_Login = new javax.swing.JPanel();
-        txtEmailLogin = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        btnSign = new javax.swing.JLabel();
-        btnLogin = new javax.swing.JLabel();
-        BG1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -69,6 +70,92 @@ public class JFregister extends javax.swing.JFrame {
 
         jP_Login_regis.setOpaque(false);
         jP_Login_regis.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jP_Login.setOpaque(false);
+        jP_Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtEmailLogin.setForeground(new java.awt.Color(204, 204, 204));
+        txtEmailLogin.setText("Email address");
+        txtEmailLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtEmailLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtEmailLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtEmailLoginMouseExited(evt);
+            }
+        });
+        txtEmailLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailLoginActionPerformed(evt);
+            }
+        });
+        txtEmailLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailLoginKeyPressed(evt);
+            }
+        });
+        jP_Login.add(txtEmailLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 452, 290, 30));
+
+        txtpasslogin.setForeground(new java.awt.Color(204, 204, 204));
+        txtpasslogin.setText("YourPassword");
+        txtpasslogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtpasslogin.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtpasslogin.setEchoChar('*');
+        txtpasslogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtpassloginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtpassloginMouseExited(evt);
+            }
+        });
+        txtpasslogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpassloginActionPerformed(evt);
+            }
+        });
+        txtpasslogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtpassloginKeyPressed(evt);
+            }
+        });
+        jP_Login.add(txtpasslogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 513, 290, 30));
+
+        btnSign.setText("Don't have an account Sign up");
+        btnSign.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSign.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSignMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSignMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSignMouseExited(evt);
+            }
+        });
+        jP_Login.add(btnSign, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 641, 170, -1));
+
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Submit_Login.png"))); // NOI18N
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLoginMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLoginMouseExited(evt);
+            }
+        });
+        jP_Login.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 580, 310, 40));
+
+        BG1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/jfLogin.png"))); // NOI18N
+        jP_Login.add(BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jP_Login_regis.add(jP_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jP_Register.setOpaque(false);
         jP_Register.setPreferredSize(new java.awt.Dimension(1536, 864));
@@ -282,89 +369,6 @@ public class JFregister extends javax.swing.JFrame {
         jP_Register.add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jP_Login_regis.add(jP_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, -1, 870));
-
-        jP_Login.setOpaque(false);
-        jP_Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtEmailLogin.setForeground(new java.awt.Color(204, 204, 204));
-        txtEmailLogin.setText("Email address");
-        txtEmailLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtEmailLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txtEmailLoginMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                txtEmailLoginMouseExited(evt);
-            }
-        });
-        txtEmailLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailLoginActionPerformed(evt);
-            }
-        });
-        txtEmailLogin.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEmailLoginKeyPressed(evt);
-            }
-        });
-        jP_Login.add(txtEmailLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 452, 290, 30));
-
-        jPasswordField1.setForeground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setText("YourPassword");
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPasswordField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPasswordField1.setEchoChar('*');
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseExited(evt);
-            }
-        });
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
-        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPasswordField1KeyPressed(evt);
-            }
-        });
-        jP_Login.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 513, 290, 30));
-
-        btnSign.setText("Don't have an account Sign up");
-        btnSign.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSign.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSignMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSignMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSignMouseExited(evt);
-            }
-        });
-        jP_Login.add(btnSign, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 641, 170, -1));
-
-        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Submit_Login.png"))); // NOI18N
-        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnLoginMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnLoginMouseExited(evt);
-            }
-        });
-        jP_Login.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 580, 310, 40));
-
-        BG1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/jfLogin.png"))); // NOI18N
-        jP_Login.add(BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jP_Login_regis.add(jP_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jP_Login_regis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1536, 864));
 
@@ -614,33 +618,33 @@ public class JFregister extends javax.swing.JFrame {
         txtEmailLogin.setForeground(Color.BLACK);
     }//GEN-LAST:event_txtEmailLoginKeyPressed
 
-    private void jPasswordField1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseEntered
-        char[] input = jPasswordField1.getPassword();
+    private void txtpassloginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtpassloginMouseEntered
+        char[] input = txtpasslogin.getPassword();
         String password = new String(input); // แปลงจาก char array เป็น String
 
         if (password.equals("YourPassword")) {
-            jPasswordField1.setText("");
-            jPasswordField1.setForeground(new Color(204, 204, 204));
+            txtpasslogin.setText("");
+            txtpasslogin.setForeground(new Color(204, 204, 204));
         }
-    }//GEN-LAST:event_jPasswordField1MouseEntered
+    }//GEN-LAST:event_txtpassloginMouseEntered
 
-    private void jPasswordField1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseExited
-        char[] input = jPasswordField1.getPassword();
+    private void txtpassloginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtpassloginMouseExited
+        char[] input = txtpasslogin.getPassword();
         String password = new String(input); // แปลงจาก char array เป็น String
 
         if (password.equals("")) {
-            jPasswordField1.setText("YourPassword");
-            jPasswordField1.setForeground(new Color(204, 204, 204));
+            txtpasslogin.setText("YourPassword");
+            txtpasslogin.setForeground(new Color(204, 204, 204));
         }
-    }//GEN-LAST:event_jPasswordField1MouseExited
+    }//GEN-LAST:event_txtpassloginMouseExited
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void txtpassloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpassloginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_txtpassloginActionPerformed
 
-    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
-        jPasswordField1.setForeground(Color.black);
-    }//GEN-LAST:event_jPasswordField1KeyPressed
+    private void txtpassloginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpassloginKeyPressed
+        txtpasslogin.setForeground(Color.black);
+    }//GEN-LAST:event_txtpassloginKeyPressed
 
     private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Submit_Login_Exted.png"));
@@ -749,6 +753,51 @@ public class JFregister extends javax.swing.JFrame {
         txtPass.setForeground(Color.black);
     }//GEN-LAST:event_txtConpassKeyPressed
 
+    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
+        String email = txtEmailLogin.getText();
+        String pass = txtpasslogin.getText();
+
+        if (email.isEmpty() || email.equals("Email address")) {
+            String text = "Please enter email address.";
+            String url = "/bulibrary/image/crossAnimat.png";
+            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(), true, url, text);
+            warnmessage.setVisible(true);
+        } else if (pass.isEmpty() || pass.equals("YourPassword")) {
+            String text = "Please enter your password.";
+            String url = "/bulibrary/image/crossAnimat.png";
+            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(), true, url, text);
+            warnmessage.setVisible(true);
+        } else {
+            DBConnect conn = new DBConnect();
+            String query = "SELECT * FROM user WHERE email = ? AND password = ?";
+
+            try {
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setString(1, email);
+                statement.setString(2, pass);
+                ResultSet rs = statement.executeQuery();
+                if (rs.next()) {
+                    // คำนวณเงื่อนไขเมื่อเข้าสู่ระบบสำเร็จ
+                    String text = "Login Successful!";
+                    String url = "/bulibrary/image/tickAnimat.png";
+                    WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(), true, url, text);
+                    warnmessage.setVisible(true);
+                } else {
+                    // คำนวณเงื่อนไขเมื่อเข้าสู่ระบบไม่สำเร็จ
+                    String text = "Invalid email or password.";
+                    String url = "/bulibrary/image/crossAnimat.png";
+                    WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(), true, url, text);
+                    warnmessage.setVisible(true);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            } finally {
+                conn.close();
+            }
+        }
+
+    }//GEN-LAST:event_btnLoginMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -796,7 +845,6 @@ public class JFregister extends javax.swing.JFrame {
     private javax.swing.JPanel jP_Login;
     private javax.swing.JPanel jP_Login_regis;
     private javax.swing.JPanel jP_Register;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField txtConpass;
     private javax.swing.JTextField txtEmailLogin;
     private javax.swing.JTextField txtEmailRegis;
@@ -805,6 +853,7 @@ public class JFregister extends javax.swing.JFrame {
     private javax.swing.JTextField txtLname;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtTell;
+    private javax.swing.JPasswordField txtpasslogin;
     // End of variables declaration//GEN-END:variables
 
     private void setOpaque(boolean b) {

@@ -13,10 +13,11 @@ import javax.swing.ImageIcon;
  * @author Mr.Phiphat
  */
 public class WarningMessage extends javax.swing.JDialog {
-
+        private JFregister registerFrame;
     /**
      * Creates new form WarningMessage
      */
+        
     public WarningMessage(java.awt.Frame parent, boolean modal,String url,String text) {
         super(parent, modal);
         setUndecorated(true);

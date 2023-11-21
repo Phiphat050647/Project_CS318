@@ -21,6 +21,7 @@ public class DialogRegister extends javax.swing.JDialog {
         private String studentId;
         private String phoneNumber;
         private String password;
+        
     /**
      * Creates new form DialogRegister
      */
@@ -170,6 +171,8 @@ public class DialogRegister extends javax.swing.JDialog {
                         String url = "/bulibrary/image/tickAnimat.png";
                         WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
                         warnmessage.setVisible(true);
+                        JFregister.getInstance().changePanelVisibility(true, false);
+                        JFregister.getInstance().clearFields();
                     } else {
                         System.out.println("Failed to insert data.");
                     }
@@ -246,4 +249,5 @@ public class DialogRegister extends javax.swing.JDialog {
     private javax.swing.JLabel btnConfirm;
     private javax.swing.JLabel txtWarning;
     // End of variables declaration//GEN-END:variables
+
 }

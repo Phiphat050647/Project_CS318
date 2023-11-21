@@ -22,21 +22,27 @@ public class JFregister extends javax.swing.JFrame {
     public List<UserData>  userList = new ArrayList<>();
     private static JFregister instance = null;
     
-    public JFregister() {
+    public JFregister( ) {
         setUndecorated(true);
         initComponents();
         setPreferredSize(new Dimension(1536, 864)); // กำหนดขนาด JFrame เป็น 800x600 pixels
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        opacity.setVisible(false);
+        opacity1.setVisible(false);
         pack(); // บรรจุขนาดที่กำหนดเข้าไปใน JFrame
     
     }
+    
     public static JFregister getInstance() {
         if (instance == null) {
             instance = new JFregister();
         }
         return instance;
     }
-    
+    public void changeOpacity(boolean opacity){
+        this.opacity.setVisible(opacity);
+        this.opacity1.setVisible(opacity);
+    }
     public void changePanelVisibility(boolean isLoginVisible, boolean isRegisterVisible) {
         jP_Login.setVisible(isLoginVisible);
         jP_Register.setVisible(isRegisterVisible);
@@ -67,6 +73,7 @@ public class JFregister extends javax.swing.JFrame {
         btnclose = new javax.swing.JLabel();
         jP_Login_regis = new javax.swing.JPanel();
         jP_Register = new javax.swing.JPanel();
+        opacity = new javax.swing.JLabel();
         txtFname = new javax.swing.JTextField();
         txtLname = new javax.swing.JTextField();
         txtEmailRegis = new javax.swing.JTextField();
@@ -78,6 +85,7 @@ public class JFregister extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
         jP_Login = new javax.swing.JPanel();
+        opacity1 = new javax.swing.JLabel();
         txtEmailLogin = new javax.swing.JTextField();
         txtpasslogin = new javax.swing.JPasswordField();
         btnSign = new javax.swing.JLabel();
@@ -88,6 +96,7 @@ public class JFregister extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnclose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnclose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/CrossExit.png"))); // NOI18N
         btnclose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnclose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,12 +106,18 @@ public class JFregister extends javax.swing.JFrame {
         });
         getContentPane().add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 10, -1, -1));
 
+        jP_Login_regis.setBackground(new java.awt.Color(255, 255, 255));
+        jP_Login_regis.setForeground(new java.awt.Color(255, 255, 255));
         jP_Login_regis.setOpaque(false);
         jP_Login_regis.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jP_Register.setOpaque(false);
         jP_Register.setPreferredSize(new java.awt.Dimension(1536, 864));
         jP_Register.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        opacity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/opacity.png"))); // NOI18N
+        opacity.setText("jLabel4");
+        jP_Register.add(opacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -18, 1540, 900));
 
         txtFname.setForeground(new java.awt.Color(204, 204, 204));
         txtFname.setText("First name");
@@ -315,6 +330,10 @@ public class JFregister extends javax.swing.JFrame {
 
         jP_Login.setOpaque(false);
         jP_Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        opacity1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/opacity.png"))); // NOI18N
+        opacity1.setText("jLabel4");
+        jP_Login.add(opacity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -18, 1540, 900));
 
         txtEmailLogin.setForeground(new java.awt.Color(204, 204, 204));
         txtEmailLogin.setText("Email address");
@@ -875,6 +894,8 @@ public class JFregister extends javax.swing.JFrame {
     private javax.swing.JPanel jP_Login;
     private javax.swing.JPanel jP_Login_regis;
     private javax.swing.JPanel jP_Register;
+    private javax.swing.JLabel opacity;
+    private javax.swing.JLabel opacity1;
     private javax.swing.JPasswordField txtConpass;
     private javax.swing.JTextField txtEmailLogin;
     private javax.swing.JTextField txtEmailRegis;

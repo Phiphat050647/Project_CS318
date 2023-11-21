@@ -26,6 +26,7 @@ public class WarningMessage extends javax.swing.JDialog {
         Icon icon = new ImageIcon(getClass().getResource(url));
         animation.setIcon(icon);
         tWarning.setText("<html><div style='text-align: center;'>" + text + "</div></html>");
+        JFregister.getInstance().changeOpacity(true);
     }
 
     /**
@@ -73,6 +74,7 @@ public class WarningMessage extends javax.swing.JDialog {
 
     private void ExiteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExiteMouseClicked
         dispose();
+        JFregister.getInstance().changeOpacity( false);
     }//GEN-LAST:event_ExiteMouseClicked
 
     /**

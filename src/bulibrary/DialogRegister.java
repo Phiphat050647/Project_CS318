@@ -43,6 +43,7 @@ public class DialogRegister extends javax.swing.JDialog {
         studentId = user.getStudentId();
         phoneNumber = user.getPhoneNumber();
         password = user.getPassword();
+        JFregister.getInstance().changeOpacity(true);
     }
 
     /**
@@ -112,6 +113,7 @@ public class DialogRegister extends javax.swing.JDialog {
 
     private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
         dispose();
+        JFregister.getInstance().changeOpacity( false);
     }//GEN-LAST:event_btnCancelMouseClicked
 
     private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered
@@ -136,7 +138,7 @@ public class DialogRegister extends javax.swing.JDialog {
 
     private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
 
-
+        
         String selectQuery = "SELECT COUNT(*) FROM user WHERE email = ? OR studentid = ? OR phone = ?";
         DBConnect conn = new DBConnect();
         ResultSet rs = null;

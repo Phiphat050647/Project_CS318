@@ -56,6 +56,10 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
         User = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         game = new javax.swing.JPanel();
         scroll = new javax.swing.JScrollPane();
@@ -65,7 +69,6 @@ public class JPMainmenu extends javax.swing.JPanel {
         bg = new javax.swing.JLabel();
         Room = new javax.swing.JPanel();
         Booking = new javax.swing.JPanel();
-        Changpnal = new javax.swing.JTabbedPane();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -169,8 +172,24 @@ public class JPMainmenu extends javax.swing.JPanel {
         User.setBackground(new java.awt.Color(255, 255, 255));
         User.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextField1.setText("First name");
+        jTextField1.setBorder(null);
+        User.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(782, 258, 270, 30));
+
+        jTextField2.setText("First name");
+        jTextField2.setBorder(null);
+        User.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 340, 260, 30));
+
+        jTextField3.setText("First name");
+        jTextField3.setBorder(null);
+        User.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 258, 270, 30));
+
+        jTextField4.setText("First name");
+        jTextField4.setBorder(null);
+        User.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 270, 30));
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
-        User.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 1070, 740));
+        User.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 1070, 740));
 
         add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
 
@@ -240,9 +259,6 @@ public class JPMainmenu extends javax.swing.JPanel {
         );
 
         add(Booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
-
-        Changpnal.setBackground(new java.awt.Color(255, 255, 255));
-        add(Changpnal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, -40, 1270, 910));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseEntered
@@ -298,30 +314,25 @@ public class JPMainmenu extends javax.swing.JPanel {
     private void btnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseClicked
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/UserEn.png"));
         btnUser.setIcon(icon);
-        Changpnal.setComponentAt(0, User);
-        Changpnal.revalidate();
+      
     }//GEN-LAST:event_btnUserMouseClicked
 
     private void btnBookroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookroomMouseClicked
-        Changpnal.setComponentAt(0, Room);
-        Changpnal.revalidate();
+
     }//GEN-LAST:event_btnBookroomMouseClicked
 
     private void btnBookGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookGameMouseClicked
-        Changpnal.setComponentAt(0, game);
-        Changpnal.revalidate();
+
     }//GEN-LAST:event_btnBookGameMouseClicked
 
     private void btnBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseClicked
-        Changpnal.setComponentAt(0, Booking);
-        Changpnal.revalidate();
+
     }//GEN-LAST:event_btnBookingMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
     private javax.swing.JPanel Booking;
-    private javax.swing.JTabbedPane Changpnal;
     private javax.swing.JPanel Menubar;
     private javax.swing.JPanel Room;
     private javax.swing.JPanel User;
@@ -337,6 +348,10 @@ public class JPMainmenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }

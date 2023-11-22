@@ -55,6 +55,8 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnBooking = new javax.swing.JLabel();
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
+        User = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         game = new javax.swing.JPanel();
         scroll = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -62,8 +64,6 @@ public class JPMainmenu extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
         Room = new javax.swing.JPanel();
-        User = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         Booking = new javax.swing.JPanel();
         Changpnal = new javax.swing.JTabbedPane();
 
@@ -166,6 +166,14 @@ public class JPMainmenu extends javax.swing.JPanel {
 
         add(Menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        User.setBackground(new java.awt.Color(255, 255, 255));
+        User.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
+        User.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 1070, 740));
+
+        add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
+
         game.setBackground(new java.awt.Color(236, 248, 255));
         game.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -182,7 +190,6 @@ public class JPMainmenu extends javax.swing.JPanel {
         scroll.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         scroll.setNextFocusableComponent(jPanel4);
         scroll.setOpaque(false);
-        scroll.setViewportView(jLabel1);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -218,14 +225,6 @@ public class JPMainmenu extends javax.swing.JPanel {
         );
 
         add(Room, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, -1));
-
-        User.setBackground(new java.awt.Color(255, 255, 255));
-        User.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
-        User.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 81, 1129, 733));
-
-        add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
 
         Booking.setBackground(new java.awt.Color(255, 0, 51));
 
@@ -334,9 +333,9 @@ public class JPMainmenu extends javax.swing.JPanel {
     private javax.swing.JLabel btnLogo;
     private javax.swing.JLabel btnUser;
     private javax.swing.JPanel game;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables

@@ -15,7 +15,12 @@ import javax.swing.JScrollBar;
  * @author Mr.Phiphat
  */
 public class JPMainmenu extends javax.swing.JPanel {
-
+        private String firstName;
+        private String lastName;
+        private String email;
+        private String studentId;
+        private String phoneNumber;
+        private String password;
     /**
      * Creates new form JPMainmenu  public JPMainmenu() {
         initComponents();
@@ -32,6 +37,26 @@ public class JPMainmenu extends javax.swing.JPanel {
         scroll.setHorizontalScrollBar(sp);
         scroll.getViewport().setBackground(Color.WHITE);
     }
+    
+    
+    
+    public void setString(UserData user){
+        firstName = user.getFirstName();
+        lastName = user.getLastName();
+        email = user.getEmail();
+        studentId = user.getStudentId();
+        phoneNumber = user.getPhoneNumber();
+        password = user.getPassword();
+        setTxtProfile();
+    }
+    public void setTxtProfile(){
+        txtFname.setText(firstName);
+        txtlname.setText(lastName);
+        txtEmail.setText(email);
+        txtID.setText(studentId);
+        txtPhone.setText(phoneNumber);
+        txtPass.setText(password);
+   }
     public  void setMenu(boolean isUser,boolean isGmae,boolean isRoom,boolean isbooking){
         User.setVisible(isUser);
         game.setVisible(isGmae);
@@ -56,11 +81,14 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
         User = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        txtlname = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtFname = new javax.swing.JTextField();
+        txtID = new javax.swing.JTextField();
+        txtPass = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        Bg = new javax.swing.JLabel();
         game = new javax.swing.JPanel();
         scroll = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -69,6 +97,7 @@ public class JPMainmenu extends javax.swing.JPanel {
         bg = new javax.swing.JLabel();
         Room = new javax.swing.JPanel();
         Booking = new javax.swing.JPanel();
+        mainmenu = new javax.swing.JPanel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -172,24 +201,35 @@ public class JPMainmenu extends javax.swing.JPanel {
         User.setBackground(new java.awt.Color(255, 255, 255));
         User.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setText("First name");
-        jTextField1.setBorder(null);
-        User.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(782, 258, 270, 30));
+        txtlname.setText("First name");
+        txtlname.setBorder(null);
+        User.add(txtlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 278, 270, 30));
 
-        jTextField2.setText("First name");
-        jTextField2.setBorder(null);
-        User.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 340, 260, 30));
+        txtEmail.setText("First name");
+        txtEmail.setBorder(null);
+        User.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 260, 30));
 
-        jTextField3.setText("First name");
-        jTextField3.setBorder(null);
-        User.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 258, 270, 30));
+        txtFname.setText("First name");
+        txtFname.setBorder(null);
+        User.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 278, 270, 30));
 
-        jTextField4.setText("First name");
-        jTextField4.setBorder(null);
-        User.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 270, 30));
+        txtID.setText("First name");
+        txtID.setBorder(null);
+        User.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 445, 570, 30));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
-        User.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 1070, 740));
+        txtPass.setText("First name");
+        txtPass.setBorder(null);
+        User.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 570, 30));
+
+        txtPhone.setText("First name");
+        txtPhone.setBorder(null);
+        User.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 270, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/btnProfile.png"))); // NOI18N
+        User.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, 130, 40));
+
+        Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
+        User.add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 600, 700));
 
         add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
 
@@ -209,6 +249,7 @@ public class JPMainmenu extends javax.swing.JPanel {
         scroll.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         scroll.setNextFocusableComponent(jPanel4);
         scroll.setOpaque(false);
+        scroll.setViewportView(jLabel1);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -259,6 +300,21 @@ public class JPMainmenu extends javax.swing.JPanel {
         );
 
         add(Booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
+
+        mainmenu.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout mainmenuLayout = new javax.swing.GroupLayout(mainmenu);
+        mainmenu.setLayout(mainmenuLayout);
+        mainmenuLayout.setHorizontalGroup(
+            mainmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1280, Short.MAX_VALUE)
+        );
+        mainmenuLayout.setVerticalGroup(
+            mainmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 870, Short.MAX_VALUE)
+        );
+
+        add(mainmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseEntered
@@ -332,6 +388,7 @@ public class JPMainmenu extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
+    private javax.swing.JLabel Bg;
     private javax.swing.JPanel Booking;
     private javax.swing.JPanel Menubar;
     private javax.swing.JPanel Room;
@@ -344,14 +401,17 @@ public class JPMainmenu extends javax.swing.JPanel {
     private javax.swing.JLabel btnLogo;
     private javax.swing.JLabel btnUser;
     private javax.swing.JPanel game;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JPanel mainmenu;
     private javax.swing.JScrollPane scroll;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtFname;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtPass;
+    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtlname;
     // End of variables declaration//GEN-END:variables
 }

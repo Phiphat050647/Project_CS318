@@ -173,7 +173,7 @@ public class DialogRegister extends javax.swing.JDialog {
                         String url = "/bulibrary/image/tickAnimat.png";
                         WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
                         warnmessage.setVisible(true);
-                        JFregister.getInstance().changePanelVisibility(true, false);
+                        JFregister.getInstance().changePanelVisibility(true, false,false);
                         JFregister.getInstance().clearFields();
                     } else {
                         System.out.println("Failed to insert data.");

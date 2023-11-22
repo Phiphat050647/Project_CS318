@@ -20,14 +20,12 @@ public class Test extends javax.swing.JFrame {
 
         Container c = getContentPane();
         c.removeAll();
-        
         jPMainmenu1.setVisible(true);
         c.add(jPMainmenu1);
         pack();
         
     }
 
-//  kuykkkaa
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

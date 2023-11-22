@@ -25,13 +25,19 @@ public class JPMainmenu extends javax.swing.JPanel {
         initComponents();
         setPreferredSize(new Dimension(1536, 864)); // กำหนดขนาดของ JPanel เพื่อให้ตรงกับ Test
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        
         scroll.setVerticalScrollBar(new ScrollBarCustom());
         ScrollBarCustom sp = new ScrollBarCustom();
         sp.setOrientation(JScrollBar.HORIZONTAL);
         scroll.setHorizontalScrollBar(sp);
         scroll.getViewport().setBackground(Color.WHITE);
     }
-
+    public  void setMenu(boolean isUser,boolean isGmae,boolean isRoom,boolean isbooking){
+        User.setVisible(isUser);
+        game.setVisible(isGmae);
+        Room.setVisible(isRoom);
+        Booking.setVisible(isbooking);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,16 +55,17 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnBooking = new javax.swing.JLabel();
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        BookingBoardgame = new javax.swing.JPanel();
+        game = new javax.swing.JPanel();
         scroll = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        Room = new javax.swing.JPanel();
+        User = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        Booking = new javax.swing.JPanel();
+        Changpnal = new javax.swing.JTabbedPane();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,6 +83,9 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/User.png"))); // NOI18N
         btnUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUserMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnUserMouseEntered(evt);
             }
@@ -90,6 +100,9 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnBookroom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBookroom.setPreferredSize(new java.awt.Dimension(166, 31));
         btnBookroom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBookroomMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBookroomMouseEntered(evt);
             }
@@ -104,6 +117,9 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnBookGame.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBookGame.setPreferredSize(new java.awt.Dimension(166, 31));
         btnBookGame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBookGameMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBookGameMouseEntered(evt);
             }
@@ -119,6 +135,9 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnBooking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBooking.setPreferredSize(new java.awt.Dimension(166, 31));
         btnBooking.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBookingMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBookingMouseEntered(evt);
             }
@@ -147,10 +166,8 @@ public class JPMainmenu extends javax.swing.JPanel {
 
         add(Menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-
-        BookingBoardgame.setBackground(new java.awt.Color(236, 248, 255));
-        BookingBoardgame.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        game.setBackground(new java.awt.Color(236, 248, 255));
+        game.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         scroll.setBackground(new java.awt.Color(255, 255, 255));
         scroll.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -165,8 +182,10 @@ public class JPMainmenu extends javax.swing.JPanel {
         scroll.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         scroll.setNextFocusableComponent(jPanel4);
         scroll.setOpaque(false);
+        scroll.setViewportView(jLabel1);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -178,55 +197,53 @@ public class JPMainmenu extends javax.swing.JPanel {
 
         scroll.setViewportView(jPanel4);
 
-        BookingBoardgame.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 1170, 750));
+        game.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 1170, 750));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Bgscroll.png"))); // NOI18N
-        BookingBoardgame.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1230, 810));
+        game.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1230, 810));
 
-        jTabbedPane1.addTab("tab4", BookingBoardgame);
+        add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, -8, 1280, 890));
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        Room.setBackground(new java.awt.Color(0, 0, 0));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1270, Short.MAX_VALUE)
+        javax.swing.GroupLayout RoomLayout = new javax.swing.GroupLayout(Room);
+        Room.setLayout(RoomLayout);
+        RoomLayout.setHorizontalGroup(
+            RoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1280, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        RoomLayout.setVerticalGroup(
+            RoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 875, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        add(Room, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1270, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 875, Short.MAX_VALUE)
-        );
+        User.setBackground(new java.awt.Color(255, 255, 255));
+        User.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
+        User.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 81, 1129, 733));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1270, Short.MAX_VALUE)
+        add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
+
+        Booking.setBackground(new java.awt.Color(255, 0, 51));
+
+        javax.swing.GroupLayout BookingLayout = new javax.swing.GroupLayout(Booking);
+        Booking.setLayout(BookingLayout);
+        BookingLayout.setHorizontalGroup(
+            BookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1280, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 875, Short.MAX_VALUE)
+        BookingLayout.setVerticalGroup(
+            BookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab3", jPanel3);
+        add(Booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
 
-        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, -40, 1270, 910));
+        Changpnal.setBackground(new java.awt.Color(255, 255, 255));
+        add(Changpnal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, -40, 1270, 910));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseEntered
@@ -279,11 +296,36 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnExite.setIcon(icon);
     }//GEN-LAST:event_btnExiteMouseExited
 
+    private void btnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseClicked
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/UserEn.png"));
+        btnUser.setIcon(icon);
+        Changpnal.setComponentAt(0, User);
+        Changpnal.revalidate();
+    }//GEN-LAST:event_btnUserMouseClicked
+
+    private void btnBookroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookroomMouseClicked
+        Changpnal.setComponentAt(0, Room);
+        Changpnal.revalidate();
+    }//GEN-LAST:event_btnBookroomMouseClicked
+
+    private void btnBookGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookGameMouseClicked
+        Changpnal.setComponentAt(0, game);
+        Changpnal.revalidate();
+    }//GEN-LAST:event_btnBookGameMouseClicked
+
+    private void btnBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseClicked
+        Changpnal.setComponentAt(0, Booking);
+        Changpnal.revalidate();
+    }//GEN-LAST:event_btnBookingMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
-    private javax.swing.JPanel BookingBoardgame;
+    private javax.swing.JPanel Booking;
+    private javax.swing.JTabbedPane Changpnal;
     private javax.swing.JPanel Menubar;
+    private javax.swing.JPanel Room;
+    private javax.swing.JPanel User;
     private javax.swing.JLabel bg;
     private javax.swing.JLabel btnBookGame;
     private javax.swing.JLabel btnBooking;
@@ -291,13 +333,11 @@ public class JPMainmenu extends javax.swing.JPanel {
     private javax.swing.JLabel btnExite;
     private javax.swing.JLabel btnLogo;
     private javax.swing.JLabel btnUser;
+    private javax.swing.JPanel game;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }

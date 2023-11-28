@@ -86,19 +86,6 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnBooking = new javax.swing.JLabel();
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
-        mainmenu = new javax.swing.JPanel();
-        scrollMainmenu = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        Bgmain = new javax.swing.JLabel();
-        game = new javax.swing.JPanel();
-        scroll = new javax.swing.JScrollPane();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        bg = new javax.swing.JLabel();
         User = new javax.swing.JPanel();
         txtlname = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
@@ -106,8 +93,21 @@ public class JPMainmenu extends javax.swing.JPanel {
         txtID = new javax.swing.JTextField();
         txtPass = new javax.swing.JTextField();
         txtPhone = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JLabel();
         Bg = new javax.swing.JLabel();
+        game = new javax.swing.JPanel();
+        scroll = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        bg = new javax.swing.JLabel();
+        mainmenu = new javax.swing.JPanel();
+        scrollMainmenu = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        Bgmain = new javax.swing.JLabel();
         Room = new javax.swing.JPanel();
         Booking = new javax.swing.JPanel();
 
@@ -215,6 +215,84 @@ public class JPMainmenu extends javax.swing.JPanel {
 
         add(Menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        User.setBackground(new java.awt.Color(255, 255, 255));
+        User.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtlname.setText("First name");
+        txtlname.setBorder(null);
+        User.add(txtlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 278, 270, 30));
+
+        txtEmail.setText("First name");
+        txtEmail.setBorder(null);
+        User.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 260, 30));
+
+        txtFname.setText("First name");
+        txtFname.setBorder(null);
+        User.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 278, 270, 30));
+
+        txtID.setText("First name");
+        txtID.setBorder(null);
+        User.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 445, 570, 30));
+
+        txtPass.setText("First name");
+        txtPass.setBorder(null);
+        User.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 570, 30));
+
+        txtPhone.setText("First name");
+        txtPhone.setBorder(null);
+        User.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 270, 30));
+
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/btnProfile.png"))); // NOI18N
+        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateMouseClicked(evt);
+            }
+        });
+        User.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, 130, 40));
+
+        Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
+        User.add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 600, 700));
+
+        add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
+
+        game.setBackground(new java.awt.Color(236, 248, 255));
+        game.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        scroll.setBackground(new java.awt.Color(255, 255, 255));
+        scroll.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        scroll.setForeground(new java.awt.Color(255, 255, 255));
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setToolTipText("");
+        scroll.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        scroll.setAlignmentX(10.0F);
+        scroll.setAlignmentY(10.0F);
+        scroll.setAutoscrolls(true);
+        scroll.setColumnHeaderView(null);
+        scroll.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        scroll.setNextFocusableComponent(jPanel4);
+        scroll.setOpaque(false);
+        scroll.setViewportView(btnUpdate);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jPanel4.setOpaque(false);
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Kuy");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1220, 90, 60));
+
+        jLabel3.setText("Kuy");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 60));
+
+        scroll.setViewportView(jPanel4);
+
+        game.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 1170, 750));
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Bgscroll.png"))); // NOI18N
+        game.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1230, 810));
+
+        add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, -8, 1280, 890));
+
         mainmenu.setBackground(new java.awt.Color(255, 255, 255));
 
         scrollMainmenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -230,7 +308,7 @@ public class JPMainmenu extends javax.swing.JPanel {
         scrollMainmenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         scrollMainmenu.setNextFocusableComponent(jPanel4);
         scrollMainmenu.setOpaque(false);
-        scrollMainmenu.setViewportView(jLabel1);
+        scrollMainmenu.setViewportView(btnUpdate);
 
         jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
 
@@ -310,79 +388,6 @@ public class JPMainmenu extends javax.swing.JPanel {
         );
 
         add(mainmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
-
-        game.setBackground(new java.awt.Color(236, 248, 255));
-        game.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        scroll.setBackground(new java.awt.Color(255, 255, 255));
-        scroll.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        scroll.setForeground(new java.awt.Color(255, 255, 255));
-        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scroll.setToolTipText("");
-        scroll.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        scroll.setAlignmentX(10.0F);
-        scroll.setAlignmentY(10.0F);
-        scroll.setAutoscrolls(true);
-        scroll.setColumnHeaderView(null);
-        scroll.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scroll.setNextFocusableComponent(jPanel4);
-        scroll.setOpaque(false);
-        scroll.setViewportView(jLabel1);
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPanel4.setOpaque(false);
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setText("Kuy");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1220, 90, 60));
-
-        jLabel3.setText("Kuy");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 60));
-
-        scroll.setViewportView(jPanel4);
-
-        game.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 1170, 750));
-
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Bgscroll.png"))); // NOI18N
-        game.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1230, 810));
-
-        add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, -8, 1280, 890));
-
-        User.setBackground(new java.awt.Color(255, 255, 255));
-        User.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtlname.setText("First name");
-        txtlname.setBorder(null);
-        User.add(txtlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 278, 270, 30));
-
-        txtEmail.setText("First name");
-        txtEmail.setBorder(null);
-        User.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 260, 30));
-
-        txtFname.setText("First name");
-        txtFname.setBorder(null);
-        User.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 278, 270, 30));
-
-        txtID.setText("First name");
-        txtID.setBorder(null);
-        User.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 445, 570, 30));
-
-        txtPass.setText("First name");
-        txtPass.setBorder(null);
-        User.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 570, 30));
-
-        txtPhone.setText("First name");
-        txtPhone.setBorder(null);
-        User.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 270, 30));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/btnProfile.png"))); // NOI18N
-        User.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, 130, 40));
-
-        Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
-        User.add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 600, 700));
-
-        add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
 
         Room.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -629,6 +634,12 @@ public class JPMainmenu extends javax.swing.JPanel {
         setMenu(false,true,false,false,false);
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
+
+   
+
+    }//GEN-LAST:event_btnUpdateMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
@@ -644,9 +655,9 @@ public class JPMainmenu extends javax.swing.JPanel {
     private javax.swing.JLabel btnBookroom;
     private javax.swing.JLabel btnExite;
     private javax.swing.JLabel btnLogo;
+    private javax.swing.JLabel btnUpdate;
     private javax.swing.JLabel btnUser;
     private javax.swing.JPanel game;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

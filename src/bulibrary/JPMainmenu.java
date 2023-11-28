@@ -499,28 +499,73 @@ public class JPMainmenu extends javax.swing.JPanel {
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/UserEn.png"));
         btnUser.setIcon(icon);
         setMenu(true,false,false,false,false);
+        
+        
+        Icon icongame = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGame.png"));
+        Icon iconbook = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBooking.png"));
+        Icon iconroom = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking room.png"));
+        
+        btnBookGame.setIcon(icongame);
+        btnBooking.setIcon(iconbook);
+        btnBookroom.setIcon(iconroom);
+
     }//GEN-LAST:event_btnUserMouseClicked
 
     private void btnBookroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookroomMouseClicked
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking roomEn.png"));
         btnBookroom.setIcon(icon);
         setMenu(false,false,true,false,false);
+        
+        Icon iconuser = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/User.png"));
+        Icon icongame = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGame.png"));
+        Icon iconbook = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBooking.png"));
+        
+        btnUser.setIcon(iconuser);
+        btnBookGame.setIcon(icongame);
+        btnBooking.setIcon(iconbook);
+        
     }//GEN-LAST:event_btnBookroomMouseClicked
 //
     private void btnBookGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookGameMouseClicked
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGameEn.png"));
         btnBookGame.setIcon(icon);
         setMenu(false,true,false,false,false);
+        
+        Icon iconuser = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/User.png"));
+        Icon iconbook = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBooking.png"));
+        Icon iconroom = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking room.png"));
+       
+        btnUser.setIcon(iconuser);
+        btnBooking.setIcon(iconbook);
+        btnBookroom.setIcon(iconroom);
     }//GEN-LAST:event_btnBookGameMouseClicked
 
     private void btnBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseClicked
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBookingEn.png"));
         btnBooking.setIcon(icon);
         setMenu(false,false,false,true,false);
+        
+        Icon iconuser = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/User.png"));
+        Icon icongame = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGame.png"));
+        Icon iconroom = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking room.png"));
+        
+        btnUser.setIcon(iconuser);
+        btnBookGame.setIcon(icongame);
+        btnBookroom.setIcon(iconroom);
     }//GEN-LAST:event_btnBookingMouseClicked
 
     private void btnLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoMouseClicked
         setMenu(false,false,false,false,true);
+        
+        Icon iconuser = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/User.png"));
+        Icon icongame = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGame.png"));
+        Icon iconbook = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBooking.png"));
+        Icon iconroom = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking room.png"));
+        
+        btnUser.setIcon(iconuser);
+        btnBookGame.setIcon(icongame);
+        btnBooking.setIcon(iconbook);
+        btnBookroom.setIcon(iconroom);
     }//GEN-LAST:event_btnLogoMouseClicked
 
 

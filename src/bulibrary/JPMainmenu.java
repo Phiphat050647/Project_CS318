@@ -36,6 +36,10 @@ public class JPMainmenu extends javax.swing.JPanel {
         sp.setOrientation(JScrollBar.HORIZONTAL);
         scroll.setHorizontalScrollBar(sp);
         scroll.getViewport().setBackground(Color.WHITE);
+        scrollMainmenu.setVerticalScrollBar(new ScrollBarCustom());
+        scrollMainmenu.setHorizontalScrollBar(sp);
+        scrollMainmenu.getViewport().setBackground(Color.WHITE);
+        
     }
     
     
@@ -57,11 +61,13 @@ public class JPMainmenu extends javax.swing.JPanel {
         txtPhone.setText(phoneNumber);
         txtPass.setText(password);
    }
-    public  void setMenu(boolean isUser,boolean isGmae,boolean isRoom,boolean isbooking){
+    public  void setMenu(boolean isUser,boolean isGmae,boolean isRoom,boolean isbooking,boolean ismain){
         User.setVisible(isUser);
         game.setVisible(isGmae);
         Room.setVisible(isRoom);
         Booking.setVisible(isbooking);
+        mainmenu.setVisible(ismain);
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,6 +86,16 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnBooking = new javax.swing.JLabel();
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
+        mainmenu = new javax.swing.JPanel();
+        scrollMainmenu = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        game = new javax.swing.JPanel();
+        scroll = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        bg = new javax.swing.JLabel();
         User = new javax.swing.JPanel();
         txtlname = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
@@ -89,15 +105,8 @@ public class JPMainmenu extends javax.swing.JPanel {
         txtPhone = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         Bg = new javax.swing.JLabel();
-        game = new javax.swing.JPanel();
-        scroll = new javax.swing.JScrollPane();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        bg = new javax.swing.JLabel();
         Room = new javax.swing.JPanel();
         Booking = new javax.swing.JPanel();
-        mainmenu = new javax.swing.JPanel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -109,6 +118,11 @@ public class JPMainmenu extends javax.swing.JPanel {
 
         btnLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BU library.png"))); // NOI18N
         btnLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogoMouseClicked(evt);
+            }
+        });
         Menubar.add(btnLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         btnUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -198,40 +212,51 @@ public class JPMainmenu extends javax.swing.JPanel {
 
         add(Menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        User.setBackground(new java.awt.Color(255, 255, 255));
-        User.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mainmenu.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtlname.setText("First name");
-        txtlname.setBorder(null);
-        User.add(txtlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 278, 270, 30));
+        scrollMainmenu.setBackground(new java.awt.Color(255, 255, 255));
+        scrollMainmenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        scrollMainmenu.setForeground(new java.awt.Color(255, 255, 255));
+        scrollMainmenu.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollMainmenu.setToolTipText("");
+        scrollMainmenu.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        scrollMainmenu.setAlignmentX(10.0F);
+        scrollMainmenu.setAlignmentY(10.0F);
+        scrollMainmenu.setAutoscrolls(true);
+        scrollMainmenu.setColumnHeaderView(null);
+        scrollMainmenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        scrollMainmenu.setNextFocusableComponent(jPanel4);
+        scrollMainmenu.setOpaque(false);
+        scrollMainmenu.setViewportView(jLabel1);
 
-        txtEmail.setText("First name");
-        txtEmail.setBorder(null);
-        User.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 260, 30));
+        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
 
-        txtFname.setText("First name");
-        txtFname.setBorder(null);
-        User.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 278, 270, 30));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/หน้าหลัก.png"))); // NOI18N
+        jPanel1.add(jLabel4);
 
-        txtID.setText("First name");
-        txtID.setBorder(null);
-        User.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 445, 570, 30));
+        scrollMainmenu.setViewportView(jPanel1);
 
-        txtPass.setText("First name");
-        txtPass.setBorder(null);
-        User.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 570, 30));
+        javax.swing.GroupLayout mainmenuLayout = new javax.swing.GroupLayout(mainmenu);
+        mainmenu.setLayout(mainmenuLayout);
+        mainmenuLayout.setHorizontalGroup(
+            mainmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGroup(mainmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainmenuLayout.createSequentialGroup()
+                    .addContainerGap(44, Short.MAX_VALUE)
+                    .addComponent(scrollMainmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 1187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(49, Short.MAX_VALUE)))
+        );
+        mainmenuLayout.setVerticalGroup(
+            mainmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 870, Short.MAX_VALUE)
+            .addGroup(mainmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainmenuLayout.createSequentialGroup()
+                    .addComponent(scrollMainmenu, javax.swing.GroupLayout.DEFAULT_SIZE, 864, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
 
-        txtPhone.setText("First name");
-        txtPhone.setBorder(null);
-        User.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 270, 30));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/btnProfile.png"))); // NOI18N
-        User.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, 130, 40));
-
-        Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
-        User.add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 600, 700));
-
-        add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
+        add(mainmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
 
         game.setBackground(new java.awt.Color(236, 248, 255));
         game.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -271,6 +296,41 @@ public class JPMainmenu extends javax.swing.JPanel {
 
         add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, -8, 1280, 890));
 
+        User.setBackground(new java.awt.Color(255, 255, 255));
+        User.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtlname.setText("First name");
+        txtlname.setBorder(null);
+        User.add(txtlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 278, 270, 30));
+
+        txtEmail.setText("First name");
+        txtEmail.setBorder(null);
+        User.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 260, 30));
+
+        txtFname.setText("First name");
+        txtFname.setBorder(null);
+        User.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 278, 270, 30));
+
+        txtID.setText("First name");
+        txtID.setBorder(null);
+        User.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 445, 570, 30));
+
+        txtPass.setText("First name");
+        txtPass.setBorder(null);
+        User.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 570, 30));
+
+        txtPhone.setText("First name");
+        txtPhone.setBorder(null);
+        User.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 270, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/btnProfile.png"))); // NOI18N
+        User.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, 130, 40));
+
+        Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
+        User.add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 600, 700));
+
+        add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
+
         Room.setBackground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout RoomLayout = new javax.swing.GroupLayout(Room);
@@ -300,69 +360,137 @@ public class JPMainmenu extends javax.swing.JPanel {
         );
 
         add(Booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
-
-        mainmenu.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout mainmenuLayout = new javax.swing.GroupLayout(mainmenu);
-        mainmenu.setLayout(mainmenuLayout);
-        mainmenuLayout.setHorizontalGroup(
-            mainmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
-        );
-        mainmenuLayout.setVerticalGroup(
-            mainmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
-        );
-
-        add(mainmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/UserEn.png"));
-        btnUser.setIcon(icon);
+        Icon ulicon = btnUser.getIcon();
+        String uliconURL = ulicon.toString();
+        
+        Icon normal = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/User.png"));
+        Icon click = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/UserEn.png"));
+        Icon en = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/UserEnnew.png"));
+        
+        if (uliconURL.equals(click.toString())) {
+            System.out.println("Ok");
+        } else {
+            btnUser.setIcon(en);
+        }
+        
     }//GEN-LAST:event_btnUserMouseEntered
 
     private void btnUserMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/User.png"));
-        btnUser.setIcon(icon);
+        Icon ulicon = btnUser.getIcon();
+        String uliconURL = ulicon.toString();
+        
+        Icon normal = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/User.png"));
+        Icon click = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/UserEn.png"));
+        Icon en = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/UserEnnew.png"));
+        
+        if (uliconURL.equals(click.toString())) {
+            System.out.println("Ok");
+        } else {
+            btnUser.setIcon(normal);
+        }
     }//GEN-LAST:event_btnUserMouseExited
 
     private void btnBookroomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookroomMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking roomEn.png"));
-        btnBookroom.setIcon(icon);
+        Icon ulicon = btnBookroom.getIcon();
+        String uliconURL = ulicon.toString();
+        
+        Icon normal = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking room.png"));
+        Icon click = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking roomEn.png"));
+        Icon en = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking roomEnnew.png"));
+        
+        if (uliconURL.equals(click.toString())) {
+            System.out.println("Ok");
+        } else {
+            btnBookroom.setIcon(en);
+        }
+        
     }//GEN-LAST:event_btnBookroomMouseEntered
 
     private void btnBookroomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookroomMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking room.png"));
-        btnBookroom.setIcon(icon);
+        Icon ulicon = btnBookroom.getIcon();
+        String uliconURL = ulicon.toString();
+        
+        Icon normal = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking room.png"));
+        Icon click = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking roomEn.png"));
+        Icon en = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking roomEnnew.png"));
+        
+        if (uliconURL.equals(click.toString())) {
+            System.out.println("Ok");
+        } else {
+            btnBookroom.setIcon(normal);
+        }
     }//GEN-LAST:event_btnBookroomMouseExited
 
     private void btnBookGameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookGameMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGameEn.png"));
-        btnBookGame.setIcon(icon);
+        Icon ulicon = btnBookGame.getIcon();
+        String uliconURL = ulicon.toString();
+        
+        Icon normal = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGame.png"));
+        Icon click = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGameEn.png"));
+        Icon en = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGameEnnew.png"));
+        
+        if (uliconURL.equals(click.toString())) {
+            System.out.println("Ok");
+        } else {
+            btnBookGame.setIcon(en);
+        }
     }//GEN-LAST:event_btnBookGameMouseEntered
 
     private void btnBookGameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookGameMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGame.png"));
-        btnBookGame.setIcon(icon);
+        Icon ulicon = btnBookGame.getIcon();
+        String uliconURL = ulicon.toString();
+        
+        Icon normal = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGame.png"));
+        Icon click = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGameEn.png"));
+        Icon en = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGameEnnew.png"));
+        
+        if (uliconURL.equals(click.toString())) {
+            System.out.println("Ok");
+        } else {
+            btnBookGame.setIcon(normal);
+        }
     }//GEN-LAST:event_btnBookGameMouseExited
 
     private void btnBookingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBookingEn.png"));
-        btnBooking.setIcon(icon);
+        Icon ulicon = btnBooking.getIcon();
+        String uliconURL = ulicon.toString();
+        
+        Icon normal = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBooking.png"));
+        Icon click = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBookingEn.png"));
+        Icon en = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBookingEnnew.png"));
+        
+        if (uliconURL.equals(click.toString())) {
+            System.out.println("Ok");
+        } else {
+            btnBooking.setIcon(en);
+        }
     }//GEN-LAST:event_btnBookingMouseEntered
 
     private void btnBookingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBooking.png"));
-        btnBooking.setIcon(icon);
+        Icon ulicon = btnBooking.getIcon();
+        String uliconURL = ulicon.toString();
+        
+        Icon normal = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBooking.png"));
+        Icon click = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBookingEn.png"));
+        Icon en = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBookingEnnew.png"));
+        
+        if (uliconURL.equals(click.toString())) {
+            System.out.println("Ok");
+        } else {
+            btnBooking.setIcon(normal);
+        }
     }//GEN-LAST:event_btnBookingMouseExited
 
     private void btnExiteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExiteMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/ExitEn.png"));
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/ExitEnnew.png"));
         btnExite.setIcon(icon);
     }//GEN-LAST:event_btnExiteMouseEntered
 
     private void btnExiteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExiteMouseExited
+        
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Exit.png"));
         btnExite.setIcon(icon);
     }//GEN-LAST:event_btnExiteMouseExited
@@ -370,20 +498,30 @@ public class JPMainmenu extends javax.swing.JPanel {
     private void btnUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseClicked
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/UserEn.png"));
         btnUser.setIcon(icon);
-      
+        setMenu(true,false,false,false,false);
     }//GEN-LAST:event_btnUserMouseClicked
 
     private void btnBookroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookroomMouseClicked
-
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking roomEn.png"));
+        btnBookroom.setIcon(icon);
+        setMenu(false,false,true,false,false);
     }//GEN-LAST:event_btnBookroomMouseClicked
 
     private void btnBookGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookGameMouseClicked
-
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGameEn.png"));
+        btnBookGame.setIcon(icon);
+        setMenu(false,true,false,false,false);
     }//GEN-LAST:event_btnBookGameMouseClicked
 
     private void btnBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseClicked
-
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBookingEn.png"));
+        btnBooking.setIcon(icon);
+        setMenu(false,false,false,true,false);
     }//GEN-LAST:event_btnBookingMouseClicked
+
+    private void btnLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoMouseClicked
+        setMenu(false,false,false,false,true);
+    }//GEN-LAST:event_btnLogoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -404,9 +542,12 @@ public class JPMainmenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel mainmenu;
     private javax.swing.JScrollPane scroll;
+    private javax.swing.JScrollPane scrollMainmenu;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFname;
     private javax.swing.JTextField txtID;

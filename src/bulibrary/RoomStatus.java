@@ -40,6 +40,7 @@ public class RoomStatus extends javax.swing.JDialog {
         dateChooser1 = new com.raven.datechooser.DateChooser();
         txtDate = new javax.swing.JTextField();
         icondate = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         Bg = new javax.swing.JLabel();
 
         dateChooser1.setTextRefernce(txtDate);
@@ -59,6 +60,9 @@ public class RoomStatus extends javax.swing.JDialog {
             }
         });
         getContentPane().add(icondate, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 108, 20, 20));
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, -1));
 
         Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/Booking status.png"))); // NOI18N
         getContentPane().add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 20, -1, -1));
@@ -117,6 +121,7 @@ public class RoomStatus extends javax.swing.JDialog {
     private javax.swing.JLabel Bg;
     private com.raven.datechooser.DateChooser dateChooser1;
     private javax.swing.JLabel icondate;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtDate;
     // End of variables declaration//GEN-END:variables
 }

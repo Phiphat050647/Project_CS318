@@ -127,7 +127,7 @@ public class DialogUpdate extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelMouseExited
 
     private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
-
+        
         String selectQuery = "SELECT COUNT(*) FROM user WHERE email = ? OR studentid = ? OR phone = ?";
         DBConnect conn = new DBConnect();
         ResultSet rs = null;

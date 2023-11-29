@@ -95,7 +95,6 @@ public class JFregister extends javax.swing.JFrame {
         btnCreateAccount = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
-        jPMainmenu1 = new bulibrary.JPMainmenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -422,7 +421,6 @@ public class JFregister extends javax.swing.JFrame {
         jP_Register.add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jP_Login_regis.add(jP_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, -1, 870));
-        jP_Login_regis.add(jPMainmenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jP_Login_regis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1536, 864));
 
@@ -910,7 +908,6 @@ public class JFregister extends javax.swing.JFrame {
     private javax.swing.JLabel btnSign;
     private javax.swing.JLabel btnclose;
     private javax.swing.JLabel jLabel1;
-    private bulibrary.JPMainmenu jPMainmenu1;
     private javax.swing.JPanel jP_Login;
     private javax.swing.JPanel jP_Login_regis;
     private javax.swing.JPanel jP_Register;

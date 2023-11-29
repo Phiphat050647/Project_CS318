@@ -1,10 +1,14 @@
 package bulibrary;
 
+import com.raven.datechooser.SelectedDate;
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import java.sql.ResultSet;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -40,6 +44,8 @@ public class RoomStatus extends javax.swing.JDialog {
         dateChooser1 = new com.raven.datechooser.DateChooser();
         txtDate = new javax.swing.JTextField();
         icondate = new javax.swing.JLabel();
+        btnNow = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Bg = new javax.swing.JLabel();
 
@@ -48,9 +54,10 @@ public class RoomStatus extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtDate.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         txtDate.setForeground(new java.awt.Color(153, 153, 153));
         txtDate.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        getContentPane().add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 105, 130, 20));
+        getContentPane().add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 107, 130, 20));
 
         icondate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/dateicon.png"))); // NOI18N
         icondate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -59,10 +66,29 @@ public class RoomStatus extends javax.swing.JDialog {
                 icondateMouseClicked(evt);
             }
         });
-        getContentPane().add(icondate, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 108, 20, 20));
+        getContentPane().add(icondate, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 106, 20, 20));
 
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, -1));
+        btnNow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/now.png"))); // NOI18N
+        btnNow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNowMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnNow, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 102, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Poppins ExtraLight", 0, 16)); // NOI18N
+        jLabel2.setText("Room 5");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 70, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnsearch.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 102, -1, -1));
 
         Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/Booking status.png"))); // NOI18N
         getContentPane().add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 20, -1, -1));
@@ -74,6 +100,55 @@ public class RoomStatus extends javax.swing.JDialog {
     private void icondateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icondateMouseClicked
         dateChooser1.showPopup();
     }//GEN-LAST:event_icondateMouseClicked
+
+    private void btnNowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNowMouseClicked
+        dateChooser1.toDay();
+    }//GEN-LAST:event_btnNowMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        SelectedDate d = dateChooser1.getSelectedDate();
+        System.out.println(d.getDay() + d.getMonth() + d.getYear());
+        
+        String room = "Room5"; 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(d.getDay());
+        
+        System.out.println(date);
+        String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ?";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+
+        try {
+            PreparedStatement Statement = conn.prepareStatement(selectQuery);
+            Statement.setString(1, room);
+            Statement.setString(2, date);
+            rs = Statement.executeQuery();
+            
+            while (rs.next()) {
+                String user = rs.getString("user");
+                String startTime = rs.getString("Stime");
+                String endTime = rs.getString("Etime");
+                String purpose = rs.getString("porpose");
+                String id = rs.getString("id");
+                java.sql.Date dateb = rs.getDate("date");
+
+                // นำข้อมูลที่ได้มาใช้งานตามต้องการ
+                System.out.println("User: " + user + ", Start Time: " + startTime + ", End Time: " + endTime + ", Purpose: " + purpose + ", ID: " + id + ",Date :" + dateb);
+            }
+
+            // ปิดการเชื่อมต่อกับฐานข้อมูลหลังจากใช้งานเสร็จสิ้น
+            rs.close();
+ 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+
+
+
+
+        
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -119,9 +194,11 @@ public class RoomStatus extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bg;
+    private javax.swing.JLabel btnNow;
     private com.raven.datechooser.DateChooser dateChooser1;
     private javax.swing.JLabel icondate;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtDate;
     // End of variables declaration//GEN-END:variables
 }

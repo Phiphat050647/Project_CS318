@@ -86,13 +86,6 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnBooking = new javax.swing.JLabel();
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
-        mainmenu = new javax.swing.JPanel();
-        scrollMainmenu = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        Bgmain = new javax.swing.JLabel();
         User = new javax.swing.JPanel();
         txtlname = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
@@ -102,7 +95,13 @@ public class JPMainmenu extends javax.swing.JPanel {
         txtPhone = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JLabel();
         Bg = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        mainmenu = new javax.swing.JPanel();
+        scrollMainmenu = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        Bgmain = new javax.swing.JLabel();
         game = new javax.swing.JPanel();
         scroll = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -216,6 +215,94 @@ public class JPMainmenu extends javax.swing.JPanel {
 
         add(Menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        User.setBackground(new java.awt.Color(255, 255, 255));
+
+        txtlname.setText("First name");
+        txtlname.setBorder(null);
+
+        txtEmail.setText("First name");
+        txtEmail.setBorder(null);
+
+        txtFname.setText("First name");
+        txtFname.setBorder(null);
+
+        txtID.setText("First name");
+        txtID.setBorder(null);
+
+        txtPass.setText("First name");
+        txtPass.setBorder(null);
+
+        txtPhone.setText("First name");
+        txtPhone.setBorder(null);
+
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/btnProfile.png"))); // NOI18N
+        btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateMouseClicked(evt);
+            }
+        });
+
+        Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
+
+        javax.swing.GroupLayout UserLayout = new javax.swing.GroupLayout(User);
+        User.setLayout(UserLayout);
+        UserLayout.setHorizontalGroup(
+            UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserLayout.createSequentialGroup()
+                .addGap(360, 360, 360)
+                .addGroup(UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(txtlname, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Bg, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdate)))
+        );
+        UserLayout.setVerticalGroup(
+            UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(420, 420, 420)
+                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(txtlname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(UserLayout.createSequentialGroup()
+                        .addGap(325, 325, 325)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Bg, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(btnUpdate))
+        );
+
+        add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
+
         mainmenu.setBackground(new java.awt.Color(255, 255, 255));
 
         scrollMainmenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -311,56 +398,6 @@ public class JPMainmenu extends javax.swing.JPanel {
         );
 
         add(mainmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
-
-        User.setBackground(new java.awt.Color(255, 255, 255));
-        User.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtlname.setText("First name");
-        txtlname.setBorder(null);
-        User.add(txtlname, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 278, 270, 30));
-
-        txtEmail.setText("First name");
-        txtEmail.setBorder(null);
-        User.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 260, 30));
-
-        txtFname.setText("First name");
-        txtFname.setBorder(null);
-        User.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 278, 270, 30));
-
-        txtID.setText("First name");
-        txtID.setBorder(null);
-        User.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 445, 570, 30));
-
-        txtPass.setText("First name");
-        txtPass.setBorder(null);
-        User.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 570, 30));
-
-        txtPhone.setText("First name");
-        txtPhone.setBorder(null);
-        User.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 270, 30));
-
-        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/btnProfile.png"))); // NOI18N
-        btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnUpdateMouseClicked(evt);
-            }
-        });
-        User.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, -1, -1));
-
-        Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
-        User.add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 600, 460));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/btnProfile.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        User.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, -1, -1));
-
-        add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
 
         game.setBackground(new java.awt.Color(236, 248, 255));
         game.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -665,10 +702,6 @@ public class JPMainmenu extends javax.swing.JPanel {
             
     }//GEN-LAST:event_btnUpdateMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
@@ -687,7 +720,6 @@ public class JPMainmenu extends javax.swing.JPanel {
     private javax.swing.JLabel btnUpdate;
     private javax.swing.JLabel btnUser;
     private javax.swing.JPanel game;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

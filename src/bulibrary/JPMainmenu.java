@@ -805,52 +805,23 @@ public class JPMainmenu extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
-        if (txtFname.getText().isEmpty()) {
-            String text = "Please enter first name.";
-            String url = "/bulibrary/image/crossAnimat.png";
-            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
-            warnmessage.setVisible(true);
-        } else if (txtlname.getText().isEmpty()) {
-            String text = "Please enter last name. .";
-            String url = "/bulibrary/image/crossAnimat.png";
-            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
-            warnmessage.setVisible(true);
-        } else if (txtEmail.getText().isEmpty()){
-            String text = "Please enter email address.";
-            String url = "/bulibrary/image/crossAnimat.png";
-            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
-            warnmessage.setVisible(true);
-  
-        } else if (txtID.getText().isEmpty())  {
-            String text = "Please enter student ID.";
-            String url = "/bulibrary/image/crossAnimat.png";
-            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
-            warnmessage.setVisible(true);
-        } else if (txtPhone.getText().isEmpty()) {
-            String text = "Please enter telephone number.";
-            String url = "/bulibrary/image/crossAnimat.png";
-            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
-            warnmessage.setVisible(true);
-        } else if (txtPass.getText().isEmpty()) {
-            String text = "Please enter your password.";
-            String url = "/bulibrary/image/crossAnimat.png";
-            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
-            warnmessage.setVisible(true);
-        } else {
+        
+        UserData user = new UserData();
+            user.setFirstName(txtFname.getText());
+            user.setLastName(txtlname.getText());
+            user.setEmail(txtEmail.getText());
+            user.setPhoneNumber(txtPhone.getText());
+            user.setStudentId(txtID.getText());
+            user.setPassword(txtPass.getText());
 
-              UserData user = new UserData();
-                user.setFirstName(txtFname.getText());
-                user.setLastName(txtlname.getText());
-                user.setEmail(txtEmail.getText());
-                user.setPhoneNumber(txtPhone.getText());
-                user.setStudentId(txtID.getText());
-                user.setPassword(txtPass.getText());
-                
-                 String warning = "Are you confirm ChangProfile";
-                DialogUpdate dialog = new DialogUpdate(new javax.swing.JFrame(), true, user,warning,email);
-                dialog.setVisible(true);
-        }
-   
+
+            // ทำการลงทะเบียนผู้ใช้งานเสร็จสิ้น
+            String warning = "Are you confirm ChangProfile";
+            DialogUpdate dialog = new DialogUpdate(new javax.swing.JFrame(), true, user,warning);
+            dialog.setVisible(true);
+            
+            
+            
     }//GEN-LAST:event_btnUpdateMouseClicked
 
 

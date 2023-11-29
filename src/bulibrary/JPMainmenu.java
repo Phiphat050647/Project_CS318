@@ -243,15 +243,16 @@ public class JPMainmenu extends javax.swing.JPanel {
         User.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 270, 30));
 
         btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/btnProfile.png"))); // NOI18N
+        btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnUpdateMouseClicked(evt);
             }
         });
-        User.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, 130, 40));
+        User.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, -1, -1));
 
         Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Profile edite.png"))); // NOI18N
-        User.add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 600, 700));
+        User.add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 600, 700));
 
         add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
 
@@ -635,9 +636,23 @@ public class JPMainmenu extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
+        
+        UserData user = new UserData();
+            user.setFirstName(txtFname.getText());
+            user.setLastName(txtlname.getText());
+            user.setEmail(txtEmail.getText());
+            user.setPhoneNumber(txtPhone.getText());
+            user.setStudentId(txtID.getText());
+            user.setPassword(txtPass.getText());
 
-   
 
+            // ทำการลงทะเบียนผู้ใช้งานเสร็จสิ้น
+            String warning = "Are you confirm ChangProfile";
+            DialogUpdate dialog = new DialogUpdate(new javax.swing.JFrame(), true, user,warning);
+            dialog.setVisible(true);
+            
+            
+            
     }//GEN-LAST:event_btnUpdateMouseClicked
 
 

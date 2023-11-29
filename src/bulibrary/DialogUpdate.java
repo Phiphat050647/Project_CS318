@@ -14,7 +14,7 @@ import java.sql.PreparedStatement;
  *
  * @author Mr.Phiphat
  */
-public class DialogRegister extends javax.swing.JDialog {
+public class DialogUpdate extends javax.swing.JDialog {
         private String firstName;
         private String lastName;
         private String email;
@@ -23,9 +23,9 @@ public class DialogRegister extends javax.swing.JDialog {
         private String password;
         
     /**
-     * Creates new form DialogRegister
+     * Creates new form DialogUpdate
      */
-    public DialogRegister(java.awt.Frame parent, boolean modal,UserData user,String warning) {
+    public DialogUpdate(java.awt.Frame parent, boolean modal,UserData user,String warning) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
@@ -45,8 +45,7 @@ public class DialogRegister extends javax.swing.JDialog {
         password = user.getPassword();
         JFregister.getInstance().changeOpacity(true);
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,19 +126,8 @@ public class DialogRegister extends javax.swing.JDialog {
         btnCancel.setIcon(icon);
     }//GEN-LAST:event_btnCancelMouseExited
 
-    private void btnConfirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/ConfirmbtnEx.png"));
-        btnConfirm.setIcon(icon);
-    }//GEN-LAST:event_btnConfirmMouseEntered
-
-    private void btnConfirmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Confirmbtn.png"));
-        btnConfirm.setIcon(icon);
-    }//GEN-LAST:event_btnConfirmMouseExited
-
     private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
 
-        
         String selectQuery = "SELECT COUNT(*) FROM user WHERE email = ? OR studentid = ? OR phone = ?";
         DBConnect conn = new DBConnect();
         ResultSet rs = null;
@@ -194,12 +182,17 @@ public class DialogRegister extends javax.swing.JDialog {
             conn.close();
         }
 
-
-
-
-
-        
     }//GEN-LAST:event_btnConfirmMouseClicked
+
+    private void btnConfirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseEntered
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/ConfirmbtnEx.png"));
+        btnConfirm.setIcon(icon);
+    }//GEN-LAST:event_btnConfirmMouseEntered
+
+    private void btnConfirmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseExited
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Confirmbtn.png"));
+        btnConfirm.setIcon(icon);
+    }//GEN-LAST:event_btnConfirmMouseExited
 
     /**
      * @param args the command line arguments
@@ -218,13 +211,13 @@ public class DialogRegister extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -232,8 +225,8 @@ public class DialogRegister extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 UserData user = new UserData();
-                String warning = "Are you confirm Register";
-                DialogRegister dialog = new DialogRegister(new javax.swing.JFrame(), true,user,warning);
+                String warning = "Are you confirm ChangProfile";
+                DialogUpdate dialog = new DialogUpdate(new javax.swing.JFrame(), true,user,warning);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -252,5 +245,4 @@ public class DialogRegister extends javax.swing.JDialog {
     private javax.swing.JLabel btnConfirm;
     private javax.swing.JLabel txtWarning;
     // End of variables declaration//GEN-END:variables
-
 }

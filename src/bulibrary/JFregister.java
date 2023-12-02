@@ -4,6 +4,8 @@
  */
 package bulibrary;
 
+import bulibrary.ClassJava.UserData;
+import bulibrary.ClassJava.DBConnect;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;

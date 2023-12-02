@@ -4,6 +4,8 @@
  */
 package bulibrary;
 
+import bulibrary.ClassJava.UserData;
+import bulibrary.ClassJava.ScrollBarCustom;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.Icon;

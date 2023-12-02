@@ -1,4 +1,4 @@
-package bulibrary;
+package bulibrary.ClassJava;
 
 import java.awt.Color;
 import java.awt.Dimension;

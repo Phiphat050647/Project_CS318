@@ -41,8 +41,8 @@ public class RoomStatus extends javax.swing.JDialog {
         LoadStatus();
     }
     public  void LoadStatus(){
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/boxTime.png"));
-        Component add = pnelData.add(new JPStatus("09:00", "11:00", "ผู้จอง : เบญญทิพย์ ผดาจิตร คณะ : เทคโนโลยีสารสนเทศและนวัตกรรม",icon));
+       
+        Component add = pnelData.add(new JPStatus("09:00", "11:00", "ผู้จอง : เบญญทิพย์ ผดาจิตร คณะ : เทคโนโลยีสารสนเทศและนวัตกรรม"));
 
     }
 

@@ -19,12 +19,12 @@ public class JPStatus extends javax.swing.JPanel {
     public JPStatus() {
         initComponents();
     }
-    public JPStatus(String stime,String etime,String Datastatus,Icon icon){
+    public JPStatus(String stime,String etime,String Datastatus ){
         initComponents();
         ETime.setText(etime);
         STime.setText(stime);
         JSting1.setText(Datastatus);
-        IconBox1.setIcon(icon);
+
         
     }
     /**
@@ -40,38 +40,48 @@ public class JPStatus extends javax.swing.JPanel {
         ETime = new javax.swing.JLabel();
         STime = new javax.swing.JLabel();
         JSting1 = new javax.swing.JLabel();
+        IconBox2 = new javax.swing.JLabel();
         IconBox1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JSting.setFont(new java.awt.Font("Prompt Light", 0, 10)); // NOI18N
         JSting.setText("หมายเหตุ : ประชุมงาน");
-        add(JSting, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 390, 30));
+        add(JSting, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 390, 30));
 
         ETime.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         ETime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ETime.setText("11:00");
-        add(ETime, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 50, 20));
+        add(ETime, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 50, 20));
 
         STime.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         STime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         STime.setText("09:00");
-        add(STime, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 50, 20));
+        add(STime, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
 
         JSting1.setFont(new java.awt.Font("Prompt Light", 0, 10)); // NOI18N
-        add(JSting1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 390, 30));
-        add(IconBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 400, 10));
+        add(JSting1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 390, 30));
+
+        IconBox2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/boxTime.png"))); // NOI18N
+        add(IconBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 60, 40));
+
+        IconBox1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/boxTime.png"))); // NOI18N
+        add(IconBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, 40));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 400, 10));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 20, 10, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ETime;
     private javax.swing.JLabel IconBox1;
+    private javax.swing.JLabel IconBox2;
     private javax.swing.JLabel JSting;
     private javax.swing.JLabel JSting1;
     private javax.swing.JLabel STime;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

@@ -43,12 +43,9 @@ public class JPMainmenu extends javax.swing.JPanel {
         ScrollRoom.setVerticalScrollBar(new ScrollBarCustom());
         ScrollRoom.setHorizontalScrollBar(sp);
         ScrollRoom.getViewport().setBackground(Color.WHITE);
-        
         setMenu(false, false, false, false, true);
         
     }
-    
-    
     
     public void setString(UserData user){
         firstName = user.getFirstName();
@@ -231,6 +228,9 @@ public class JPMainmenu extends javax.swing.JPanel {
         btnExite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExite.setPreferredSize(new java.awt.Dimension(166, 31));
         btnExite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExiteMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnExiteMouseEntered(evt);
             }
@@ -852,6 +852,11 @@ public class JPMainmenu extends javax.swing.JPanel {
         }
    
     }//GEN-LAST:event_btnUpdateMouseClicked
+
+    private void btnExiteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExiteMouseClicked
+        setMenu(false, false, false, false, false);
+        Menubar.setVisible(false);
+    }//GEN-LAST:event_btnExiteMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -299,7 +299,7 @@ public class game extends javax.swing.JFrame {
         bordgame.add(BGwhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         BGblue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/BGblue.png"))); // NOI18N
-        bordgame.add(BGblue, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
+        bordgame.add(BGblue, new org.netbeans.lib.awtextra.AbsoluteConstraints(-12, 0, 1280, -1));
 
         getContentPane().add(bordgame, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1270, 870));
 

@@ -844,7 +844,7 @@ public class JFregister extends javax.swing.JFrame {
                     WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(), true, url, text);
                     warnmessage.setVisible(true);
                     changePanelVisibility(false, false,true);
-
+                    
                     jPMainmenu1.setString(user);
                     
                 } else {

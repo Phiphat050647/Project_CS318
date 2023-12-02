@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import net.miginfocom.swing.MigLayout;
-
+import java.util.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,7 +24,7 @@ import net.miginfocom.swing.MigLayout;
  * @author Mr.Phiphat
  */
 public class RoomStatus extends javax.swing.JDialog {
-
+        private String room;
     /**
      * Creates new form RoomStatus
      */
@@ -38,12 +38,44 @@ public class RoomStatus extends javax.swing.JDialog {
         scrData.setHorizontalScrollBar(sp);
         scrData.getViewport().setBackground(Color.WHITE);
         pnelData.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
-        LoadStatus();
+        LoadStatusToday();
     }
-    public  void LoadStatus(){
-       
-        Component add = pnelData.add(new JPStatus("09:00", "11:00", "ผู้จอง : เบญญทิพย์ ผดาจิตร คณะ : เทคโนโลยีสารสนเทศและนวัตกรรม"));
+    public  void LoadStatus(String stime,String etime,String Datauser,String purpose){
+        Component add = pnelData.add(new JPStatus(stime, etime, Datauser));
 
+    }
+    public  void LoadStatusToday(){
+        pnelData.removeAll();
+        String date = txtDate.getText();
+        String room = "Room5"; 
+        String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ? ";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+        
+        try {
+            PreparedStatement Statement = conn.prepareStatement(selectQuery);
+            Statement.setString(1, room);
+            Statement.setString(2, date);
+            rs = Statement.executeQuery();
+            
+            while (rs.next()) {
+                String user = rs.getString("user");
+                String startTime = rs.getString("stime");
+                String endTime = rs.getString("etime");
+                String purpose = rs.getString("porpose");
+                String id = rs.getString("id");
+                String dateb = rs.getString("date");
+                System.out.println("User: " + user + ", Start Time: " + startTime + ", End Time: " + endTime + ", Purpose: " + purpose + ", ID: " + id + ",Date :" + dateb);
+                
+                String datauser = "ผู้จอง : " + user + " รหัสนักศึกษา : " + id ;
+                String pur = "หมายเหตุ : " + purpose ;
+                LoadStatus(startTime,endTime,datauser,pur);
+                
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -102,6 +134,7 @@ public class RoomStatus extends javax.swing.JDialog {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 102, -1, -1));
 
         scrData.setBorder(null);
+        scrData.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         pnelData.setBackground(new java.awt.Color(255, 255, 255));
         pnelData.setLayout(new javax.swing.OverlayLayout(pnelData));
@@ -125,14 +158,11 @@ public class RoomStatus extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNowMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        SelectedDate d = dateChooser1.getSelectedDate();
-        System.out.println(d.getDay() + d.getMonth() + d.getYear());
-        
-        String room = "Room6"; 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String date = sdf.format(d.getDay());
+        pnelData.removeAll();
+        String room = "Room5"; 
         System.out.println(txtDate.getText());
         
+        String date = txtDate.getText();
         
         String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ? ";
         DBConnect conn = new DBConnect();
@@ -146,24 +176,23 @@ public class RoomStatus extends javax.swing.JDialog {
             
             while (rs.next()) {
                 String user = rs.getString("user");
-                String startTime = rs.getString("Stime");
-                String endTime = rs.getString("Etime");
+                String startTime = rs.getString("stime");
+                String endTime = rs.getString("etime");
                 String purpose = rs.getString("porpose");
                 String id = rs.getString("id");
-                java.sql.Date dateb = rs.getDate("date");
-                
+                String dateb = rs.getString("date");
                 System.out.println("User: " + user + ", Start Time: " + startTime + ", End Time: " + endTime + ", Purpose: " + purpose + ", ID: " + id + ",Date :" + dateb);
+                
+                String datauser = "ผู้จอง : " + user + " รหัสนักศึกษา : " + id ;
+                String pur = "หมายเหตุ : " + purpose ;
+                LoadStatus(startTime,endTime,datauser,pur);
             }
+            
             rs.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-
-
-
-
-        
     }//GEN-LAST:event_jLabel1MouseClicked
 
     /**

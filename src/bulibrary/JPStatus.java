@@ -4,9 +4,11 @@
  */
 package bulibrary;
 
+import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
+import java.util.*;
+import javax.swing.BorderFactory;
 /**
  *
  * @author Mr.Phiphat
@@ -18,13 +20,14 @@ public class JPStatus extends javax.swing.JPanel {
      */
     public JPStatus() {
         initComponents();
+        ETime.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
     }
     public JPStatus(String stime,String etime,String Datastatus ){
         initComponents();
         ETime.setText(etime);
         STime.setText(stime);
         JSting1.setText(Datastatus);
-
+        
         
     }
     /**
@@ -40,14 +43,13 @@ public class JPStatus extends javax.swing.JPanel {
         ETime = new javax.swing.JLabel();
         STime = new javax.swing.JLabel();
         JSting1 = new javax.swing.JLabel();
-        IconBox2 = new javax.swing.JLabel();
-        IconBox1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JSting.setFont(new java.awt.Font("Prompt Light", 0, 10)); // NOI18N
+        JSting.setFont(new java.awt.Font("Prompt Light", 0, 11)); // NOI18N
         JSting.setText("หมายเหตุ : ประชุมงาน");
         add(JSting, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 390, 30));
 
@@ -61,14 +63,8 @@ public class JPStatus extends javax.swing.JPanel {
         STime.setText("09:00");
         add(STime, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
 
-        JSting1.setFont(new java.awt.Font("Prompt Light", 0, 10)); // NOI18N
-        add(JSting1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 390, 30));
-
-        IconBox2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/boxTime.png"))); // NOI18N
-        add(IconBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 60, 40));
-
-        IconBox1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/boxTime.png"))); // NOI18N
-        add(IconBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, 40));
+        JSting1.setFont(new java.awt.Font("Prompt Light", 0, 11)); // NOI18N
+        add(JSting1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 370, 30));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 400, 10));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 20, 10, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -76,8 +72,6 @@ public class JPStatus extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ETime;
-    private javax.swing.JLabel IconBox1;
-    private javax.swing.JLabel IconBox2;
     private javax.swing.JLabel JSting;
     private javax.swing.JLabel JSting1;
     private javax.swing.JLabel STime;

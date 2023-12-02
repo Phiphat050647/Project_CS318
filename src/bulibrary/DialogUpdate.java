@@ -14,18 +14,19 @@ import java.sql.PreparedStatement;
  *
  * @author Mr.Phiphat
  */
-public class DialogRegister extends javax.swing.JDialog {
+public class DialogUpdate extends javax.swing.JDialog {
         private String firstName;
         private String lastName;
         private String email;
         private String studentId;
         private String phoneNumber;
         private String password;
+        private String emailold;
         
     /**
-     * Creates new form DialogRegister
+     * Creates new form DialogUpdate
      */
-    public DialogRegister(java.awt.Frame parent, boolean modal,UserData user,String warning) {
+    public DialogUpdate(java.awt.Frame parent, boolean modal,UserData user,String warning,String emailuser) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
@@ -43,10 +44,10 @@ public class DialogRegister extends javax.swing.JDialog {
         studentId = user.getStudentId();
         phoneNumber = user.getPhoneNumber();
         password = user.getPassword();
+        this.emailold = emailuser;
         JFregister.getInstance().changeOpacity(true);
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,6 +128,41 @@ public class DialogRegister extends javax.swing.JDialog {
         btnCancel.setIcon(icon);
     }//GEN-LAST:event_btnCancelMouseExited
 
+    private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
+        
+        String updateQuery = "UPDATE user SET fname=?, lname=?,Email=?,studentid=? ,phone=?, password=? WHERE Email=?";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+        
+        try {
+            PreparedStatement updateStatement = conn.prepareStatement(updateQuery);
+            updateStatement.setString(1, firstName);
+            updateStatement.setString(2, lastName);
+            updateStatement.setString(3,email);
+            updateStatement.setString(4,studentId);
+            updateStatement.setString(5, phoneNumber);
+            updateStatement.setString(6, password);
+            updateStatement.setString(7, emailold);
+
+            int rowsAffected = updateStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Data updated successfully.");
+                conn.close();
+                dispose();
+                String text = "Successfully Registered.";
+                String url = "/bulibrary/image/tickAnimat.png";
+                WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+                warnmessage.setVisible(true);
+            } else {
+                System.out.println("No data found to update.");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+        }
+
+    }//GEN-LAST:event_btnConfirmMouseClicked
+
     private void btnConfirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseEntered
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/ConfirmbtnEx.png"));
         btnConfirm.setIcon(icon);
@@ -136,70 +172,6 @@ public class DialogRegister extends javax.swing.JDialog {
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Confirmbtn.png"));
         btnConfirm.setIcon(icon);
     }//GEN-LAST:event_btnConfirmMouseExited
-
-    private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
-
-        
-        String selectQuery = "SELECT COUNT(*) FROM user WHERE email = ? OR studentid = ? OR phone = ?";
-        DBConnect conn = new DBConnect();
-        ResultSet rs = null;
-
-        try {
-            PreparedStatement statement = conn.prepareStatement(selectQuery);
-            statement.setString(1, email);
-            statement.setString(2, studentId);
-            statement.setString(3, phoneNumber);
-            rs = statement.executeQuery();
-
-            if (rs.next()) {
-                int count = rs.getInt(1);
-                if (count > 0) {
-                    System.out.println("Data already exists!");
-                } else {
-                    String insertQuery = "INSERT INTO user (email, studentid, phone, fname, lname, password) VALUES (?, ?, ?, ?, ?, ?)";
-                    PreparedStatement insertStatement = conn.prepareStatement(insertQuery);
-                    insertStatement.setString(1, email);
-                    insertStatement.setString(2, studentId);
-                    insertStatement.setString(3, phoneNumber);
-                    insertStatement.setString(4, firstName);
-                    insertStatement.setString(5, lastName);
-                    insertStatement.setString(6, password);
-
-                    int rowsAffected = insertStatement.executeUpdate();
-                    if (rowsAffected > 0) {
-                        System.out.println("Data inserted successfully.");
-                        conn.close();
-                        dispose();
-                        String text = "Successfully Registered.";
-                        String url = "/bulibrary/image/tickAnimat.png";
-                        WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
-                        warnmessage.setVisible(true);
-                        JFregister.getInstance().changePanelVisibility(true, false,false);
-                        JFregister.getInstance().clearFields();
-                    } else {
-                        System.out.println("Failed to insert data.");
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            conn.close();
-        }
-
-
-
-
-
-        
-    }//GEN-LAST:event_btnConfirmMouseClicked
 
     /**
      * @param args the command line arguments
@@ -218,13 +190,13 @@ public class DialogRegister extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -232,8 +204,9 @@ public class DialogRegister extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 UserData user = new UserData();
-                String warning = "Are you confirm Register";
-                DialogRegister dialog = new DialogRegister(new javax.swing.JFrame(), true,user,warning);
+                String warning = "Are you confirm ChangProfile";
+                String emailuser = "DD";
+                DialogUpdate dialog = new DialogUpdate(new javax.swing.JFrame(), true,user,warning,emailuser);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -252,5 +225,4 @@ public class DialogRegister extends javax.swing.JDialog {
     private javax.swing.JLabel btnConfirm;
     private javax.swing.JLabel txtWarning;
     // End of variables declaration//GEN-END:variables
-
 }

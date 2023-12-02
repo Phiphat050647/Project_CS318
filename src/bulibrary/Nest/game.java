@@ -13,9 +13,7 @@ import javax.swing.ImageIcon;
  */
 public class game extends javax.swing.JFrame {
 
-    /**
-     * Creates new form เฟทำ
-     */
+  
     public game() {
         initComponents();
     }
@@ -298,7 +296,7 @@ public class game extends javax.swing.JFrame {
 
         BGwhite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/BGwhite.png"))); // NOI18N
         BGwhite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bordgame.add(BGwhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        bordgame.add(BGwhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         BGblue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/BGblue.png"))); // NOI18N
         bordgame.add(BGblue, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));

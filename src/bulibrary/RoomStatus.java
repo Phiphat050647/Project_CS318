@@ -29,6 +29,10 @@ public class RoomStatus extends javax.swing.JDialog {
         setUndecorated(true);
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        ScrollBarCustom sp = new ScrollBarCustom();
+        scrData.setVerticalScrollBar(new ScrollBarCustom());
+        scrData.setHorizontalScrollBar(sp);
+        scrData.getViewport().setBackground(Color.WHITE);
 
     }
 
@@ -47,6 +51,8 @@ public class RoomStatus extends javax.swing.JDialog {
         btnNow = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        scrData = new javax.swing.JScrollPane();
+        pnelData = new javax.swing.JPanel();
         Bg = new javax.swing.JLabel();
 
         dateChooser1.setTextRefernce(txtDate);
@@ -90,6 +96,13 @@ public class RoomStatus extends javax.swing.JDialog {
         });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 102, -1, -1));
 
+        scrData.setBorder(null);
+
+        pnelData.setBackground(new java.awt.Color(255, 255, 255));
+        scrData.setViewportView(pnelData);
+
+        getContentPane().add(scrData, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 410, 330));
+
         Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/Booking status.png"))); // NOI18N
         getContentPane().add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 20, -1, -1));
 
@@ -109,15 +122,16 @@ public class RoomStatus extends javax.swing.JDialog {
         SelectedDate d = dateChooser1.getSelectedDate();
         System.out.println(d.getDay() + d.getMonth() + d.getYear());
         
-        String room = "Room5"; 
+        String room = "Room6"; 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(d.getDay());
+        System.out.println(txtDate.getText());
         
-        System.out.println(date);
-        String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ?";
+        
+        String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ? ";
         DBConnect conn = new DBConnect();
         ResultSet rs = null;
-
+        
         try {
             PreparedStatement Statement = conn.prepareStatement(selectQuery);
             Statement.setString(1, room);
@@ -131,14 +145,10 @@ public class RoomStatus extends javax.swing.JDialog {
                 String purpose = rs.getString("porpose");
                 String id = rs.getString("id");
                 java.sql.Date dateb = rs.getDate("date");
-
-                // นำข้อมูลที่ได้มาใช้งานตามต้องการ
+                
                 System.out.println("User: " + user + ", Start Time: " + startTime + ", End Time: " + endTime + ", Purpose: " + purpose + ", ID: " + id + ",Date :" + dateb);
             }
-
-            // ปิดการเชื่อมต่อกับฐานข้อมูลหลังจากใช้งานเสร็จสิ้น
             rs.close();
- 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -199,6 +209,8 @@ public class RoomStatus extends javax.swing.JDialog {
     private javax.swing.JLabel icondate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel pnelData;
+    private javax.swing.JScrollPane scrData;
     private javax.swing.JTextField txtDate;
     // End of variables declaration//GEN-END:variables
 }

@@ -47,7 +47,7 @@ public class DialogUpdate extends javax.swing.JDialog {
         phoneNumber = user.getPhoneNumber();
         password = user.getPassword();
         this.emailold = emailuser;
-        JFregister.getInstance().changeOpacity(true);
+        StartApp.getInstance().changeOpacity(true);
     }
 
     /**
@@ -117,7 +117,7 @@ public class DialogUpdate extends javax.swing.JDialog {
 
     private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
         dispose();
-        JFregister.getInstance().changeOpacity( false);
+        StartApp.getInstance().changeOpacity( false);
     }//GEN-LAST:event_btnCancelMouseClicked
 
     private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered

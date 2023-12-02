@@ -55,13 +55,17 @@ public class JPStatus extends javax.swing.JPanel {
 
         ETime.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         ETime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ETime.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/boxtime.png"))); // NOI18N
         ETime.setText("11:00");
-        add(ETime, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 50, 20));
+        ETime.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        add(ETime, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 80, 40));
 
         STime.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         STime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        STime.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/boxtime.png"))); // NOI18N
         STime.setText("09:00");
-        add(STime, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
+        STime.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        add(STime, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 70, 60));
 
         JSting1.setFont(new java.awt.Font("Prompt Light", 0, 11)); // NOI18N
         add(JSting1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 370, 30));

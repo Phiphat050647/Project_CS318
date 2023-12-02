@@ -20,12 +20,12 @@ import java.sql.ResultSet;
  *S
  * @author Mr.Phiphat
  */
-public class JFregister extends javax.swing.JFrame {
+public class StartApp extends javax.swing.JFrame {
     
     public List<UserData>  userList = new ArrayList<>();
-    private static JFregister instance = null;
+    private static StartApp instance = null;
     
-    public JFregister( ) {
+    public StartApp( ) {
         setUndecorated(true);
         initComponents();
         setPreferredSize(new Dimension(1536, 864)); // กำหนดขนาด JFrame เป็น 800x600 pixels
@@ -38,9 +38,9 @@ public class JFregister extends javax.swing.JFrame {
     public List<UserData> getUserlist(){
         return userList;
     }
-    public static JFregister getInstance() {
+    public static StartApp getInstance() {
         if (instance == null) {
-            instance = new JFregister();
+            instance = new StartApp();
         }
         return instance;
     }
@@ -48,10 +48,10 @@ public class JFregister extends javax.swing.JFrame {
         this.opacity.setVisible(opacity);
         this.opacity1.setVisible(opacity);
     }
-    public void changePanelVisibility(boolean isLoginVisible, boolean isRegisterVisible,boolean isJPMain) {
+    public void changePanelVisibility(boolean isLoginVisible, boolean isRegisterVisible,boolean isMenu) {
         jP_Login.setVisible(isLoginVisible);
         jP_Register.setVisible(isRegisterVisible);
-        jPMainmenu1.setVisible(isJPMain);
+        startMenu1.setVisible(isMenu);
     }
     
     public void clearFields(){
@@ -97,11 +97,10 @@ public class JFregister extends javax.swing.JFrame {
         btnCreateAccount = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
-        jPMainmenu1 = new bulibrary.JPMainmenu();
+        startMenu1 = new bulibrary.StartMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnclose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnclose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/CrossExit.png"))); // NOI18N
@@ -111,7 +110,6 @@ public class JFregister extends javax.swing.JFrame {
                 btncloseMouseClicked(evt);
             }
         });
-        getContentPane().add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 10, -1, -1));
 
         jP_Login_regis.setBackground(new java.awt.Color(255, 255, 255));
         jP_Login_regis.setForeground(new java.awt.Color(255, 255, 255));
@@ -424,9 +422,24 @@ public class JFregister extends javax.swing.JFrame {
         jP_Register.add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jP_Login_regis.add(jP_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, -1, 870));
-        jP_Login_regis.add(jPMainmenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jP_Login_regis.add(startMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(jP_Login_regis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1536, 864));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jP_Login_regis, javax.swing.GroupLayout.PREFERRED_SIZE, 1536, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(1500, 1500, 1500)
+                .addComponent(btnclose))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jP_Login_regis, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(btnclose))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -648,7 +661,7 @@ public class JFregister extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateAccountMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        JFregister.getInstance().changePanelVisibility(true, false,false);
+        StartApp.getInstance().changePanelVisibility(true, false,false);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void txtEmailLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailLoginMouseEntered
@@ -712,7 +725,7 @@ public class JFregister extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginMouseExited
 
     private void btnSignMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignMouseClicked
-        JFregister.getInstance().changePanelVisibility(false, true,false);
+        StartApp.getInstance().changePanelVisibility(false, true,false);
     }//GEN-LAST:event_btnSignMouseClicked
 
     private void btnSignMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignMouseEntered
@@ -846,9 +859,9 @@ public class JFregister extends javax.swing.JFrame {
                     WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(), true, url, text);
                     warnmessage.setVisible(true);
                     changePanelVisibility(false, false,true);
-                    
-                    jPMainmenu1.setString(user);
-                    
+                    StartMenu menu = new StartMenu();
+                    getContentPane().add(menu);
+
                 } else {
                     // คำนวณเงื่อนไขเมื่อเข้าสู่ระบบไม่สำเร็จ
                     String text = "Invalid email or password.";
@@ -882,20 +895,21 @@ public class JFregister extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFregister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFregister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFregister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFregister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JFregister registerFrame = JFregister.getInstance();
+                StartApp registerFrame = StartApp.getInstance();
                 registerFrame.setVisible(true);
                 // เปลี่ยนการแสดงผลของพาแนลต่าง ๆ
                 registerFrame.changePanelVisibility(true, false,false);
@@ -912,12 +926,12 @@ public class JFregister extends javax.swing.JFrame {
     private javax.swing.JLabel btnSign;
     private javax.swing.JLabel btnclose;
     private javax.swing.JLabel jLabel1;
-    private bulibrary.JPMainmenu jPMainmenu1;
     private javax.swing.JPanel jP_Login;
     private javax.swing.JPanel jP_Login_regis;
     private javax.swing.JPanel jP_Register;
     private javax.swing.JLabel opacity;
     private javax.swing.JLabel opacity1;
+    private bulibrary.StartMenu startMenu1;
     private javax.swing.JPasswordField txtConpass;
     private javax.swing.JTextField txtEmailLogin;
     private javax.swing.JTextField txtEmailRegis;

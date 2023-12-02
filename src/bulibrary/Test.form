@@ -39,7 +39,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="bulibrary.JPMainmenu" name="jPMainmenu1">
+    <Component class="bulibrary.StartMenu" name="jPMainmenu1">
     </Component>
   </SubComponents>
 </Form>

@@ -30,7 +30,7 @@ public class Test extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPMainmenu1 = new bulibrary.JPMainmenu();
+        jPMainmenu1 = new bulibrary.StartMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +63,6 @@ public class Test extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private bulibrary.JPMainmenu jPMainmenu1;
+    private bulibrary.StartMenu jPMainmenu1;
     // End of variables declaration//GEN-END:variables
 }

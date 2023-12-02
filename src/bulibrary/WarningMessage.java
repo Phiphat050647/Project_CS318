@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  * @author Mr.Phiphat
  */
 public class WarningMessage extends javax.swing.JDialog {
-        private JFregister registerFrame;
+        private StartApp registerFrame;
     /**
      * Creates new form WarningMessage
      */
@@ -26,7 +26,7 @@ public class WarningMessage extends javax.swing.JDialog {
         Icon icon = new ImageIcon(getClass().getResource(url));
         animation.setIcon(icon);
         tWarning.setText("<html><div style='text-align: center;'>" + text + "</div></html>");
-        JFregister.getInstance().changeOpacity(true);
+        StartApp.getInstance().changeOpacity(true);
     }
 
     /**
@@ -74,7 +74,7 @@ public class WarningMessage extends javax.swing.JDialog {
 
     private void ExiteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExiteMouseClicked
         dispose();
-        JFregister.getInstance().changeOpacity( false);
+        StartApp.getInstance().changeOpacity( false);
     }//GEN-LAST:event_ExiteMouseClicked
 
     /**

@@ -16,7 +16,7 @@ import javax.swing.JScrollBar;
  *
  * @author Mr.Phiphat
  */
-public class JPMainmenu extends javax.swing.JPanel {
+public class StartMenu extends javax.swing.JPanel {
         private String firstName;
         private String lastName;
         private String email;
@@ -28,7 +28,7 @@ public class JPMainmenu extends javax.swing.JPanel {
         initComponents();
     }
      */
-    public JPMainmenu() {
+    public StartMenu() {
         initComponents();
         setPreferredSize(new Dimension(1536, 864)); // กำหนดขนาดของ JPanel เพื่อให้ตรงกับ Test
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
@@ -857,7 +857,10 @@ public class JPMainmenu extends javax.swing.JPanel {
 
     private void btnExiteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExiteMouseClicked
         setMenu(false, false, false, false, false);
-        Menubar.setVisible(false);
+     
+        StartApp login = new StartApp();
+        login.setVisible(true);
+        add(login);
     }//GEN-LAST:event_btnExiteMouseClicked
 
 

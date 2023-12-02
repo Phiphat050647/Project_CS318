@@ -45,7 +45,7 @@ public class DialogRegister extends javax.swing.JDialog {
         studentId = user.getStudentId();
         phoneNumber = user.getPhoneNumber();
         password = user.getPassword();
-        JFregister.getInstance().changeOpacity(true);
+        StartApp.getInstance().changeOpacity(true);
     }
     
     
@@ -116,7 +116,7 @@ public class DialogRegister extends javax.swing.JDialog {
 
     private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
         dispose();
-        JFregister.getInstance().changeOpacity( false);
+        StartApp.getInstance().changeOpacity( false);
     }//GEN-LAST:event_btnCancelMouseClicked
 
     private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered
@@ -176,8 +176,8 @@ public class DialogRegister extends javax.swing.JDialog {
                         String url = "/bulibrary/image/tickAnimat.png";
                         WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
                         warnmessage.setVisible(true);
-                        JFregister.getInstance().changePanelVisibility(true, false,false);
-                        JFregister.getInstance().clearFields();
+                        StartApp.getInstance().changePanelVisibility(true, false,false);
+                        StartApp.getInstance().clearFields();
                     } else {
                         System.out.println("Failed to insert data.");
                     }

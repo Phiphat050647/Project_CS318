@@ -31,6 +31,7 @@ public class StartMenu extends javax.swing.JPanel {
         private String phoneNumber;
         private String password;
         private static StartMenu instance = null;
+
         
     public StartMenu() {
         initComponents();
@@ -65,6 +66,11 @@ public class StartMenu extends javax.swing.JPanel {
         }
         return instance;
     }
+    
+    public void setScroll(boolean isActive,boolean isCompleted){
+        ScrollBActvie.setVisible(false);
+    }
+  
     public void setvisible(boolean isSet){
         setVisible(isSet);
     }
@@ -929,6 +935,7 @@ public class StartMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBookGameMouseClicked
 
     private void btnBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseClicked
+        Pbooking.removeAll(); 
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBookingEn.png"));
         btnBooking.setIcon(icon);
         setMenu(false,false,false,true,false);
@@ -959,13 +966,9 @@ public class StartMenu extends javax.swing.JPanel {
                 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 try {
-                    // แปลง String เป็น LocalDate โดยระบุรูปแบบของวันที่
+                    
                     LocalDate dateFromDB = LocalDate.parse(date, formatter);
-
-                    // วันปัจจุบัน
                     LocalDate currentDate = LocalDate.now();
-
-                    // เปรียบเทียบวันที่
                     if (dateFromDB.isBefore(currentDate)) {
                         System.out.println("วันที่ผ่านมาแล้ว");
                     } else if (dateFromDB.isEqual(currentDate)) {
@@ -973,14 +976,13 @@ public class StartMenu extends javax.swing.JPanel {
                     } else {
                         System.out.println("วันที่ยังไม่ถึง");
                     }
+                    
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-                
-                
                 String user = firstName + lastName ;
-                
-                Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime,room,date));
+                Component panel = Pbooking;
+                Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime,room,date,panel));
                 
             }
             rs.close();

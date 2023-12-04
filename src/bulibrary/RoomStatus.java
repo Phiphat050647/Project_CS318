@@ -27,6 +27,7 @@ import java.util.*;
  */
 public class RoomStatus extends javax.swing.JDialog {
         private String room;
+        
     /**
      * Creates new form RoomStatus
      */
@@ -45,12 +46,10 @@ public class RoomStatus extends javax.swing.JDialog {
         LoadStatusToday();
         
     }
-    public  void LoadStatus(String stime,String etime,String Datauser,String purpose){
-        Component add = pnelData.add(new JPStatus(stime, etime, Datauser));
-
-    }
     public  void LoadStatusToday(){
         pnelData.removeAll();
+        pnelData.revalidate(); 
+        pnelData.repaint();
         String date = txtDate.getText();
         String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ? ";
         DBConnect conn = new DBConnect();
@@ -71,11 +70,14 @@ public class RoomStatus extends javax.swing.JDialog {
                 String dateb = rs.getString("date");
                 System.out.println("User: " + user + ", Start Time: " + startTime + ", End Time: " + endTime + ", Purpose: " + purpose + ", ID: " + id + ",Date :" + dateb);
                 
-                String datauser = "ผู้จอง : " + user + " รหัสนักศึกษา : " + id ;
+                String datauser = "ผู้จอง : " + user + "      รหัสนักศึกษา : " + id ;
                 String pur = "หมายเหตุ : " + purpose ;
-                LoadStatus(startTime,endTime,datauser,pur);
+                
+                Component add = pnelData.add(new JPStatus(startTime, endTime, datauser,pur));
                 
             }
+            pnelData.revalidate();
+            pnelData.repaint();
             rs.close();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -173,41 +175,7 @@ public class RoomStatus extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNowMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        pnelData.removeAll();
-        String room = "Room5"; 
-        System.out.println(txtDate.getText());
-        
-        String date = txtDate.getText();
-        
-        String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ? ";
-        DBConnect conn = new DBConnect();
-        ResultSet rs = null;
-        
-        try {
-            PreparedStatement Statement = conn.prepareStatement(selectQuery);
-            Statement.setString(1, room);
-            Statement.setString(2, date);
-            rs = Statement.executeQuery();
-            
-            while (rs.next()) {
-                String user = rs.getString("user");
-                String startTime = rs.getString("stime");
-                String endTime = rs.getString("etime");
-                String purpose = rs.getString("porpose");
-                String id = rs.getString("id");
-                String dateb = rs.getString("date");
-                System.out.println("User: " + user + ", Start Time: " + startTime + ", End Time: " + endTime + ", Purpose: " + purpose + ", ID: " + id + ",Date :" + dateb);
-                
-                String datauser = "ผู้จอง : " + user + " รหัสนักศึกษา : " + id ;
-                String pur = "หมายเหตุ : " + purpose ;
-                LoadStatus(startTime,endTime,datauser,pur);
-            }
-            
-            rs.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
+        LoadStatusToday();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btncloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncloseMouseClicked

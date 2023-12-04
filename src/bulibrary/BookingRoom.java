@@ -51,7 +51,7 @@ public class BookingRoom extends javax.swing.JDialog {
         ResultSet rs = null;
         try {
             PreparedStatement Statement = conn.prepareStatement(selectQuery);
-            Statement.setString(1, "Room5");
+            Statement.setString(1, this.room);
             Statement.setString(2, date);
             rs = Statement.executeQuery();
             while (rs.next()) {
@@ -228,7 +228,7 @@ public class BookingRoom extends javax.swing.JDialog {
         ResultSet rs = null;
         try {
             PreparedStatement Statement = conn.prepareStatement(selectQuery);
-            Statement.setString(1, "Room5");
+            Statement.setString(1, room);
             Statement.setString(2, date);
             rs = Statement.executeQuery();
             while (rs.next()) {
@@ -339,7 +339,7 @@ public class BookingRoom extends javax.swing.JDialog {
         ResultSet rs = null;
         try {
             PreparedStatement Statement = conn.prepareStatement(selectQuery);
-            Statement.setString(1, "Room5");
+            Statement.setString(1, room);
             Statement.setString(2, date);
             rs = Statement.executeQuery();
             while (rs.next()) {
@@ -388,7 +388,7 @@ public class BookingRoom extends javax.swing.JDialog {
         ResultSet rs = null;
         try {
             PreparedStatement Statement = conn.prepareStatement(selectQuery);
-            Statement.setString(1, "Room5");
+            Statement.setString(1, room);
             Statement.setString(2, date);
             rs = Statement.executeQuery();
             while (rs.next()) {

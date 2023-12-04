@@ -5,6 +5,8 @@
 package bulibrary;
 
 import bulibrary.ClassJava.DBConnect;
+import java.awt.Component;
+import java.awt.Container;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.Icon;
@@ -16,10 +18,8 @@ import javax.swing.ImageIcon;
  */
 public class JPbooking extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JPbooking
-     */
-    public JPbooking(String user,String id,String stime,String etime,String room,String date) {
+    private Component Pbooking;
+    public JPbooking(String user,String id,String stime,String etime,String room,String date,Component Pbooking) {
         initComponents();
         nameBook.setText(room);
         jdate.setText(date);
@@ -27,6 +27,7 @@ public class JPbooking extends javax.swing.JPanel {
         jetime.setText(etime);
         jname.setText(user);
         jid.setText(id);
+        this.Pbooking = Pbooking;
     }
 
 
@@ -56,51 +57,51 @@ public class JPbooking extends javax.swing.JPanel {
         jetime.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jetime.setForeground(new java.awt.Color(102, 102, 102));
         jetime.setText("11:00");
-        add(jetime, new org.netbeans.lib.awtextra.AbsoluteConstraints(765, 160, 50, -1));
+        add(jetime, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, 50, -1));
 
         jstime.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jstime.setForeground(new java.awt.Color(102, 102, 102));
         jstime.setText("09:00 ");
-        add(jstime, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 50, -1));
+        add(jstime, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 50, -1));
 
         jid.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jid.setForeground(new java.awt.Color(102, 102, 102));
         jid.setText("1650701483");
-        add(jid, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 130, -1));
+        add(jid, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 130, -1));
 
         jLabel7.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jLabel7.setText("End Time : ");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 80, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 80, -1));
 
         jdate.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jdate.setForeground(new java.awt.Color(102, 102, 102));
         jdate.setText("04-12-2566");
-        add(jdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 110, -1));
+        add(jdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 110, -1));
 
         jLabel5.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jLabel5.setText("Start Time : ");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 90, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 90, -1));
 
         jname.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jname.setForeground(new java.awt.Color(102, 102, 102));
         jname.setText("Phiphat  Deepee");
-        add(jname, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 160, -1));
+        add(jname, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 160, -1));
 
         jLabel2.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jLabel2.setText("Booking Date :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 130, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 130, -1));
 
         jLabel4.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jLabel4.setText("Student ID :");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 90, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 90, -1));
 
         jLabel1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         jLabel1.setText("User :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 50, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 50, -1));
 
         nameBook.setFont(new java.awt.Font("Poppins Medium", 0, 20)); // NOI18N
         nameBook.setText("Room 5");
-        add(nameBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        add(nameBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/cancel.png"))); // NOI18N
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -115,13 +116,13 @@ public class JPbooking extends javax.swing.JPanel {
                 btnCancelMouseExited(evt);
             }
         });
-        add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 140, -1, -1));
+        add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 110, -1, -1));
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Roomicon.png"))); // NOI18N
-        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 49, 170, 160));
+        add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 170, 160));
 
         BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/boxxx.png"))); // NOI18N
-        add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
@@ -139,7 +140,12 @@ public class JPbooking extends javax.swing.JPanel {
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("Data deleted successfully!");
-                setVisible(false);
+                if (Pbooking instanceof Container) {
+                    Container container = (Container) Pbooking;
+                    container.remove(this); 
+                    container.revalidate(); 
+                    container.repaint(); 
+                }
             } else {
                 System.out.println("No data found to delete.");
             }
@@ -152,13 +158,13 @@ public class JPbooking extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancelMouseClicked
 
     private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered
-//        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/cancelEX.png"));
-//        btnCancel.setIcon(icon);
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/cancelEX.png"));
+        btnCancel.setIcon(icon);
     }//GEN-LAST:event_btnCancelMouseEntered
 
     private void btnCancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseExited
-//        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/cancel.png"));
-//        btnCancel.setIcon(icon);
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/cancel.png"));
+        btnCancel.setIcon(icon);
     }//GEN-LAST:event_btnCancelMouseExited
 
 

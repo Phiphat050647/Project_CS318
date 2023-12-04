@@ -11,6 +11,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -155,6 +157,15 @@ public class DialogUpdate extends javax.swing.JDialog {
                 String url = "/bulibrary/image/tickAnimat.png";
                 WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
                 warnmessage.setVisible(true);
+                UserData user = UserData.getInstane();
+                user.setEmail(email);
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setPassword(password);
+                user.setPhoneNumber(phoneNumber);
+                user.setStudentId(studentId);
+                
+                
             } else {
                 System.out.println("No data found to update.");
             }

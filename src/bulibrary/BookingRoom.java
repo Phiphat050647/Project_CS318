@@ -11,6 +11,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,12 +19,64 @@ import java.sql.PreparedStatement;
  */
 public class BookingRoom extends javax.swing.JDialog {
 
-    /**
-     * Creates new form BookingRoom
-     */
-    public BookingRoom(java.awt.Frame parent, boolean modal) {
+        private String email;
+        private String room;
+        ArrayList<String> originalStartTimes = new ArrayList<>();
+        ArrayList<String> originalEndTimes = new ArrayList<>();
+    
+    public BookingRoom(java.awt.Frame parent, boolean modal,String room,String user,String id,String email) {
         super(parent, modal);
+        setUndecorated(true);
         initComponents();
+        this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        Room.setText("Booking " + room);
+        txtUser.setText(user);
+        txtId.setText(id);
+        this.email = email;
+        this.room = room;
+        
+        for (int i = 0; i < comboBoxSuggestion1.getItemCount(); i++) {
+            originalStartTimes.add(comboBoxSuggestion1.getItemAt(i).toString());
+        }
+        for (int i = 0; i < comboBoxSuggestion2.getItemCount(); i++) {
+            originalEndTimes.add(comboBoxSuggestion2.getItemAt(i).toString());
+        }
+        String date = txtDate.getText();
+        ArrayList<String> bookedStartTimes = new ArrayList<>();
+        ArrayList<String> bookedEndTimes = new ArrayList<>();
+        
+        System.out.println(date);
+        String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ? ";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+        try {
+            PreparedStatement Statement = conn.prepareStatement(selectQuery);
+            Statement.setString(1, "Room5");
+            Statement.setString(2, date);
+            rs = Statement.executeQuery();
+            while (rs.next()) {
+                String startTime = rs.getString("stime");
+                String endTime = rs.getString("etime");
+                bookedStartTimes.add(startTime);
+                bookedEndTimes.add(endTime);
+            }
+            
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+         for (String startTime : bookedStartTimes) {
+            comboBoxSuggestion1.removeItem(startTime);
+        }
+
+        for (String endTime : bookedEndTimes) {
+            comboBoxSuggestion2.removeItem(endTime);
+        }
+        if (comboBoxSuggestion1.getSelectedItem() == null && comboBoxSuggestion2.getSelectedItem() == null) {
+            Message.setText("The room is full.");
+        } else{
+            Message.setText("");
+        }
     }
 
     /**
@@ -46,6 +99,7 @@ public class BookingRoom extends javax.swing.JDialog {
         btnCancel = new javax.swing.JLabel();
         btnConfirm = new javax.swing.JLabel();
         icondate = new javax.swing.JLabel();
+        Message = new javax.swing.JLabel();
         Bg = new javax.swing.JLabel();
 
         dateChooser1.setTextRefernce(txtDate);
@@ -65,10 +119,14 @@ public class BookingRoom extends javax.swing.JDialog {
 
         txtDate.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         txtDate.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDateMouseClicked(evt);
+            }
+        });
         getContentPane().add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 120, 130, 20));
 
         txtId.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        txtId.setText("1650701483");
         txtId.setBorder(null);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,12 +136,10 @@ public class BookingRoom extends javax.swing.JDialog {
         getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 332, 160, 20));
 
         txtPurpose.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        txtPurpose.setText("Noooooooooooooooooooooooo");
         txtPurpose.setBorder(null);
         getContentPane().add(txtPurpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 262, 370, -1));
 
         txtUser.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        txtUser.setText("Phiphat Deepee");
         txtUser.setBorder(null);
         getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 332, 160, 20));
 
@@ -134,8 +190,17 @@ public class BookingRoom extends javax.swing.JDialog {
         });
         getContentPane().add(icondate, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 120, 30, 20));
 
+        Message.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        Message.setForeground(new java.awt.Color(255, 0, 51));
+        getContentPane().add(Message, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 180, 20));
+
         Bg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/BookingRoom.png"))); // NOI18N
+        Bg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BgMouseEntered(evt);
+            }
+        });
         getContentPane().add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         pack();
@@ -144,6 +209,53 @@ public class BookingRoom extends javax.swing.JDialog {
 
     private void icondateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icondateMouseClicked
         dateChooser1.showPopup();
+        comboBoxSuggestion1.removeAllItems();
+        comboBoxSuggestion2.removeAllItems();
+        for (String startTime : originalStartTimes) {
+            comboBoxSuggestion1.addItem(startTime);
+        }
+        for (String endTime : originalEndTimes) {
+            comboBoxSuggestion2.addItem(endTime);
+        }
+        
+        String date = txtDate.getText();
+        ArrayList<String> bookedStartTimes = new ArrayList<>();
+        ArrayList<String> bookedEndTimes = new ArrayList<>();
+        
+        System.out.println(date);
+        String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ? ";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+        try {
+            PreparedStatement Statement = conn.prepareStatement(selectQuery);
+            Statement.setString(1, "Room5");
+            Statement.setString(2, date);
+            rs = Statement.executeQuery();
+            while (rs.next()) {
+                String startTime = rs.getString("stime");
+                String endTime = rs.getString("etime");
+                bookedStartTimes.add(startTime);
+                bookedEndTimes.add(endTime);
+            }
+            
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        for (String startTime : bookedStartTimes) {
+            comboBoxSuggestion1.removeItem(startTime);
+        }
+
+        for (String endTime : bookedEndTimes) {
+            comboBoxSuggestion2.removeItem(endTime);
+        }
+        
+        if (comboBoxSuggestion1.getSelectedItem() == null && comboBoxSuggestion2.getSelectedItem() == null) {
+            Message.setText("The room is full.");
+        } else{
+            Message.setText("");
+        }
     }//GEN-LAST:event_icondateMouseClicked
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
@@ -151,8 +263,42 @@ public class BookingRoom extends javax.swing.JDialog {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
+        if (txtDate.getText().isEmpty() || txtId.getText().isEmpty() || txtPurpose.getText().isEmpty() || txtUser.getText().isEmpty() || comboBoxSuggestion1.getSelectedItem() == null || comboBoxSuggestion2.getSelectedItem() == null){
+            String text = "Please fill in complete information.";
+            String url = "/bulibrary/image/crossAnimat.png";
+            WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+            warnmessage.setVisible(true);
+            } else {
+            String date = txtDate.getText();
+            String stime = comboBoxSuggestion1.getSelectedItem().toString();
+            String etime = comboBoxSuggestion2.getSelectedItem().toString();
 
-        
+            String insertQuery = "INSERT INTO booking (user, porpose, id, room, date, stime, etime,email) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
+
+            DBConnect conn = new DBConnect();
+            try {
+                PreparedStatement statement = conn.prepareStatement(insertQuery);
+                statement.setString(1, txtUser.getText());
+                statement.setString(2, txtPurpose.getText()); 
+                statement.setString(3, txtId.getText()); 
+                statement.setString(4, room); 
+                statement.setString(5, date); 
+                statement.setString(6, stime); 
+                statement.setString(7, etime); 
+                statement.setString(8, "Admine1");
+                int rowsInserted = statement.executeUpdate();
+                if (rowsInserted > 0) {
+                    System.out.println("Data inserted successfully!");
+                    String text = "Booking Room inserted successfully.";
+                    String url = "/bulibrary/image/tickAnimat.png";
+                    WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
+                    warnmessage.setVisible(true);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
     }//GEN-LAST:event_btnConfirmMouseClicked
 
     private void btnConfirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseEntered
@@ -179,6 +325,95 @@ public class BookingRoom extends javax.swing.JDialog {
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/CANCEL_EXTED.png"));
         btnCancel.setIcon(icon);
     }//GEN-LAST:event_btnCancelMouseExited
+
+    private void BgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BgMouseEntered
+        String date = txtDate.getText();
+        ArrayList<String> bookedStartTimes = new ArrayList<>();
+        ArrayList<String> bookedEndTimes = new ArrayList<>();
+        
+        System.out.println(date);
+        String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ? ";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+        try {
+            PreparedStatement Statement = conn.prepareStatement(selectQuery);
+            Statement.setString(1, "Room5");
+            Statement.setString(2, date);
+            rs = Statement.executeQuery();
+            while (rs.next()) {
+                String startTime = rs.getString("stime");
+                String endTime = rs.getString("etime");
+                bookedStartTimes.add(startTime);
+                bookedEndTimes.add(endTime);
+            }
+            
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        for (String startTime : bookedStartTimes) {
+            comboBoxSuggestion1.removeItem(startTime);
+        }
+
+        // ตรวจสอบ ComboBox ของเวลาสิ้นสุด
+        for (String endTime : bookedEndTimes) {
+            comboBoxSuggestion2.removeItem(endTime);
+        }
+        if (comboBoxSuggestion1.getSelectedItem() == null && comboBoxSuggestion2.getSelectedItem() == null) {
+            Message.setText("The room is full.");
+        } else{
+            Message.setText("");
+        }
+    }//GEN-LAST:event_BgMouseEntered
+
+    private void txtDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDateMouseClicked
+        comboBoxSuggestion1.removeAllItems();
+        comboBoxSuggestion2.removeAllItems();
+        for (String startTime : originalStartTimes) {
+            comboBoxSuggestion1.addItem(startTime);
+        }
+        for (String endTime : originalEndTimes) {
+            comboBoxSuggestion2.addItem(endTime);
+        }
+        
+        String date = txtDate.getText();
+        ArrayList<String> bookedStartTimes = new ArrayList<>();
+        ArrayList<String> bookedEndTimes = new ArrayList<>();
+        
+        System.out.println(date);
+        String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ? ";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+        try {
+            PreparedStatement Statement = conn.prepareStatement(selectQuery);
+            Statement.setString(1, "Room5");
+            Statement.setString(2, date);
+            rs = Statement.executeQuery();
+            while (rs.next()) {
+                String startTime = rs.getString("stime");
+                String endTime = rs.getString("etime");
+                bookedStartTimes.add(startTime);
+                bookedEndTimes.add(endTime);
+            }
+            
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        for (String startTime : bookedStartTimes) {
+            comboBoxSuggestion1.removeItem(startTime);
+        }
+
+        for (String endTime : bookedEndTimes) {
+            comboBoxSuggestion2.removeItem(endTime);
+        }
+        
+        if (comboBoxSuggestion1.getSelectedItem() == null && comboBoxSuggestion2.getSelectedItem() == null) {
+            Message.setText("The room is full.");
+        } else{
+            Message.setText("");
+        }
+    }//GEN-LAST:event_txtDateMouseClicked
 
     /**
      * @param args the command line arguments
@@ -210,7 +445,7 @@ public class BookingRoom extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                BookingRoom dialog = new BookingRoom(new javax.swing.JFrame(), true);
+                BookingRoom dialog = new BookingRoom(new javax.swing.JFrame(), true,null,null,null,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -224,6 +459,7 @@ public class BookingRoom extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bg;
+    private javax.swing.JLabel Message;
     private javax.swing.JLabel Room;
     private javax.swing.JLabel btnCancel;
     private javax.swing.JLabel btnConfirm;

@@ -52,6 +52,7 @@ public class StartApp extends javax.swing.JFrame {
         jP_Login.setVisible(isLoginVisible);
         jP_Register.setVisible(isRegisterVisible);
         startMenu1.setVisible(isMenu);
+        
     }
     
     public void clearFields(){
@@ -78,6 +79,7 @@ public class StartApp extends javax.swing.JFrame {
 
         btnclose = new javax.swing.JLabel();
         jP_Login_regis = new javax.swing.JPanel();
+        startMenu1 = new bulibrary.StartMenu();
         jP_Login = new javax.swing.JPanel();
         opacity1 = new javax.swing.JLabel();
         txtEmailLogin = new javax.swing.JTextField();
@@ -97,7 +99,6 @@ public class StartApp extends javax.swing.JFrame {
         btnCreateAccount = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
-        startMenu1 = new bulibrary.StartMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -115,6 +116,7 @@ public class StartApp extends javax.swing.JFrame {
         jP_Login_regis.setForeground(new java.awt.Color(255, 255, 255));
         jP_Login_regis.setOpaque(false);
         jP_Login_regis.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jP_Login_regis.add(startMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jP_Login.setOpaque(false);
         jP_Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -422,7 +424,6 @@ public class StartApp extends javax.swing.JFrame {
         jP_Register.add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jP_Login_regis.add(jP_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, -1, 870));
-        jP_Login_regis.add(startMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -643,7 +644,7 @@ public class StartApp extends javax.swing.JFrame {
 //                warnmessage.setVisible(true);
 //            }
         } else {
-            UserData user = new UserData();
+            UserData user = UserData.getInstane();
             user.setFirstName(fname);
             user.setLastName(lname);
             user.setEmail(email);
@@ -844,7 +845,7 @@ public class StartApp extends javax.swing.JFrame {
                 statement.setString(2, pass);
                 ResultSet rs = statement.executeQuery();
                 if (rs.next()) {
-                    UserData user = new UserData();
+                    UserData user = UserData.getInstane();
                     // แทนที่ชื่อคอลัมน์และตำแหน่งที่ต้องการเก็บ
                     user.setFirstName(rs.getString("fname"));
                     user.setLastName(rs.getString("lname"));
@@ -859,8 +860,8 @@ public class StartApp extends javax.swing.JFrame {
                     WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(), true, url, text);
                     warnmessage.setVisible(true);
                     changePanelVisibility(false, false,true);
-                    StartMenu menu = new StartMenu();
-                    getContentPane().add(menu);
+                    startMenu1.setString(user);
+
 
                 } else {
                     // คำนวณเงื่อนไขเมื่อเข้าสู่ระบบไม่สำเร็จ

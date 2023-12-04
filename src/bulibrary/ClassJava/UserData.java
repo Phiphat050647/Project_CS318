@@ -4,6 +4,9 @@
  */
 package bulibrary.ClassJava;
 
+import bulibrary.StartApp;
+
+
 /**
  *
  * @author Mr.Phiphat
@@ -15,14 +18,23 @@ public class UserData {
     private String studentId;
     private String phoneNumber;
     private String password;
+    private static UserData instance = null;
 
-    /**
-     * @return the firstName
-     */
+    
+    public static UserData getInstane() {
+        if (instance == null) {
+            instance = new UserData();
+        }
+        return instance;
+    }
+    
+    
     public String getFirstName() {
         return firstName;
     }
-
+    public String getUser(){
+        return firstName + lastName ;
+    }
     /**
      * @param firstName the firstName to set
      */

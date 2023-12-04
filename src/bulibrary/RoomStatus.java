@@ -30,7 +30,7 @@ public class RoomStatus extends javax.swing.JDialog {
     /**
      * Creates new form RoomStatus
      */
-    public RoomStatus(java.awt.Frame parent, boolean modal) {
+    public RoomStatus(java.awt.Frame parent, boolean modal,String room) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
@@ -40,7 +40,10 @@ public class RoomStatus extends javax.swing.JDialog {
         scrData.setHorizontalScrollBar(sp);
         scrData.getViewport().setBackground(Color.WHITE);
         pnelData.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
+        this.room = room;
+        jLabel2.setText(room);
         LoadStatusToday();
+        
     }
     public  void LoadStatus(String stime,String etime,String Datauser,String purpose){
         Component add = pnelData.add(new JPStatus(stime, etime, Datauser));
@@ -49,7 +52,6 @@ public class RoomStatus extends javax.swing.JDialog {
     public  void LoadStatusToday(){
         pnelData.removeAll();
         String date = txtDate.getText();
-        String room = "Room5"; 
         String selectQuery = "SELECT * FROM booking WHERE room = ? and date = ? ";
         DBConnect conn = new DBConnect();
         ResultSet rs = null;
@@ -85,6 +87,7 @@ public class RoomStatus extends javax.swing.JDialog {
     private void initComponents() {
 
         dateChooser1 = new com.raven.datechooser.DateChooser();
+        btnclose = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
         icondate = new javax.swing.JLabel();
         btnNow = new javax.swing.JLabel();
@@ -98,6 +101,16 @@ public class RoomStatus extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnclose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnclose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/CrossExit.png"))); // NOI18N
+        btnclose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnclose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btncloseMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 27, -1, -1));
 
         txtDate.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         txtDate.setForeground(new java.awt.Color(153, 153, 153));
@@ -145,7 +158,7 @@ public class RoomStatus extends javax.swing.JDialog {
         getContentPane().add(scrData, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 400, 330));
 
         Bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/Booking status.png"))); // NOI18N
-        getContentPane().add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 20, -1, -1));
+        getContentPane().add(Bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -197,6 +210,10 @@ public class RoomStatus extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void btncloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncloseMouseClicked
+        dispose();
+    }//GEN-LAST:event_btncloseMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -227,7 +244,8 @@ public class RoomStatus extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                RoomStatus dialog = new RoomStatus(new javax.swing.JFrame(), true);
+                String room = "Room5";
+                RoomStatus dialog = new RoomStatus(new javax.swing.JFrame(), true,room);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -242,6 +260,7 @@ public class RoomStatus extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bg;
     private javax.swing.JLabel btnNow;
+    private javax.swing.JLabel btnclose;
     private com.raven.datechooser.DateChooser dateChooser1;
     private javax.swing.JLabel icondate;
     private javax.swing.JLabel jLabel1;

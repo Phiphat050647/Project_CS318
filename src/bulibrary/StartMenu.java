@@ -23,11 +23,8 @@ public class StartMenu extends javax.swing.JPanel {
         private String studentId;
         private String phoneNumber;
         private String password;
-    /**
-     * Creates new form JPMainmenu  public JPMainmenu() {
-        initComponents();
-    }
-     */
+        private static StartMenu instance = null;
+        
     public StartMenu() {
         initComponents();
         setPreferredSize(new Dimension(1536, 864)); // กำหนดขนาดของ JPanel เพื่อให้ตรงกับ Test
@@ -46,9 +43,19 @@ public class StartMenu extends javax.swing.JPanel {
         ScrollRoom.setHorizontalScrollBar(sp);
         ScrollRoom.getViewport().setBackground(Color.WHITE);
         setMenu(false, false, false, false, true);
+        opacity1.setVisible(false);
         
     }
     
+    public static StartMenu getInstane(){
+        if (instance == null) {
+            instance = new StartMenu();
+        }
+        return instance;
+    }
+    public void setvisible(boolean isSet){
+        setVisible(isSet);
+    }
     public void setString(UserData user){
         firstName = user.getFirstName();
         lastName = user.getLastName();
@@ -91,6 +98,7 @@ public class StartMenu extends javax.swing.JPanel {
         btnBooking = new javax.swing.JLabel();
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
+        opacity1 = new javax.swing.JLabel();
         Room = new javax.swing.JPanel();
         ScrollRoom = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -247,6 +255,10 @@ public class StartMenu extends javax.swing.JPanel {
 
         add(Menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        opacity1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/opacity.png"))); // NOI18N
+        opacity1.setText("jLabel4");
+        add(opacity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -18, 1540, 900));
+
         Room.setBackground(new java.awt.Color(255, 255, 255));
         Room.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -261,82 +273,187 @@ public class StartMenu extends javax.swing.JPanel {
 
         btnC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btncheck.png"))); // NOI18N
         btnC1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnC1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnC1MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 100, 30));
 
         btnR1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnBookingroom.png"))); // NOI18N
         btnR1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnR1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnR1MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 100, 30));
 
         btnC2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btncheck.png"))); // NOI18N
         btnC2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnC2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnC2MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 40, -1, 30));
 
         btnR2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnBookingroom.png"))); // NOI18N
         btnR2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnR2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnR2MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 100, -1, 30));
 
         btnR3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnBookingroom.png"))); // NOI18N
         btnR3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnR3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnR3MouseClicked(evt);
+            }
+        });
+        btnR3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnR3KeyPressed(evt);
+            }
+        });
         jPanel3.add(btnR3, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 298, -1, -1));
 
         btnC3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btncheck.png"))); // NOI18N
         btnC3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnC3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnC3MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnC3, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 238, 100, 30));
 
         btnR4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnBookingroom.png"))); // NOI18N
         btnR4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnR4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnR4MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnR4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 298, -1, -1));
 
         btnC4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btncheck.png"))); // NOI18N
         btnC4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnC4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnC4MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnC4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 238, 100, 30));
 
         btnR5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnBookingroom.png"))); // NOI18N
         btnR5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnR5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnR5MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnR5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, -1, -1));
 
         btnC5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btncheck.png"))); // NOI18N
         btnC5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnC5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnC5MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnC5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 100, 30));
 
         btnR6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnBookingroom.png"))); // NOI18N
         btnR6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnR6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnR6MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnR6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 490, 100, -1));
 
         btnC6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btncheck.png"))); // NOI18N
         btnC6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnC6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnC6MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnC6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, 100, 30));
 
         btnR7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnBookingroom.png"))); // NOI18N
         btnR7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnR7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnR7MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnR7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 680, 100, 40));
 
         btnC7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btncheck.png"))); // NOI18N
         btnC7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnC7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnC7MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnC7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 100, 40));
 
         btnR8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnBookingroom.png"))); // NOI18N
         btnR8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnR8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnR8MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnR8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 680, -1, 40));
 
         btnC8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btncheck.png"))); // NOI18N
         btnC8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnC8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnC8MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnC8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 620, -1, 40));
 
         btnC9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btncheck.png"))); // NOI18N
         btnC9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnC9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnC9MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnC9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 820, 100, 30));
 
         btnR9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnBookingroom.png"))); // NOI18N
         btnR9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnR9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnR9MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnR9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 880, 100, 30));
 
         btnC10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btncheck.png"))); // NOI18N
         btnC10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnC10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnC10MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnC10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 820, 100, 30));
 
         btnR10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/btnBookingroom.png"))); // NOI18N
         btnR10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnR10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnR10MouseClicked(evt);
+            }
+        });
         jPanel3.add(btnR10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1015, 880, 100, 30));
 
         BGbookroom.setBackground(new java.awt.Color(255, 255, 255));
@@ -807,6 +924,7 @@ public class StartMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
+
         if (txtFname.getText().isEmpty()) {
             String text = "Please enter first name.";
             String url = "/bulibrary/image/crossAnimat.png";
@@ -839,8 +957,8 @@ public class StartMenu extends javax.swing.JPanel {
             WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
             warnmessage.setVisible(true);
         } else {
-
-              UserData user = new UserData();
+                opacity1.setVisible(true);
+                UserData user = new UserData();
                 user.setFirstName(txtFname.getText());
                 user.setLastName(txtlname.getText());
                 user.setEmail(txtEmail.getText());
@@ -851,17 +969,220 @@ public class StartMenu extends javax.swing.JPanel {
                  String warning = "Are you confirm ChangProfile";
                 DialogUpdate dialog = new DialogUpdate(new javax.swing.JFrame(), true, user,warning,email);
                 dialog.setVisible(true);
+                opacity1.setVisible(false);
+                
         }
    
     }//GEN-LAST:event_btnUpdateMouseClicked
 
     private void btnExiteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExiteMouseClicked
-        setMenu(false, false, false, false, false);
-     
-        StartApp login = new StartApp();
-        login.setVisible(true);
-        add(login);
+        StartApp.getInstance().changePanelVisibility(true, false, false);
     }//GEN-LAST:event_btnExiteMouseClicked
+
+    private void btnC1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC1MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room1";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnC1MouseClicked
+
+    private void btnC2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC2MouseClicked
+         opacity1.setVisible(true);
+        String room = "Room2";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnC2MouseClicked
+
+    private void btnC3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC3MouseClicked
+         opacity1.setVisible(true);
+        String room = "Room3";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnC3MouseClicked
+
+    private void btnC4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC4MouseClicked
+         opacity1.setVisible(true);
+        String room = "Room4";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnC4MouseClicked
+
+    private void btnC5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC5MouseClicked
+         opacity1.setVisible(true);
+        String room = "Room5";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnC5MouseClicked
+
+    private void btnC6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC6MouseClicked
+         opacity1.setVisible(true);
+        String room = "Room6";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnC6MouseClicked
+
+    private void btnC7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC7MouseClicked
+         opacity1.setVisible(true);
+        String room = "Room7";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnC7MouseClicked
+
+    private void btnC8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC8MouseClicked
+         opacity1.setVisible(true);
+        String room = "Room8";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnC8MouseClicked
+
+    private void btnC9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC9MouseClicked
+         opacity1.setVisible(true);
+        String room = "Room9";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnC9MouseClicked
+
+    private void btnC10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC10MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room10";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnC10MouseClicked
+
+    private void btnR1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnR1MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room1";
+       
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnR1MouseClicked
+
+    private void btnR2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnR2MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room2";
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnR2MouseClicked
+
+    private void btnR3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnR3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnR3KeyPressed
+
+    private void btnR3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnR3MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room3";
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnR3MouseClicked
+
+    private void btnR4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnR4MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room4";
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnR4MouseClicked
+
+    private void btnR5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnR5MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room5";
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnR5MouseClicked
+
+    private void btnR6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnR6MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room6";
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnR6MouseClicked
+
+    private void btnR7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnR7MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room7";
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnR7MouseClicked
+
+    private void btnR8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnR8MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room8";
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnR8MouseClicked
+
+    private void btnR9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnR9MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room9";
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnR9MouseClicked
+
+    private void btnR10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnR10MouseClicked
+        opacity1.setVisible(true);
+        String room = "Room10";
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnR10MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -913,6 +1234,7 @@ public class StartMenu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel mainmenu;
+    private javax.swing.JLabel opacity1;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JScrollPane scrollMainmenu;
     private javax.swing.JTextField txtEmail;

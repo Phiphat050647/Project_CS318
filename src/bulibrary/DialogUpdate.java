@@ -51,6 +51,10 @@ public class DialogUpdate extends javax.swing.JDialog {
         this.emailold = emailuser;
         StartApp.getInstance().changeOpacity(true);
     }
+    
+    public DialogUpdate(java.awt.Frame parent, boolean modal){
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

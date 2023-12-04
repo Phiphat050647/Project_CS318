@@ -22,11 +22,12 @@ public class JPStatus extends javax.swing.JPanel {
         initComponents();
         ETime.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
     }
-    public JPStatus(String stime,String etime,String Datastatus ){
+    public JPStatus(String stime,String etime,String Datastatus,String porpose ){
         initComponents();
         ETime.setText(etime);
         STime.setText(stime);
         JSting1.setText(Datastatus);
+        JSting.setText(porpose);
         
         
     }

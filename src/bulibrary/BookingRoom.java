@@ -285,14 +285,16 @@ public class BookingRoom extends javax.swing.JDialog {
                 statement.setString(5, date); 
                 statement.setString(6, stime); 
                 statement.setString(7, etime); 
-                statement.setString(8, "Admine1");
+                statement.setString(8, email);
                 int rowsInserted = statement.executeUpdate();
+                
                 if (rowsInserted > 0) {
-                    System.out.println("Data inserted successfully!");
-                    String text = "Booking Room inserted successfully.";
+                    dispose();
+                    String text = "Booking Room successfully.";
                     String url = "/bulibrary/image/tickAnimat.png";
                     WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
                     warnmessage.setVisible(true);
+                    StartApp.getInstance().changeOpacity( false);
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();

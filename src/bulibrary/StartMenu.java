@@ -4,13 +4,20 @@
  */
 package bulibrary;
 
+import bulibrary.ClassJava.DBConnect;
 import bulibrary.ClassJava.UserData;
 import bulibrary.ClassJava.ScrollBarCustom;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollBar;
+import net.miginfocom.swing.MigLayout;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -42,9 +49,14 @@ public class StartMenu extends javax.swing.JPanel {
         ScrollRoom.setVerticalScrollBar(new ScrollBarCustom());
         ScrollRoom.setHorizontalScrollBar(sp);
         ScrollRoom.getViewport().setBackground(Color.WHITE);
+        
+        ScrollBActvie.setVerticalScrollBar(new ScrollBarCustom());
+        ScrollBActvie.setHorizontalScrollBar(sp);
+        ScrollBActvie.getViewport().setBackground(Color.WHITE);
+        
         setMenu(false, false, false, false, true);
         opacity1.setVisible(false);
-        
+        Pbooking.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
     }
     
     public static StartMenu getInstane(){
@@ -99,6 +111,12 @@ public class StartMenu extends javax.swing.JPanel {
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
         opacity1 = new javax.swing.JLabel();
+        Booking = new javax.swing.JPanel();
+        ScrollBActvie = new javax.swing.JScrollPane();
+        Pbooking = new javax.swing.JPanel();
+        active = new javax.swing.JLabel();
+        completed = new javax.swing.JLabel();
+        bgRoom1 = new javax.swing.JLabel();
         Room = new javax.swing.JPanel();
         ScrollRoom = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -146,7 +164,6 @@ public class StartMenu extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
-        Booking = new javax.swing.JPanel();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -259,7 +276,46 @@ public class StartMenu extends javax.swing.JPanel {
         opacity1.setText("jLabel4");
         add(opacity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -18, 1540, 900));
 
-        Room.setBackground(new java.awt.Color(255, 255, 255));
+        Booking.setBackground(new java.awt.Color(236, 248, 255));
+        Booking.setPreferredSize(new java.awt.Dimension(1260, 880));
+        Booking.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ScrollBActvie.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ScrollBActvie.setAutoscrolls(true);
+        ScrollBActvie.setOpaque(false);
+
+        Pbooking.setBackground(new java.awt.Color(255, 255, 255));
+        Pbooking.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout PbookingLayout = new javax.swing.GroupLayout(Pbooking);
+        Pbooking.setLayout(PbookingLayout);
+        PbookingLayout.setHorizontalGroup(
+            PbookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1170, Short.MAX_VALUE)
+        );
+        PbookingLayout.setVerticalGroup(
+            PbookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 780, Short.MAX_VALUE)
+        );
+
+        ScrollBActvie.setViewportView(Pbooking);
+
+        Booking.add(ScrollBActvie, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1170, 780));
+
+        active.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Active.png"))); // NOI18N
+        active.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Booking.add(active, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 58, -1, -1));
+
+        completed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Completed.png"))); // NOI18N
+        completed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Booking.add(completed, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 58, -1, -1));
+
+        bgRoom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/bg.png"))); // NOI18N
+        Booking.add(bgRoom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+
+        add(Booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, -1));
+
+        Room.setBackground(new java.awt.Color(236, 248, 255));
         Room.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ScrollRoom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -692,21 +748,6 @@ public class StartMenu extends javax.swing.JPanel {
         game.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1230, 810));
 
         add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, -8, 1280, 890));
-
-        Booking.setBackground(new java.awt.Color(255, 0, 51));
-
-        javax.swing.GroupLayout BookingLayout = new javax.swing.GroupLayout(Booking);
-        Booking.setLayout(BookingLayout);
-        BookingLayout.setHorizontalGroup(
-            BookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
-        );
-        BookingLayout.setVerticalGroup(
-            BookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
-        );
-
-        add(Booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseEntered
@@ -722,7 +763,7 @@ public class StartMenu extends javax.swing.JPanel {
         } else {
             btnUser.setIcon(en);
         }
-        
+
     }//GEN-LAST:event_btnUserMouseEntered
 
     private void btnUserMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseExited
@@ -895,10 +936,58 @@ public class StartMenu extends javax.swing.JPanel {
         Icon iconuser = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/User.png"));
         Icon icongame = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGame.png"));
         Icon iconroom = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking room.png"));
-        
         btnUser.setIcon(iconuser);
         btnBookGame.setIcon(icongame);
         btnBookroom.setIcon(iconroom);
+        
+        String emailToSearch = email; // อีเมลที่ต้องการค้นหา
+        String selectQuery = "SELECT * FROM booking WHERE email = ?";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(selectQuery);
+            statement.setString(1, emailToSearch);
+
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                // ทำงานกับข้อมูลที่ค้นหาได้ตรงนี้
+                String room = rs.getString("room");
+                String date = rs.getString("date");
+                String startTime = rs.getString("stime");
+                String endTime = rs.getString("etime");
+                
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                try {
+                    // แปลง String เป็น LocalDate โดยระบุรูปแบบของวันที่
+                    LocalDate dateFromDB = LocalDate.parse(date, formatter);
+
+                    // วันปัจจุบัน
+                    LocalDate currentDate = LocalDate.now();
+
+                    // เปรียบเทียบวันที่
+                    if (dateFromDB.isBefore(currentDate)) {
+                        System.out.println("วันที่ผ่านมาแล้ว");
+                    } else if (dateFromDB.isEqual(currentDate)) {
+                        System.out.println("วันนี้");
+                    } else {
+                        System.out.println("วันที่ยังไม่ถึง");
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                
+                
+                String user = firstName + lastName ;
+                
+                Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime,room,date));
+                
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }//GEN-LAST:event_btnBookingMouseClicked
 
     private void btnLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoMouseClicked
@@ -966,6 +1055,7 @@ public class StartMenu extends javax.swing.JPanel {
                 user.setStudentId(txtID.getText());
                 user.setPassword(txtPass.getText());
                 
+                setString(user);
                  String warning = "Are you confirm ChangProfile";
                 DialogUpdate dialog = new DialogUpdate(new javax.swing.JFrame(), true, user,warning,email);
                 dialog.setVisible(true);
@@ -1192,11 +1282,15 @@ public class StartMenu extends javax.swing.JPanel {
     private javax.swing.JLabel Bgmain;
     private javax.swing.JPanel Booking;
     private javax.swing.JPanel Menubar;
+    private javax.swing.JPanel Pbooking;
     private javax.swing.JPanel Room;
+    private javax.swing.JScrollPane ScrollBActvie;
     private javax.swing.JScrollPane ScrollRoom;
     private javax.swing.JPanel User;
+    private javax.swing.JLabel active;
     private javax.swing.JLabel bg;
     private javax.swing.JLabel bgRoom;
+    private javax.swing.JLabel bgRoom1;
     private javax.swing.JLabel btnBookGame;
     private javax.swing.JLabel btnBooking;
     private javax.swing.JLabel btnBookroom;
@@ -1224,6 +1318,7 @@ public class StartMenu extends javax.swing.JPanel {
     private javax.swing.JLabel btnR9;
     private javax.swing.JLabel btnUpdate;
     private javax.swing.JLabel btnUser;
+    private javax.swing.JLabel completed;
     private javax.swing.JPanel game;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -77,10 +77,9 @@ public class StartApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnclose = new javax.swing.JLabel();
         jP_Login_regis = new javax.swing.JPanel();
-        startMenu1 = new bulibrary.StartMenu();
         jP_Login = new javax.swing.JPanel();
+        btnclose = new javax.swing.JLabel();
         opacity1 = new javax.swing.JLabel();
         txtEmailLogin = new javax.swing.JTextField();
         txtpasslogin = new javax.swing.JPasswordField();
@@ -88,6 +87,7 @@ public class StartApp extends javax.swing.JFrame {
         btnLogin = new javax.swing.JLabel();
         BG1 = new javax.swing.JLabel();
         jP_Register = new javax.swing.JPanel();
+        btnclose1 = new javax.swing.JLabel();
         opacity = new javax.swing.JLabel();
         txtFname = new javax.swing.JTextField();
         txtLname = new javax.swing.JTextField();
@@ -99,9 +99,18 @@ public class StartApp extends javax.swing.JFrame {
         btnCreateAccount = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
+        startMenu1 = new bulibrary.StartMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
+        jP_Login_regis.setBackground(new java.awt.Color(255, 255, 255));
+        jP_Login_regis.setForeground(new java.awt.Color(255, 255, 255));
+        jP_Login_regis.setOpaque(false);
+        jP_Login_regis.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jP_Login.setOpaque(false);
+        jP_Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnclose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnclose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/CrossExit.png"))); // NOI18N
@@ -111,15 +120,7 @@ public class StartApp extends javax.swing.JFrame {
                 btncloseMouseClicked(evt);
             }
         });
-
-        jP_Login_regis.setBackground(new java.awt.Color(255, 255, 255));
-        jP_Login_regis.setForeground(new java.awt.Color(255, 255, 255));
-        jP_Login_regis.setOpaque(false);
-        jP_Login_regis.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jP_Login_regis.add(startMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jP_Login.setOpaque(false);
-        jP_Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jP_Login.add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 10, -1, -1));
 
         opacity1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/opacity.png"))); // NOI18N
         opacity1.setText("jLabel4");
@@ -211,6 +212,16 @@ public class StartApp extends javax.swing.JFrame {
         jP_Register.setOpaque(false);
         jP_Register.setPreferredSize(new java.awt.Dimension(1536, 864));
         jP_Register.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnclose1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnclose1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/CrossExit.png"))); // NOI18N
+        btnclose1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnclose1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnclose1MouseClicked(evt);
+            }
+        });
+        jP_Register.add(btnclose1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 10, -1, -1));
 
         opacity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/opacity.png"))); // NOI18N
         opacity.setText("jLabel4");
@@ -424,22 +435,17 @@ public class StartApp extends javax.swing.JFrame {
         jP_Register.add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jP_Login_regis.add(jP_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, -1, 870));
+        jP_Login_regis.add(startMenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jP_Login_regis, javax.swing.GroupLayout.PREFERRED_SIZE, 1536, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(1500, 1500, 1500)
-                .addComponent(btnclose))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jP_Login_regis, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(btnclose))
         );
 
         pack();
@@ -861,8 +867,6 @@ public class StartApp extends javax.swing.JFrame {
                     warnmessage.setVisible(true);
                     changePanelVisibility(false, false,true);
                     startMenu1.setString(user);
-
-
                 } else {
                     // คำนวณเงื่อนไขเมื่อเข้าสู่ระบบไม่สำเร็จ
                     String text = "Invalid email or password.";
@@ -878,6 +882,10 @@ public class StartApp extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void btnclose1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnclose1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnclose1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -926,6 +934,7 @@ public class StartApp extends javax.swing.JFrame {
     private javax.swing.JLabel btnLogin;
     private javax.swing.JLabel btnSign;
     private javax.swing.JLabel btnclose;
+    private javax.swing.JLabel btnclose1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jP_Login;
     private javax.swing.JPanel jP_Login_regis;

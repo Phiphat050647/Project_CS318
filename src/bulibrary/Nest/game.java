@@ -54,6 +54,7 @@ public class game extends javax.swing.JFrame {
         SeleetSplwndor = new javax.swing.JLabel();
         Splendor = new javax.swing.JLabel();
         BGwhite = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         BGblue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -297,6 +298,14 @@ public class game extends javax.swing.JFrame {
         BGwhite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/BGwhite.png"))); // NOI18N
         BGwhite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bordgame.add(BGwhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Group 632536.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        bordgame.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 180, 80));
 
         BGblue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/BGblue.png"))); // NOI18N
         bordgame.add(BGblue, new org.netbeans.lib.awtextra.AbsoluteConstraints(-12, 0, 1280, -1));
@@ -601,6 +610,12 @@ public class game extends javax.swing.JFrame {
         SeleetSplwndor.setIcon(icon);
     }//GEN-LAST:event_SeleetSplwndorMouseExited
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        Howtoplay howplay = new Howtoplay() ;
+        howplay.setVisible(true);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -666,6 +681,7 @@ public class game extends javax.swing.JFrame {
     private javax.swing.JLabel btnExite;
     private javax.swing.JLabel btnLogo;
     private javax.swing.JLabel btnUser;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
     private void setMenu(boolean b, boolean b0, boolean b1, boolean b2, boolean b3) {

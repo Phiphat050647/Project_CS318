@@ -17,7 +17,9 @@ import net.miginfocom.swing.MigLayout;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.time.chrono.ThaiBuddhistDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  *
@@ -55,9 +57,14 @@ public class StartMenu extends javax.swing.JPanel {
         ScrollBActvie.setHorizontalScrollBar(sp);
         ScrollBActvie.getViewport().setBackground(Color.WHITE);
         
+        ScrollBComplet.setVerticalScrollBar(new ScrollBarCustom());
+        ScrollBComplet.setHorizontalScrollBar(sp);
+        ScrollBComplet.getViewport().setBackground(Color.WHITE);
+        
         setMenu(false, false, false, false, true);
         opacity1.setVisible(false);
         Pbooking.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
+        PbookingCompleted.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
     }
     
     public static StartMenu getInstane(){
@@ -120,6 +127,8 @@ public class StartMenu extends javax.swing.JPanel {
         Booking = new javax.swing.JPanel();
         ScrollBActvie = new javax.swing.JScrollPane();
         Pbooking = new javax.swing.JPanel();
+        ScrollBComplet = new javax.swing.JScrollPane();
+        PbookingCompleted = new javax.swing.JPanel();
         active = new javax.swing.JLabel();
         completed = new javax.swing.JLabel();
         bgRoom1 = new javax.swing.JLabel();
@@ -308,12 +317,44 @@ public class StartMenu extends javax.swing.JPanel {
 
         Booking.add(ScrollBActvie, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1170, 780));
 
+        ScrollBComplet.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ScrollBComplet.setAutoscrolls(true);
+        ScrollBComplet.setOpaque(false);
+
+        PbookingCompleted.setBackground(new java.awt.Color(255, 255, 255));
+        PbookingCompleted.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout PbookingCompletedLayout = new javax.swing.GroupLayout(PbookingCompleted);
+        PbookingCompleted.setLayout(PbookingCompletedLayout);
+        PbookingCompletedLayout.setHorizontalGroup(
+            PbookingCompletedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1170, Short.MAX_VALUE)
+        );
+        PbookingCompletedLayout.setVerticalGroup(
+            PbookingCompletedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 780, Short.MAX_VALUE)
+        );
+
+        ScrollBComplet.setViewportView(PbookingCompleted);
+
+        Booking.add(ScrollBComplet, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1170, 780));
+
         active.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Active.png"))); // NOI18N
         active.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        active.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                activeMouseClicked(evt);
+            }
+        });
         Booking.add(active, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 58, -1, -1));
 
         completed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Completed.png"))); // NOI18N
         completed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        completed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                completedMouseClicked(evt);
+            }
+        });
         Booking.add(completed, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 58, -1, -1));
 
         bgRoom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/bg.png"))); // NOI18N
@@ -936,6 +977,12 @@ public class StartMenu extends javax.swing.JPanel {
 
     private void btnBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseClicked
         Pbooking.removeAll(); 
+        SetScroll(true, false);
+        Icon active = new ImageIcon(getClass().getResource("/bulibrary/image/booking/ActiveEx.png"));
+        this.active.setIcon(active);
+        
+        Icon compIcon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/Completed.png"));
+        this.completed.setIcon(compIcon);
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBookingEn.png"));
         btnBooking.setIcon(icon);
         setMenu(false,false,false,true,false);
@@ -958,37 +1005,39 @@ public class StartMenu extends javax.swing.JPanel {
 
             rs = statement.executeQuery();
             while (rs.next()) {
-                // ทำงานกับข้อมูลที่ค้นหาได้ตรงนี้
                 String room = rs.getString("room");
                 String date = rs.getString("date");
                 String startTime = rs.getString("stime");
                 String endTime = rs.getString("etime");
-                
+
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                DateTimeFormatter ThaiFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 try {
-                    
+                    // แปลงวันที่จาก DB เป็น LocalDate
                     LocalDate dateFromDB = LocalDate.parse(date, formatter);
-                    LocalDate currentDate = LocalDate.now();
-                    if (dateFromDB.isBefore(currentDate)) {
-                        System.out.println("วันที่ผ่านมาแล้ว");
-                    } else if (dateFromDB.isEqual(currentDate)) {
-                        System.out.println("วันนี้");
-                    } else {
-                        System.out.println("วันที่ยังไม่ถึง");
-                    }
+                    ThaiBuddhistDate thaiBuddhistDate = ThaiBuddhistDate.now();
+                    String lastDate = thaiBuddhistDate.toString().substring(thaiBuddhistDate.toString().length() - 10);
                     
+                    
+                    if (dateFromDB.isAfter(LocalDate.parse(lastDate, ThaiFormatter)) || dateFromDB.isEqual(LocalDate.parse(lastDate, ThaiFormatter))) {
+                        System.out.println(dateFromDB);
+                        System.out.println(lastDate);
+
+                        // กระทำเมื่อ dateFromDB อยู่ในอนาคต
+                        String user = firstName + lastName;
+                        Component panel = Pbooking;
+                        Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime, room, date, panel));
+                    }
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-                String user = firstName + lastName ;
-                Component panel = Pbooking;
-                Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime,room,date,panel));
-                
             }
             rs.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+
 
     }//GEN-LAST:event_btnBookingMouseClicked
 
@@ -1058,7 +1107,7 @@ public class StartMenu extends javax.swing.JPanel {
                 user.setPassword(txtPass.getText());
                 
                 setString(user);
-                 String warning = "Are you confirm ChangProfile";
+                 String warning = "Are you confirm ChangeProfile";
                 DialogUpdate dialog = new DialogUpdate(new javax.swing.JFrame(), true, user,warning,email);
                 dialog.setVisible(true);
                 opacity1.setVisible(false);
@@ -1270,11 +1319,120 @@ public class StartMenu extends javax.swing.JPanel {
         String email = UserData.getInstane().getEmail();
         String id = UserData.getInstane().getStudentId();
         String user = UserData.getInstane().getUser();
-
         BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
         book.setVisible(true);
         opacity1.setVisible(false);
     }//GEN-LAST:event_btnR10MouseClicked
+    public void SetScroll(boolean isActive, boolean isComplet){
+        ScrollBActvie.setVisible(isActive);
+        ScrollBComplet.setVisible(isComplet);
+    }
+    private void completedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedMouseClicked
+        SetScroll(false, true);
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/CompletedEx.png"));
+        completed.setIcon(icon);
+        PbookingCompleted.removeAll();
+        Icon iconac = new ImageIcon(getClass().getResource("/bulibrary/image/booking/active.png"));
+        active.setIcon(iconac);
+        
+        
+        String emailToSearch = email; // อีเมลที่ต้องการค้นหา
+        String selectQuery = "SELECT * FROM booking WHERE email = ?";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(selectQuery);
+            statement.setString(1, emailToSearch);
+
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                String room = rs.getString("room");
+                String date = rs.getString("date");
+                String startTime = rs.getString("stime");
+                String endTime = rs.getString("etime");
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                DateTimeFormatter ThaiFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                try {
+                    // แปลงวันที่จาก DB เป็น LocalDate
+                    LocalDate dateFromDB = LocalDate.parse(date, formatter);
+                    ThaiBuddhistDate thaiBuddhistDate = ThaiBuddhistDate.now();
+                    String lastDate = thaiBuddhistDate.toString().substring(thaiBuddhistDate.toString().length() - 10);
+                    
+                    
+                    if (dateFromDB.isBefore(LocalDate.parse(lastDate, ThaiFormatter))) {
+                        System.out.println(dateFromDB);
+                        System.out.println(lastDate);
+
+                        // กระทำเมื่อ dateFromDB อยู่ในอดีต
+                        String user = firstName + lastName;
+                        Component panel = Pbooking;
+                        Component add = PbookingCompleted.add(new JPbookComplet(user, studentId, startTime, endTime, room, date, panel));
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_completedMouseClicked
+
+    private void activeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_activeMouseClicked
+        SetScroll(true, false);
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/ActiveEx.png"));
+        active.setIcon(icon);
+        
+        Icon iconcom = new ImageIcon(getClass().getResource("/bulibrary/image/booking/Completed.png"));
+        completed.setIcon(iconcom);
+        
+        Pbooking.removeAll(); 
+        
+        String emailToSearch = email; // อีเมลที่ต้องการค้นหา
+        String selectQuery = "SELECT * FROM booking WHERE email = ?";
+        DBConnect conn = new DBConnect();
+        ResultSet rs = null;
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(selectQuery);
+            statement.setString(1, emailToSearch);
+
+            rs = statement.executeQuery();
+            while (rs.next()) {
+                String room = rs.getString("room");
+                String date = rs.getString("date");
+                String startTime = rs.getString("stime");
+                String endTime = rs.getString("etime");
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                DateTimeFormatter ThaiFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                try {
+                    // แปลงวันที่จาก DB เป็น LocalDate
+                    LocalDate dateFromDB = LocalDate.parse(date, formatter);
+                    ThaiBuddhistDate thaiBuddhistDate = ThaiBuddhistDate.now();
+                    String lastDate = thaiBuddhistDate.toString().substring(thaiBuddhistDate.toString().length() - 10);
+                    
+                    
+                    if (dateFromDB.isAfter(LocalDate.parse(lastDate, ThaiFormatter)) || dateFromDB.isEqual(LocalDate.parse(lastDate, ThaiFormatter))) {
+                        System.out.println(dateFromDB);
+                        System.out.println(lastDate);
+
+                        // กระทำเมื่อ dateFromDB อยู่ในอนาคต
+                        String user = firstName + lastName;
+                        Component panel = Pbooking;
+                        Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime, room, date, panel));
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_activeMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1285,8 +1443,10 @@ public class StartMenu extends javax.swing.JPanel {
     private javax.swing.JPanel Booking;
     private javax.swing.JPanel Menubar;
     private javax.swing.JPanel Pbooking;
+    private javax.swing.JPanel PbookingCompleted;
     private javax.swing.JPanel Room;
     private javax.swing.JScrollPane ScrollBActvie;
+    private javax.swing.JScrollPane ScrollBComplet;
     private javax.swing.JScrollPane ScrollRoom;
     private javax.swing.JPanel User;
     private javax.swing.JLabel active;

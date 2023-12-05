@@ -18,10 +18,10 @@ import javax.swing.ImageIcon;
  *
  * @author Mr.Phiphat
  */
-public class JPbooking extends javax.swing.JPanel {
+public class JPbookComplet extends javax.swing.JPanel {
 
     private Component Pbooking;
-    public JPbooking(String user,String id,String stime,String etime,String room,String date,Component Pbooking) {
+    public JPbookComplet(String user,String id,String stime,String etime,String room,String date,Component Pbooking) {
         initComponents();
         nameBook.setText(room);
         jdate.setText(date);
@@ -36,7 +36,7 @@ public class JPbooking extends javax.swing.JPanel {
         if (listRoom.contains(room)) {
             
         } else if ("Spyfall".equals(room)) {
-            Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/Roomicon.png"));
+            Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/spyfall.png"));
             this.icon.setIcon(icon);
         } else if ("Werewolf".equals(room)){
             Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/werewolf.png"));
@@ -81,7 +81,7 @@ public class JPbooking extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         nameBook = new javax.swing.JLabel();
-        btnCancel = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         icon = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
 
@@ -138,20 +138,8 @@ public class JPbooking extends javax.swing.JPanel {
         nameBook.setText("Room 5");
         add(nameBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
 
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/cancel.png"))); // NOI18N
-        btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCancelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCancelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCancelMouseExited(evt);
-            }
-        });
-        add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 110, -1, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/CompleICON.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 32, 170, 130));
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Roomicon.png"))); // NOI18N
         add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 170, 160));
@@ -160,55 +148,13 @@ public class JPbooking extends javax.swing.JPanel {
         add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
-
-        String deleteQuery = "DELETE FROM booking WHERE room = ? AND date = ? and stime = ? and etime = ?";
-        DBConnect conn = new DBConnect();
-
-        try {
-            PreparedStatement statement = conn.prepareStatement(deleteQuery);
-            statement.setString(1, nameBook.getText());
-            statement.setString(2, jdate.getText());
-            statement.setString(3, jstime.getText());
-            statement.setString(4, jetime.getText());
-            
-            int rowsDeleted = statement.executeUpdate();
-            if (rowsDeleted > 0) {
-                System.out.println("Data deleted successfully!");
-                if (Pbooking instanceof Container) {
-                    Container container = (Container) Pbooking;
-                    container.remove(this); 
-                    container.revalidate(); 
-                    container.repaint(); 
-                }
-            } else {
-                System.out.println("No data found to delete.");
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        
-        
-    }//GEN-LAST:event_btnCancelMouseClicked
-
-    private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/cancelEX.png"));
-        btnCancel.setIcon(icon);
-    }//GEN-LAST:event_btnCancelMouseEntered
-
-    private void btnCancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/cancel.png"));
-        btnCancel.setIcon(icon);
-    }//GEN-LAST:event_btnCancelMouseExited
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
-    private javax.swing.JLabel btnCancel;
     private javax.swing.JLabel icon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;

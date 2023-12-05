@@ -35,48 +35,26 @@ public class game extends javax.swing.JFrame {
         btnBooking = new javax.swing.JLabel();
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
-        HowToplay = new javax.swing.JPanel();
-        Buttonbordgame1 = new javax.swing.JLabel();
-        SeleetSpyfall1 = new javax.swing.JLabel();
-        Spyfall1 = new javax.swing.JLabel();
-        SeleetWerewolf1 = new javax.swing.JLabel();
-        Werewolf1 = new javax.swing.JLabel();
-        SeleetUNO1 = new javax.swing.JLabel();
-        UNO1 = new javax.swing.JLabel();
-        SeleetExplodingKittens1 = new javax.swing.JLabel();
-        ExplodingKittens1 = new javax.swing.JLabel();
-        SeleetSalem1 = new javax.swing.JLabel();
-        Salem1 = new javax.swing.JLabel();
-        SeleetTheBoss1 = new javax.swing.JLabel();
-        TheBoss1 = new javax.swing.JLabel();
-        SeleetDuck1 = new javax.swing.JLabel();
-        Duck1 = new javax.swing.JLabel();
-        SeleetSplwndor1 = new javax.swing.JLabel();
-        Splendor1 = new javax.swing.JLabel();
-        ButtonHowtoplay1 = new javax.swing.JLabel();
-        BGwhite1 = new javax.swing.JLabel();
-        BGblue1 = new javax.swing.JLabel();
         bordgame = new javax.swing.JPanel();
-        Buttonbordgame = new javax.swing.JLabel();
-        SeleetSpyfall = new javax.swing.JLabel();
-        Spyfall = new javax.swing.JLabel();
-        SeleetWerewolf = new javax.swing.JLabel();
-        Werewolf = new javax.swing.JLabel();
-        SeleetUNO = new javax.swing.JLabel();
-        UNO = new javax.swing.JLabel();
-        SeleetExplodingKittens = new javax.swing.JLabel();
-        ExplodingKittens = new javax.swing.JLabel();
-        SeleetSalem = new javax.swing.JLabel();
+        BtnHTP = new javax.swing.JLabel();
+        BtnBordgame = new javax.swing.JLabel();
+        BtnSalem = new javax.swing.JLabel();
         Salem = new javax.swing.JLabel();
-        SeleetTheBoss = new javax.swing.JLabel();
-        TheBoss = new javax.swing.JLabel();
-        SeleetDuck = new javax.swing.JLabel();
+        BtnBoss = new javax.swing.JLabel();
+        Boss = new javax.swing.JLabel();
+        BtnDuck = new javax.swing.JLabel();
         Duck = new javax.swing.JLabel();
-        SeleetSplwndor = new javax.swing.JLabel();
+        BtnSplendor = new javax.swing.JLabel();
         Splendor = new javax.swing.JLabel();
-        ButtonHowtoplay = new javax.swing.JLabel();
+        BtnCat = new javax.swing.JLabel();
+        Cat = new javax.swing.JLabel();
+        BtnUNO = new javax.swing.JLabel();
+        UNO = new javax.swing.JLabel();
+        BtnWerewolf = new javax.swing.JLabel();
+        Werewolf = new javax.swing.JLabel();
+        BtnSpyfall = new javax.swing.JLabel();
+        Spyfall = new javax.swing.JLabel();
         BGwhite = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         BGblue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -182,311 +160,71 @@ public class game extends javax.swing.JFrame {
 
         getContentPane().add(Menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        HowToplay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Buttonbordgame1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonBordgameOff.png"))); // NOI18N
-        Buttonbordgame1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, -20, 1));
-        Buttonbordgame1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Buttonbordgame1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Buttonbordgame1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Buttonbordgame1MouseExited(evt);
-            }
-        });
-        HowToplay.add(Buttonbordgame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
-
-        SeleetSpyfall1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetSpyfall1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetSpyfall1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetSpyfall1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetSpyfall1MouseExited(evt);
-            }
-        });
-        HowToplay.add(SeleetSpyfall1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, -1, -1));
-
-        Spyfall1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/spyfall.png"))); // NOI18N
-        HowToplay.add(Spyfall1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
-
-        SeleetWerewolf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetWerewolf1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetWerewolf1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetWerewolf1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetWerewolf1MouseExited(evt);
-            }
-        });
-        HowToplay.add(SeleetWerewolf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, -1, -1));
-
-        Werewolf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/Werewolf.png"))); // NOI18N
-        HowToplay.add(Werewolf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
-
-        SeleetUNO1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetUNO1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetUNO1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetUNO1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetUNO1MouseExited(evt);
-            }
-        });
-        HowToplay.add(SeleetUNO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, -1, -1));
-
-        UNO1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/UNO.png"))); // NOI18N
-        HowToplay.add(UNO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, -1, -1));
-
-        SeleetExplodingKittens1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetExplodingKittens1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetExplodingKittens1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetExplodingKittens1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetExplodingKittens1MouseExited(evt);
-            }
-        });
-        HowToplay.add(SeleetExplodingKittens1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 360, -1, -1));
-
-        ExplodingKittens1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ExplodingKittens.png"))); // NOI18N
-        HowToplay.add(ExplodingKittens1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 150, -1, -1));
-
-        SeleetSalem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetSalem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetSalem1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetSalem1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetSalem1MouseExited(evt);
-            }
-        });
-        HowToplay.add(SeleetSalem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 660, -1, -1));
-
-        Salem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/Salem.png"))); // NOI18N
-        HowToplay.add(Salem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, -1, -1));
-
-        SeleetTheBoss1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetTheBoss1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetTheBoss1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetTheBoss1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetTheBoss1MouseExited(evt);
-            }
-        });
-        HowToplay.add(SeleetTheBoss1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 660, -1, -1));
-
-        TheBoss1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/TheBoss.png"))); // NOI18N
-        HowToplay.add(TheBoss1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
-
-        SeleetDuck1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetDuck1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetDuck1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetDuck1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetDuck1MouseExited(evt);
-            }
-        });
-        HowToplay.add(SeleetDuck1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 660, -1, -1));
-
-        Duck1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/SittingDuckGallery.png"))); // NOI18N
-        HowToplay.add(Duck1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, -1, -1));
-
-        SeleetSplwndor1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetSplwndor1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetSplwndor1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetSplwndor1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetSplwndor1MouseExited(evt);
-            }
-        });
-        HowToplay.add(SeleetSplwndor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 660, -1, -1));
-
-        Splendor1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/Splendor.png"))); // NOI18N
-        HowToplay.add(Splendor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 450, -1, -1));
-
-        ButtonHowtoplay1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonHowtoplay.png"))); // NOI18N
-        ButtonHowtoplay1.setToolTipText("");
-        ButtonHowtoplay1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, -25, 1));
-        ButtonHowtoplay1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        HowToplay.add(ButtonHowtoplay1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
-
-        BGwhite1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/BGwhite.png"))); // NOI18N
-        BGwhite1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        HowToplay.add(BGwhite1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        BGblue1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/BGblue.png"))); // NOI18N
-        HowToplay.add(BGblue1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-12, 0, 1280, -1));
-
-        getContentPane().add(HowToplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1270, 870));
-
         bordgame.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Buttonbordgame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonBordgame.png"))); // NOI18N
-        Buttonbordgame.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, -20, 1));
-        Buttonbordgame.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Buttonbordgame.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ButtonbordgameMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ButtonbordgameMouseExited(evt);
-            }
-        });
-        bordgame.add(Buttonbordgame, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        BtnHTP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/BtnHTPoff.png"))); // NOI18N
+        BtnHTP.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, -20, 1));
+        BtnHTP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bordgame.add(BtnHTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
-        SeleetSpyfall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetSpyfall.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetSpyfall.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetSpyfallMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetSpyfallMouseExited(evt);
-            }
-        });
-        bordgame.add(SeleetSpyfall, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, -1, -1));
+        BtnBordgame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonBordgame.png"))); // NOI18N
+        BtnBordgame.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, -20, 1));
+        BtnBordgame.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bordgame.add(BtnBordgame, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
-        Spyfall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/spyfall.png"))); // NOI18N
-        bordgame.add(Spyfall, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
-
-        SeleetWerewolf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetWerewolf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetWerewolf.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetWerewolfMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetWerewolfMouseExited(evt);
-            }
-        });
-        bordgame.add(SeleetWerewolf, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, -1, -1));
-
-        Werewolf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/Werewolf.png"))); // NOI18N
-        bordgame.add(Werewolf, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
-
-        SeleetUNO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetUNO.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetUNO.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetUNOMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetUNOMouseExited(evt);
-            }
-        });
-        bordgame.add(SeleetUNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, -1, -1));
-
-        UNO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/UNO.png"))); // NOI18N
-        bordgame.add(UNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, -1, -1));
-
-        SeleetExplodingKittens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetExplodingKittens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetExplodingKittens.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetExplodingKittensMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetExplodingKittensMouseExited(evt);
-            }
-        });
-        bordgame.add(SeleetExplodingKittens, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 360, -1, -1));
-
-        ExplodingKittens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ExplodingKittens.png"))); // NOI18N
-        bordgame.add(ExplodingKittens, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 150, -1, -1));
-
-        SeleetSalem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetSalem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetSalem.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetSalemMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetSalemMouseExited(evt);
-            }
-        });
-        bordgame.add(SeleetSalem, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 660, -1, -1));
+        BtnSalem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        bordgame.add(BtnSalem, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 660, -1, -1));
 
         Salem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/Salem.png"))); // NOI18N
         bordgame.add(Salem, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, -1, -1));
 
-        SeleetTheBoss.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetTheBoss.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetTheBoss.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetTheBossMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetTheBossMouseExited(evt);
-            }
-        });
-        bordgame.add(SeleetTheBoss, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 660, -1, -1));
+        BtnBoss.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        bordgame.add(BtnBoss, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 660, -1, -1));
 
-        TheBoss.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/TheBoss.png"))); // NOI18N
-        bordgame.add(TheBoss, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
+        Boss.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/TheBoss.png"))); // NOI18N
+        bordgame.add(Boss, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
 
-        SeleetDuck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetDuck.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetDuck.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetDuckMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetDuckMouseExited(evt);
-            }
-        });
-        bordgame.add(SeleetDuck, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 660, -1, -1));
+        BtnDuck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        bordgame.add(BtnDuck, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 660, -1, -1));
 
         Duck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/SittingDuckGallery.png"))); // NOI18N
         bordgame.add(Duck, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, -1, -1));
 
-        SeleetSplwndor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
-        SeleetSplwndor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SeleetSplwndor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                SeleetSplwndorMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                SeleetSplwndorMouseExited(evt);
-            }
-        });
-        bordgame.add(SeleetSplwndor, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 660, -1, -1));
+        BtnSplendor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        bordgame.add(BtnSplendor, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 660, -1, -1));
 
         Splendor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/Splendor.png"))); // NOI18N
         bordgame.add(Splendor, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 450, -1, -1));
 
-        ButtonHowtoplay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonHowtoplayOff.png"))); // NOI18N
-        ButtonHowtoplay.setToolTipText("");
-        ButtonHowtoplay.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, -20, 1));
-        ButtonHowtoplay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bordgame.add(ButtonHowtoplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
+        BtnCat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        bordgame.add(BtnCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 360, -1, -1));
+
+        Cat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ExplodingKittens.png"))); // NOI18N
+        bordgame.add(Cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 150, -1, -1));
+
+        BtnUNO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        bordgame.add(BtnUNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, -1, -1));
+
+        UNO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/UNO.png"))); // NOI18N
+        bordgame.add(UNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, -1, -1));
+
+        BtnWerewolf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        bordgame.add(BtnWerewolf, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, -1, -1));
+
+        Werewolf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/Werewolf.png"))); // NOI18N
+        bordgame.add(Werewolf, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
+
+        BtnSpyfall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        bordgame.add(BtnSpyfall, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, -1, -1));
+
+        Spyfall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/spyfall.png"))); // NOI18N
+        bordgame.add(Spyfall, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
 
         BGwhite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/BGwhite.png"))); // NOI18N
-        BGwhite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bordgame.add(BGwhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Group 632536.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
-        bordgame.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 180, 80));
+        bordgame.add(BGwhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         BGblue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/BGblue.png"))); // NOI18N
-        bordgame.add(BGblue, new org.netbeans.lib.awtextra.AbsoluteConstraints(-12, 0, 1280, -1));
+        bordgame.add(BGblue, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         getContentPane().add(bordgame, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1270, 870));
 
@@ -697,179 +435,7 @@ public class game extends javax.swing.JFrame {
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Exit.png"));
         btnExite.setIcon(icon);
     }//GEN-LAST:event_btnExiteMouseExited
-
-    private void SeleetSpyfallMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSpyfallMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgameEn.png"));
-        SeleetSpyfall.setIcon(icon);
-    }//GEN-LAST:event_SeleetSpyfallMouseEntered
-
-    private void SeleetSpyfallMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSpyfallMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"));
-        SeleetSpyfall.setIcon(icon);
-    }//GEN-LAST:event_SeleetSpyfallMouseExited
-
-    private void SeleetWerewolfMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetWerewolfMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgameEn.png"));
-        SeleetWerewolf.setIcon(icon);
-    }//GEN-LAST:event_SeleetWerewolfMouseEntered
-
-    private void SeleetWerewolfMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetWerewolfMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"));
-        SeleetWerewolf.setIcon(icon);
-    }//GEN-LAST:event_SeleetWerewolfMouseExited
-
-    private void SeleetUNOMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetUNOMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgameEn.png"));
-        SeleetUNO.setIcon(icon);
-    }//GEN-LAST:event_SeleetUNOMouseEntered
-
-    private void SeleetUNOMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetUNOMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"));
-        SeleetUNO.setIcon(icon);
-    }//GEN-LAST:event_SeleetUNOMouseExited
-
-    private void ButtonbordgameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonbordgameMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonBordgameEn.png"));
-        Buttonbordgame.setIcon(icon);
-    }//GEN-LAST:event_ButtonbordgameMouseEntered
-
-    private void ButtonbordgameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonbordgameMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonBordgame.png"));
-        Buttonbordgame.setIcon(icon);
-    }//GEN-LAST:event_ButtonbordgameMouseExited
-
-    private void SeleetExplodingKittensMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetExplodingKittensMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgameEn.png"));
-        SeleetExplodingKittens.setIcon(icon);
-    }//GEN-LAST:event_SeleetExplodingKittensMouseEntered
-
-    private void SeleetExplodingKittensMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetExplodingKittensMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"));
-        SeleetExplodingKittens.setIcon(icon);
-    }//GEN-LAST:event_SeleetExplodingKittensMouseExited
-
-    private void SeleetSalemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSalemMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgameEn.png"));
-        SeleetSalem.setIcon(icon);
-    }//GEN-LAST:event_SeleetSalemMouseEntered
-
-    private void SeleetSalemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSalemMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"));
-        SeleetSalem.setIcon(icon);
-    }//GEN-LAST:event_SeleetSalemMouseExited
-
-    private void SeleetTheBossMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetTheBossMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgameEn.png"));
-        SeleetTheBoss.setIcon(icon);
-    }//GEN-LAST:event_SeleetTheBossMouseEntered
-
-    private void SeleetTheBossMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetTheBossMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"));
-        SeleetTheBoss.setIcon(icon);
-    }//GEN-LAST:event_SeleetTheBossMouseExited
-
-    private void SeleetDuckMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetDuckMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgameEn.png"));
-        SeleetDuck.setIcon(icon);
-    }//GEN-LAST:event_SeleetDuckMouseEntered
-
-    private void SeleetDuckMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetDuckMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"));
-        SeleetDuck.setIcon(icon);
-    }//GEN-LAST:event_SeleetDuckMouseExited
-
-    private void SeleetSplwndorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSplwndorMouseEntered
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgameEn.png"));
-        SeleetSplwndor.setIcon(icon);
-    }//GEN-LAST:event_SeleetSplwndorMouseEntered
-
-    private void SeleetSplwndorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSplwndorMouseExited
-        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"));
-        SeleetSplwndor.setIcon(icon);
-    }//GEN-LAST:event_SeleetSplwndorMouseExited
-
-<<<<<<< Updated upstream
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-        Howtoplay howplay = new Howtoplay();
-        howplay.setVisible(true);
-}
-    }//GEN-LAST:event_jLabel1MouseClicked
-=======
-    private void Buttonbordgame1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buttonbordgame1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Buttonbordgame1MouseEntered
-
-    private void Buttonbordgame1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buttonbordgame1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Buttonbordgame1MouseExited
-
-    private void SeleetSpyfall1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSpyfall1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetSpyfall1MouseEntered
-
-    private void SeleetSpyfall1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSpyfall1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetSpyfall1MouseExited
-
-    private void SeleetWerewolf1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetWerewolf1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetWerewolf1MouseEntered
-
-    private void SeleetWerewolf1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetWerewolf1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetWerewolf1MouseExited
-
-    private void SeleetUNO1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetUNO1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetUNO1MouseEntered
-
-    private void SeleetUNO1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetUNO1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetUNO1MouseExited
-
-    private void SeleetExplodingKittens1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetExplodingKittens1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetExplodingKittens1MouseEntered
-
-    private void SeleetExplodingKittens1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetExplodingKittens1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetExplodingKittens1MouseExited
-
-    private void SeleetSalem1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSalem1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetSalem1MouseEntered
-
-    private void SeleetSalem1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSalem1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetSalem1MouseExited
-
-    private void SeleetTheBoss1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetTheBoss1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetTheBoss1MouseEntered
-
-    private void SeleetTheBoss1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetTheBoss1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetTheBoss1MouseExited
-
-    private void SeleetDuck1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetDuck1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetDuck1MouseEntered
-
-    private void SeleetDuck1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetDuck1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetDuck1MouseExited
-
-    private void SeleetSplwndor1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSplwndor1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetSplwndor1MouseEntered
-
-    private void SeleetSplwndor1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSplwndor1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SeleetSplwndor1MouseExited
->>>>>>> Stashed changes
-
-    /**
+     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -908,47 +474,26 @@ public class game extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
     private javax.swing.JLabel BGblue;
-    private javax.swing.JLabel BGblue1;
     private javax.swing.JLabel BGwhite;
-    private javax.swing.JLabel BGwhite1;
-    private javax.swing.JLabel ButtonHowtoplay;
-    private javax.swing.JLabel ButtonHowtoplay1;
-    private javax.swing.JLabel Buttonbordgame;
-    private javax.swing.JLabel Buttonbordgame1;
+    private javax.swing.JLabel Boss;
+    private javax.swing.JLabel BtnBordgame;
+    private javax.swing.JLabel BtnBoss;
+    private javax.swing.JLabel BtnCat;
+    private javax.swing.JLabel BtnDuck;
+    private javax.swing.JLabel BtnHTP;
+    private javax.swing.JLabel BtnSalem;
+    private javax.swing.JLabel BtnSplendor;
+    private javax.swing.JLabel BtnSpyfall;
+    private javax.swing.JLabel BtnUNO;
+    private javax.swing.JLabel BtnWerewolf;
+    private javax.swing.JLabel Cat;
     private javax.swing.JLabel Duck;
-    private javax.swing.JLabel Duck1;
-    private javax.swing.JLabel ExplodingKittens;
-    private javax.swing.JLabel ExplodingKittens1;
-    private javax.swing.JPanel HowToplay;
     private javax.swing.JPanel Menubar;
     private javax.swing.JLabel Salem;
-    private javax.swing.JLabel Salem1;
-    private javax.swing.JLabel SeleetDuck;
-    private javax.swing.JLabel SeleetDuck1;
-    private javax.swing.JLabel SeleetExplodingKittens;
-    private javax.swing.JLabel SeleetExplodingKittens1;
-    private javax.swing.JLabel SeleetSalem;
-    private javax.swing.JLabel SeleetSalem1;
-    private javax.swing.JLabel SeleetSplwndor;
-    private javax.swing.JLabel SeleetSplwndor1;
-    private javax.swing.JLabel SeleetSpyfall;
-    private javax.swing.JLabel SeleetSpyfall1;
-    private javax.swing.JLabel SeleetTheBoss;
-    private javax.swing.JLabel SeleetTheBoss1;
-    private javax.swing.JLabel SeleetUNO;
-    private javax.swing.JLabel SeleetUNO1;
-    private javax.swing.JLabel SeleetWerewolf;
-    private javax.swing.JLabel SeleetWerewolf1;
     private javax.swing.JLabel Splendor;
-    private javax.swing.JLabel Splendor1;
     private javax.swing.JLabel Spyfall;
-    private javax.swing.JLabel Spyfall1;
-    private javax.swing.JLabel TheBoss;
-    private javax.swing.JLabel TheBoss1;
     private javax.swing.JLabel UNO;
-    private javax.swing.JLabel UNO1;
     private javax.swing.JLabel Werewolf;
-    private javax.swing.JLabel Werewolf1;
     private javax.swing.JPanel bordgame;
     private javax.swing.JLabel btnBookGame;
     private javax.swing.JLabel btnBooking;
@@ -956,7 +501,6 @@ public class game extends javax.swing.JFrame {
     private javax.swing.JLabel btnExite;
     private javax.swing.JLabel btnLogo;
     private javax.swing.JLabel btnUser;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
     private void setMenu(boolean b, boolean b0, boolean b1, boolean b2, boolean b3) {

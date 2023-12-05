@@ -36,7 +36,7 @@ public class JPbooking extends javax.swing.JPanel {
         if (listRoom.contains(room)) {
             
         } else if ("Spyfall".equals(room)) {
-            Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/Roomicon.png"));
+            Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/spyfall.png"));
             this.icon.setIcon(icon);
         } else if ("Werewolf".equals(room)){
             Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/werewolf.png"));

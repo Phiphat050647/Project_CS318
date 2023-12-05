@@ -10,6 +10,7 @@ import bulibrary.ClassJava.ScrollBarCustom;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.net.URISyntaxException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollBar;
@@ -20,6 +21,8 @@ import java.time.LocalDate;
 import java.time.chrono.ThaiBuddhistDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,11 +43,9 @@ public class StartMenu extends javax.swing.JPanel {
         setPreferredSize(new Dimension(1536, 864)); // กำหนดขนาดของ JPanel เพื่อให้ตรงกับ Test
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         
-        scroll.setVerticalScrollBar(new ScrollBarCustom());
         ScrollBarCustom sp = new ScrollBarCustom();
         sp.setOrientation(JScrollBar.HORIZONTAL);
-        scroll.setHorizontalScrollBar(sp);
-        scroll.getViewport().setBackground(Color.WHITE);
+        
         scrollMainmenu.setVerticalScrollBar(new ScrollBarCustom());
         scrollMainmenu.setHorizontalScrollBar(sp);
         scrollMainmenu.getViewport().setBackground(Color.WHITE);
@@ -61,10 +62,15 @@ public class StartMenu extends javax.swing.JPanel {
         ScrollBComplet.setHorizontalScrollBar(sp);
         ScrollBComplet.getViewport().setBackground(Color.WHITE);
         
+        ScrollHOwtoplay.setVerticalScrollBar(new ScrollBarCustom());
+        ScrollHOwtoplay.setHorizontalScrollBar(sp);
+        ScrollHOwtoplay.getViewport().setBackground(Color.WHITE);
+        
         setMenu(false, false, false, false, true);
         opacity1.setVisible(false);
         Pbooking.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
         PbookingCompleted.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
+        jPHowtoplay.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
         setSting();
         
     }
@@ -117,6 +123,7 @@ public class StartMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel5 = new javax.swing.JPanel();
         Menubar = new javax.swing.JPanel();
         btnLogo = new javax.swing.JLabel();
         btnUser = new javax.swing.JLabel();
@@ -126,6 +133,46 @@ public class StartMenu extends javax.swing.JPanel {
         btnExite = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
         opacity1 = new javax.swing.JLabel();
+        game = new javax.swing.JPanel();
+        btnBookgame = new javax.swing.JLabel();
+        btnHowtoplay = new javax.swing.JLabel();
+        jPtoplay = new javax.swing.JPanel();
+        ScrollHOwtoplay = new javax.swing.JScrollPane();
+        jPHowtoplay = new javax.swing.JPanel();
+        btnsplendorHow = new javax.swing.JLabel();
+        btnWereHow1 = new javax.swing.JLabel();
+        btnSpyHow = new javax.swing.JLabel();
+        btnDuckHow = new javax.swing.JLabel();
+        btnBossHow = new javax.swing.JLabel();
+        btnUnoHow = new javax.swing.JLabel();
+        btnCatHow = new javax.swing.JLabel();
+        btnSalemHow = new javax.swing.JLabel();
+        jPbookgame = new javax.swing.JPanel();
+        CheckSpyfall = new javax.swing.JLabel();
+        CheckSalem = new javax.swing.JLabel();
+        CheckWerewolf = new javax.swing.JLabel();
+        CheckDuck = new javax.swing.JLabel();
+        CheckBoos = new javax.swing.JLabel();
+        Uno = new javax.swing.JLabel();
+        CheckKitten = new javax.swing.JLabel();
+        CheckSalendor = new javax.swing.JLabel();
+        btnspyfall = new javax.swing.JLabel();
+        btnwerewolf = new javax.swing.JLabel();
+        btnUno = new javax.swing.JLabel();
+        btnExploding = new javax.swing.JLabel();
+        btnsalem = new javax.swing.JLabel();
+        btnboss = new javax.swing.JLabel();
+        btnSittingDuck = new javax.swing.JLabel();
+        btnSplendor = new javax.swing.JLabel();
+        salem = new javax.swing.JLabel();
+        spyfall = new javax.swing.JLabel();
+        werewolf = new javax.swing.JLabel();
+        uno = new javax.swing.JLabel();
+        exploding = new javax.swing.JLabel();
+        theboox = new javax.swing.JLabel();
+        Duck = new javax.swing.JLabel();
+        splendor = new javax.swing.JLabel();
+        bgRoom2 = new javax.swing.JLabel();
         Booking = new javax.swing.JPanel();
         ScrollBActvie = new javax.swing.JScrollPane();
         Pbooking = new javax.swing.JPanel();
@@ -175,12 +222,17 @@ public class StartMenu extends javax.swing.JPanel {
         txtPhone = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JLabel();
         Bg = new javax.swing.JLabel();
-        game = new javax.swing.JPanel();
-        scroll = new javax.swing.JScrollPane();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        bg = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -292,6 +344,364 @@ public class StartMenu extends javax.swing.JPanel {
         opacity1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/opacity.png"))); // NOI18N
         opacity1.setText("jLabel4");
         add(opacity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -18, 1540, 900));
+
+        game.setBackground(new java.awt.Color(236, 248, 255));
+        game.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnBookgame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/bgame.png"))); // NOI18N
+        btnBookgame.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBookgame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBookgameMouseClicked(evt);
+            }
+        });
+        game.add(btnBookgame, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 57, -1, -1));
+
+        btnHowtoplay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/egame.png"))); // NOI18N
+        btnHowtoplay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHowtoplay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHowtoplayMouseClicked(evt);
+            }
+        });
+        game.add(btnHowtoplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 58, -1, -1));
+
+        jPtoplay.setBackground(new java.awt.Color(255, 255, 255));
+        jPtoplay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ScrollHOwtoplay.setBackground(new java.awt.Color(255, 255, 255));
+        ScrollHOwtoplay.setBorder(null);
+        ScrollHOwtoplay.setOpaque(false);
+
+        jPHowtoplay.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPHowtoplayLayout = new javax.swing.GroupLayout(jPHowtoplay);
+        jPHowtoplay.setLayout(jPHowtoplayLayout);
+        jPHowtoplayLayout.setHorizontalGroup(
+            jPHowtoplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1080, Short.MAX_VALUE)
+        );
+        jPHowtoplayLayout.setVerticalGroup(
+            jPHowtoplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 770, Short.MAX_VALUE)
+        );
+
+        ScrollHOwtoplay.setViewportView(jPHowtoplay);
+
+        jPtoplay.add(ScrollHOwtoplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 10, 1050, 770));
+
+        btnsplendorHow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/wereEn.png"))); // NOI18N
+        btnsplendorHow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnsplendorHow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnsplendorHowMouseClicked(evt);
+            }
+        });
+        jPtoplay.add(btnsplendorHow, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 85, -1, -1));
+
+        btnWereHow1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/wereEn.png"))); // NOI18N
+        btnWereHow1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnWereHow1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnWereHow1MouseClicked(evt);
+            }
+        });
+        jPtoplay.add(btnWereHow1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        btnSpyHow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/wereEn.png"))); // NOI18N
+        btnSpyHow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSpyHow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSpyHowMouseClicked(evt);
+            }
+        });
+        jPtoplay.add(btnSpyHow, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+
+        btnDuckHow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/wereEn.png"))); // NOI18N
+        btnDuckHow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDuckHow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDuckHowMouseClicked(evt);
+            }
+        });
+        jPtoplay.add(btnDuckHow, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 195, -1, -1));
+
+        btnBossHow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/wereEn.png"))); // NOI18N
+        btnBossHow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBossHow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBossHowMouseClicked(evt);
+            }
+        });
+        jPtoplay.add(btnBossHow, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+
+        btnUnoHow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/wereEn.png"))); // NOI18N
+        btnUnoHow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUnoHow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUnoHowMouseClicked(evt);
+            }
+        });
+        jPtoplay.add(btnUnoHow, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 305, -1, -1));
+
+        btnCatHow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/wereEn.png"))); // NOI18N
+        btnCatHow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCatHow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCatHowMouseClicked(evt);
+            }
+        });
+        jPtoplay.add(btnCatHow, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
+
+        btnSalemHow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/wereEn.png"))); // NOI18N
+        btnSalemHow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalemHow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalemHowMouseClicked(evt);
+            }
+        });
+        jPtoplay.add(btnSalemHow, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 415, -1, -1));
+
+        game.add(jPtoplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1170, 770));
+
+        jPbookgame.setBackground(new java.awt.Color(255, 255, 255));
+        jPbookgame.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CheckSpyfall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Statusgame.png"))); // NOI18N
+        CheckSpyfall.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CheckSpyfall.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckSpyfallMouseClicked(evt);
+            }
+        });
+        jPbookgame.add(CheckSpyfall, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 300, -1, 30));
+
+        CheckSalem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Statusgame.png"))); // NOI18N
+        CheckSalem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CheckSalem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckSalemMouseClicked(evt);
+            }
+        });
+        jPbookgame.add(CheckSalem, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 620, -1, 30));
+
+        CheckWerewolf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Statusgame.png"))); // NOI18N
+        CheckWerewolf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CheckWerewolf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckWerewolfMouseClicked(evt);
+            }
+        });
+        jPbookgame.add(CheckWerewolf, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 300, -1, 30));
+
+        CheckDuck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Statusgame.png"))); // NOI18N
+        CheckDuck.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CheckDuck.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckDuckMouseClicked(evt);
+            }
+        });
+        jPbookgame.add(CheckDuck, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 620, -1, 30));
+
+        CheckBoos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Statusgame.png"))); // NOI18N
+        CheckBoos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CheckBoos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckBoosMouseClicked(evt);
+            }
+        });
+        jPbookgame.add(CheckBoos, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 620, -1, 30));
+
+        Uno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Statusgame.png"))); // NOI18N
+        Uno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Uno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UnoMouseClicked(evt);
+            }
+        });
+        jPbookgame.add(Uno, new org.netbeans.lib.awtextra.AbsoluteConstraints(743, 300, -1, 30));
+
+        CheckKitten.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Statusgame.png"))); // NOI18N
+        CheckKitten.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CheckKitten.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckKittenMouseClicked(evt);
+            }
+        });
+        jPbookgame.add(CheckKitten, new org.netbeans.lib.awtextra.AbsoluteConstraints(1032, 300, -1, 30));
+
+        CheckSalendor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Statusgame.png"))); // NOI18N
+        CheckSalendor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CheckSalendor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckSalendorMouseClicked(evt);
+            }
+        });
+        jPbookgame.add(CheckSalendor, new org.netbeans.lib.awtextra.AbsoluteConstraints(1032, 620, -1, 30));
+
+        btnspyfall.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnspyfall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        btnspyfall.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnspyfall.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnspyfall.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnspyfallMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnspyfallMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnspyfallMouseExited(evt);
+            }
+        });
+        jPbookgame.add(btnspyfall, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 300, 80, -1));
+
+        btnwerewolf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnwerewolf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        btnwerewolf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnwerewolf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnwerewolfMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnwerewolfMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnwerewolfMouseExited(evt);
+            }
+        });
+        jPbookgame.add(btnwerewolf, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 300, 80, -1));
+
+        btnUno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnUno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        btnUno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUnoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnUnoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnUnoMouseExited(evt);
+            }
+        });
+        jPbookgame.add(btnUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(663, 300, 80, -1));
+
+        btnExploding.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnExploding.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        btnExploding.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExploding.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExplodingMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnExplodingMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExplodingMouseExited(evt);
+            }
+        });
+        jPbookgame.add(btnExploding, new org.netbeans.lib.awtextra.AbsoluteConstraints(952, 300, 80, -1));
+
+        btnsalem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnsalem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        btnsalem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnsalem.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnsalem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnsalemMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnsalemMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnsalemMouseExited(evt);
+            }
+        });
+        jPbookgame.add(btnsalem, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 620, 80, -1));
+
+        btnboss.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnboss.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        btnboss.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnboss.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnboss.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnbossMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnbossMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnbossMouseExited(evt);
+            }
+        });
+        jPbookgame.add(btnboss, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 620, 80, -1));
+
+        btnSittingDuck.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSittingDuck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        btnSittingDuck.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSittingDuck.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSittingDuck.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSittingDuckMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSittingDuckMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSittingDuckMouseExited(evt);
+            }
+        });
+        jPbookgame.add(btnSittingDuck, new org.netbeans.lib.awtextra.AbsoluteConstraints(663, 620, 80, -1));
+
+        btnSplendor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSplendor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ButtonSeleetBoardgame.png"))); // NOI18N
+        btnSplendor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSplendor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSplendor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSplendorMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSplendorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSplendorMouseExited(evt);
+            }
+        });
+        jPbookgame.add(btnSplendor, new org.netbeans.lib.awtextra.AbsoluteConstraints(952, 620, 80, -1));
+
+        salem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/Salem.png"))); // NOI18N
+        jPbookgame.add(salem, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, -1, -1));
+
+        spyfall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/spyfall.png"))); // NOI18N
+        jPbookgame.add(spyfall, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
+        werewolf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/Werewolf.png"))); // NOI18N
+        jPbookgame.add(werewolf, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, -1, -1));
+
+        uno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/UNO.png"))); // NOI18N
+        jPbookgame.add(uno, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, -1, -1));
+
+        exploding.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/ExplodingKittens.png"))); // NOI18N
+        jPbookgame.add(exploding, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 90, -1, -1));
+
+        theboox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/TheBoss.png"))); // NOI18N
+        jPbookgame.add(theboox, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, 240));
+
+        Duck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/SittingDuckGallery.png"))); // NOI18N
+        jPbookgame.add(Duck, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, -1, 240));
+
+        splendor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/bordgame/Splendor.png"))); // NOI18N
+        jPbookgame.add(splendor, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 400, -1, 240));
+
+        game.add(jPbookgame, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1170, 770));
+
+        bgRoom2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Room/bg.png"))); // NOI18N
+        game.add(bgRoom2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+
+        add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 890));
 
         Booking.setBackground(new java.awt.Color(236, 248, 255));
         Booking.setPreferredSize(new java.awt.Dimension(1260, 880));
@@ -589,7 +999,7 @@ public class StartMenu extends javax.swing.JPanel {
         scrollMainmenu.setAutoscrolls(true);
         scrollMainmenu.setColumnHeaderView(null);
         scrollMainmenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scrollMainmenu.setNextFocusableComponent(jPanel4);
+        scrollMainmenu.setNextFocusableComponent(jPbookgame);
         scrollMainmenu.setOpaque(false);
         scrollMainmenu.setViewportView(btnUpdate);
 
@@ -759,44 +1169,6 @@ public class StartMenu extends javax.swing.JPanel {
         );
 
         add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1280, 870));
-
-        game.setBackground(new java.awt.Color(236, 248, 255));
-        game.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        scroll.setBackground(new java.awt.Color(255, 255, 255));
-        scroll.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        scroll.setForeground(new java.awt.Color(255, 255, 255));
-        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scroll.setToolTipText("");
-        scroll.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        scroll.setAlignmentX(10.0F);
-        scroll.setAlignmentY(10.0F);
-        scroll.setAutoscrolls(true);
-        scroll.setColumnHeaderView(null);
-        scroll.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scroll.setNextFocusableComponent(jPanel4);
-        scroll.setOpaque(false);
-        scroll.setViewportView(btnUpdate);
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPanel4.setOpaque(false);
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setText("Kuy");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1220, 90, 60));
-
-        jLabel3.setText("Kuy");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 60));
-
-        scroll.setViewportView(jPanel4);
-
-        game.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 1170, 750));
-
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/Bgscroll.png"))); // NOI18N
-        game.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1230, 810));
-
-        add(game, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, -8, 1280, 890));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserMouseEntered
@@ -967,19 +1339,25 @@ public class StartMenu extends javax.swing.JPanel {
         btnBooking.setIcon(iconbook);
         
     }//GEN-LAST:event_btnBookroomMouseClicked
-//
+
     private void btnBookGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookGameMouseClicked
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGameEn.png"));
         btnBookGame.setIcon(icon);
         setMenu(false,true,false,false,false);
-        
+        Icon Acc = new ImageIcon(getClass().getResource("/bulibrary/image/booking/bgameEn.png"));
+        btnBookgame.setIcon(Acc);
         Icon iconuser = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/User.png"));
         Icon iconbook = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBooking.png"));
         Icon iconroom = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking room.png"));
-       
         btnUser.setIcon(iconuser);
         btnBooking.setIcon(iconbook);
         btnBookroom.setIcon(iconroom);
+        
+        setjPboardgame(true, false);
+        Icon iconB = new ImageIcon(getClass().getResource("/bulibrary/image/booking/bgameEn.png"));
+        btnBookgame.setIcon(iconB);
+        Icon toplay = new ImageIcon(getClass().getResource("/bulibrary/image/booking/egame.png"));
+        btnHowtoplay.setIcon(toplay);
     }//GEN-LAST:event_btnBookGameMouseClicked
 
     private void btnBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseClicked
@@ -988,7 +1366,6 @@ public class StartMenu extends javax.swing.JPanel {
         SetScroll(true, false);
         Icon active = new ImageIcon(getClass().getResource("/bulibrary/image/booking/ActiveEx.png"));
         this.active.setIcon(active);
-        
         Icon compIcon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/Completed.png"));
         this.completed.setIcon(compIcon);
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBookingEn.png"));
@@ -1438,6 +1815,533 @@ public class StartMenu extends javax.swing.JPanel {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_activeMouseClicked
+    public void setjPboardgame(boolean isBook,boolean isHow){
+        jPbookgame.setVisible(isBook);
+        jPtoplay.setVisible(isHow);
+    }
+    
+    private void btnBookgameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookgameMouseClicked
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/bgameEn.png"));
+        btnBookgame.setIcon(icon);
+        Icon toplay = new ImageIcon(getClass().getResource("/bulibrary/image/booking/egame.png"));
+        btnHowtoplay.setIcon(toplay);
+        
+        setjPboardgame(true, false);
+    }//GEN-LAST:event_btnBookgameMouseClicked
+
+    private void btnHowtoplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHowtoplayMouseClicked
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/booking/egameEn.png"));
+        btnHowtoplay.setIcon(icon);
+        Icon book = new ImageIcon(getClass().getResource("/bulibrary/image/booking/bgame.png"));
+        btnBookgame.setIcon(book);
+        setjPboardgame(false, true);
+        
+        jPHowtoplay.removeAll();
+        String game = "Spyfall" ;
+            try {
+                Component add = jPHowtoplay.add(new JPHowtoPlay(game));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        Icon were = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/wereEn.png"));
+        btnWereHow1.setIcon(were);
+        Icon splendor = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/splen.png"));
+        btnsplendorHow.setIcon(splendor);
+        Icon spy = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/spyfall.png"));
+        btnSpyHow.setIcon(spy);
+        Icon duck = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/duck.png"));
+        btnDuckHow.setIcon(duck);
+        Icon boss = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/boss.png"));
+        btnBossHow.setIcon(boss);
+        Icon uno = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/uno.png"));
+        btnUnoHow.setIcon(uno);
+        Icon cat = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/cat.png"));
+        btnCatHow.setIcon(cat);
+        Icon salem = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/salem.png"));
+        btnSalemHow.setIcon(salem);
+    }//GEN-LAST:event_btnHowtoplayMouseClicked
+
+    private void btnspyfallMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnspyfallMouseEntered
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgameEn.png"));
+        btnspyfall.setIcon(icon);
+    }//GEN-LAST:event_btnspyfallMouseEntered
+
+    private void btnspyfallMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnspyfallMouseExited
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgame.png"));
+        btnspyfall.setIcon(icon);
+    }//GEN-LAST:event_btnspyfallMouseExited
+
+    private void btnwerewolfMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnwerewolfMouseEntered
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgameEn.png"));
+        btnwerewolf.setIcon(icon);
+    }//GEN-LAST:event_btnwerewolfMouseEntered
+
+    private void btnwerewolfMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnwerewolfMouseExited
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgame.png"));
+        btnwerewolf.setIcon(icon);
+    }//GEN-LAST:event_btnwerewolfMouseExited
+
+    private void btnUnoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUnoMouseEntered
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgameEn.png"));
+        btnUno.setIcon(icon);
+    }//GEN-LAST:event_btnUnoMouseEntered
+
+    private void btnUnoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUnoMouseExited
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgame.png"));
+        btnUno.setIcon(icon);
+    }//GEN-LAST:event_btnUnoMouseExited
+
+    private void btnExplodingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExplodingMouseEntered
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgameEn.png"));
+        btnExploding.setIcon(icon);
+    }//GEN-LAST:event_btnExplodingMouseEntered
+
+    private void btnExplodingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExplodingMouseExited
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgame.png"));
+        btnExploding.setIcon(icon);
+    }//GEN-LAST:event_btnExplodingMouseExited
+
+    private void btnsalemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalemMouseEntered
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgameEn.png"));
+        btnsalem.setIcon(icon);
+    }//GEN-LAST:event_btnsalemMouseEntered
+
+    private void btnsalemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalemMouseExited
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgame.png"));
+        btnsalem.setIcon(icon);
+    }//GEN-LAST:event_btnsalemMouseExited
+
+    private void btnbossMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbossMouseEntered
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgameEn.png"));
+        btnboss.setIcon(icon);
+    }//GEN-LAST:event_btnbossMouseEntered
+
+    private void btnbossMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbossMouseExited
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgame.png"));
+        btnboss.setIcon(icon);
+    }//GEN-LAST:event_btnbossMouseExited
+
+    private void btnSittingDuckMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSittingDuckMouseEntered
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgameEn.png"));
+        btnSittingDuck.setIcon(icon);
+    }//GEN-LAST:event_btnSittingDuckMouseEntered
+
+    private void btnSittingDuckMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSittingDuckMouseExited
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgame.png"));
+        btnSittingDuck.setIcon(icon);
+    }//GEN-LAST:event_btnSittingDuckMouseExited
+
+    private void btnSplendorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSplendorMouseEntered
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgameEn.png"));
+        btnSplendor.setIcon(icon);
+    }//GEN-LAST:event_btnSplendorMouseEntered
+
+    private void btnSplendorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSplendorMouseExited
+        Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/bordgame/buttonSeleetBoardgame.png"));
+        btnSplendor.setIcon(icon);
+    }//GEN-LAST:event_btnSplendorMouseExited
+
+    private void btnspyfallMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnspyfallMouseClicked
+        opacity1.setVisible(true);
+        String room = "Spyfall";
+       
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnspyfallMouseClicked
+
+    private void btnwerewolfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnwerewolfMouseClicked
+        opacity1.setVisible(true);
+        String room = "Werewolf";
+       
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnwerewolfMouseClicked
+
+    private void btnUnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUnoMouseClicked
+        opacity1.setVisible(true);
+        String room = "UNO";
+       
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnUnoMouseClicked
+
+    private void btnExplodingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExplodingMouseClicked
+        opacity1.setVisible(true);
+        String room = "Exploding kittens";
+       
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnExplodingMouseClicked
+
+    private void btnsalemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalemMouseClicked
+        opacity1.setVisible(true);
+        String room = "Salem 1692";
+       
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnsalemMouseClicked
+
+    private void btnbossMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbossMouseClicked
+        opacity1.setVisible(true);
+        String room = "I'm The Boss";
+       
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnbossMouseClicked
+
+    private void btnSittingDuckMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSittingDuckMouseClicked
+        opacity1.setVisible(true);
+        String room = "Sitting Duck Gallery";
+       
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnSittingDuckMouseClicked
+
+    private void CheckSpyfallMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckSpyfallMouseClicked
+        opacity1.setVisible(true);
+        String room = "Spyfall";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_CheckSpyfallMouseClicked
+
+    private void CheckWerewolfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckWerewolfMouseClicked
+        opacity1.setVisible(true);
+        String room = "Werewolf";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_CheckWerewolfMouseClicked
+
+    private void UnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UnoMouseClicked
+        opacity1.setVisible(true);
+        String room = "UNO";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_UnoMouseClicked
+
+    private void CheckKittenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckKittenMouseClicked
+        opacity1.setVisible(true);
+        String room = "Exploding kittens";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_CheckKittenMouseClicked
+
+    private void CheckSalemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckSalemMouseClicked
+        opacity1.setVisible(true);
+        String room = "Salem 1692";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_CheckSalemMouseClicked
+
+    private void CheckBoosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckBoosMouseClicked
+        opacity1.setVisible(true);
+        String room = "I'm The Boss";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_CheckBoosMouseClicked
+
+    private void CheckDuckMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckDuckMouseClicked
+        opacity1.setVisible(true);
+        String room = "Sitting Duck Gallery";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_CheckDuckMouseClicked
+
+    private void CheckSalendorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckSalendorMouseClicked
+        opacity1.setVisible(true);
+        String room = "Splendor";
+        RoomStatus Droom = new RoomStatus(new javax.swing.JFrame(), true, room);
+        Droom.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_CheckSalendorMouseClicked
+
+    private void btnWereHow1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWereHow1MouseClicked
+        Icon were = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/wereEn.png"));
+        btnWereHow1.setIcon(were);
+        Icon splendor = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/splen.png"));
+        btnsplendorHow.setIcon(splendor);
+        Icon spy = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/spyfall.png"));
+        btnSpyHow.setIcon(spy);
+        Icon duck = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/duck.png"));
+        btnDuckHow.setIcon(duck);
+        Icon boss = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/boss.png"));
+        btnBossHow.setIcon(boss);
+        Icon uno = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/uno.png"));
+        btnUnoHow.setIcon(uno);
+        Icon cat = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/cat.png"));
+        btnCatHow.setIcon(cat);
+        Icon salem = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/salem.png"));
+        btnSalemHow.setIcon(salem);
+        
+        jPHowtoplay.removeAll();
+        String game = "Werewolf" ;
+            try {
+                Component add = jPHowtoplay.add(new JPHowtoPlay(game));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        jPHowtoplay.revalidate(); 
+        jPHowtoplay.repaint(); 
+        
+    }//GEN-LAST:event_btnWereHow1MouseClicked
+
+    private void btnsplendorHowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsplendorHowMouseClicked
+        Icon were = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/were.png"));
+        btnWereHow1.setIcon(were);
+        Icon splendor = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/splenEn.png"));
+        btnsplendorHow.setIcon(splendor);
+        Icon spy = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/spyfall.png"));
+        btnSpyHow.setIcon(spy);
+        Icon duck = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/duck.png"));
+        btnDuckHow.setIcon(duck);
+        Icon boss = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/boss.png"));
+        btnBossHow.setIcon(boss);
+        Icon uno = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/uno.png"));
+        btnUnoHow.setIcon(uno);
+        Icon cat = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/cat.png"));
+        btnCatHow.setIcon(cat);
+        Icon salem = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/salem.png"));
+        btnSalemHow.setIcon(salem);
+        
+        jPHowtoplay.removeAll();
+        String game = "Splendor" ;
+            try {
+                Component add = jPHowtoplay.add(new JPHowtoPlay(game));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        jPHowtoplay.revalidate(); 
+        jPHowtoplay.repaint(); 
+    }//GEN-LAST:event_btnsplendorHowMouseClicked
+
+    private void btnSpyHowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSpyHowMouseClicked
+        Icon were = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/were.png"));
+        btnWereHow1.setIcon(were);
+        Icon splendor = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/splen.png"));
+        btnsplendorHow.setIcon(splendor);
+        Icon spy = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/spyfallEn.png"));
+        btnSpyHow.setIcon(spy);
+        Icon duck = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/duck.png"));
+        btnDuckHow.setIcon(duck);
+        Icon boss = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/boss.png"));
+        btnBossHow.setIcon(boss);
+        Icon uno = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/uno.png"));
+        btnUnoHow.setIcon(uno);
+        Icon cat = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/cat.png"));
+        btnCatHow.setIcon(cat);
+        Icon salem = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/salem.png"));
+        btnSalemHow.setIcon(salem);
+        
+        jPHowtoplay.removeAll();
+        String game = "Spyfall" ;
+            try {
+                Component add = jPHowtoplay.add(new JPHowtoPlay(game));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        jPHowtoplay.revalidate(); 
+        jPHowtoplay.repaint(); 
+    }//GEN-LAST:event_btnSpyHowMouseClicked
+
+    private void btnDuckHowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDuckHowMouseClicked
+        Icon were = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/were.png"));
+        btnWereHow1.setIcon(were);
+        Icon splendor = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/splen.png"));
+        btnsplendorHow.setIcon(splendor);
+        Icon spy = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/spyfall.png"));
+        btnSpyHow.setIcon(spy);
+        Icon duck = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/duckEn.png"));
+        btnDuckHow.setIcon(duck);
+        Icon boss = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/boss.png"));
+        btnBossHow.setIcon(boss);
+        Icon uno = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/uno.png"));
+        btnUnoHow.setIcon(uno);
+        Icon cat = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/cat.png"));
+        btnCatHow.setIcon(cat);
+        Icon salem = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/salem.png"));
+        btnSalemHow.setIcon(salem);
+        
+        jPHowtoplay.removeAll();
+        String game = "Sitting Duck Gallery" ;
+            try {
+                Component add = jPHowtoplay.add(new JPHowtoPlay(game));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        jPHowtoplay.revalidate(); 
+        jPHowtoplay.repaint(); 
+    }//GEN-LAST:event_btnDuckHowMouseClicked
+
+    private void btnBossHowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBossHowMouseClicked
+        Icon were = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/were.png"));
+        btnWereHow1.setIcon(were);
+        Icon splendor = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/splen.png"));
+        btnsplendorHow.setIcon(splendor);
+        Icon spy = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/spyfall.png"));
+        btnSpyHow.setIcon(spy);
+        Icon duck = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/duck.png"));
+        btnDuckHow.setIcon(duck);
+        Icon boss = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/bossEn.png"));
+        btnBossHow.setIcon(boss);
+        Icon uno = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/uno.png"));
+        btnUnoHow.setIcon(uno);
+        Icon cat = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/cat.png"));
+        btnCatHow.setIcon(cat);
+        Icon salem = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/salem.png"));
+        btnSalemHow.setIcon(salem);
+        
+        jPHowtoplay.removeAll();
+        String game = "I'm The Boss" ;
+            try {
+                Component add = jPHowtoplay.add(new JPHowtoPlay(game));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        jPHowtoplay.revalidate(); 
+        jPHowtoplay.repaint(); 
+    }//GEN-LAST:event_btnBossHowMouseClicked
+
+    private void btnUnoHowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUnoHowMouseClicked
+        Icon were = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/were.png"));
+        btnWereHow1.setIcon(were);
+        Icon splendor = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/splen.png"));
+        btnsplendorHow.setIcon(splendor);
+        Icon spy = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/spyfall.png"));
+        btnSpyHow.setIcon(spy);
+        Icon duck = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/duck.png"));
+        btnDuckHow.setIcon(duck);
+        Icon boss = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/boss.png"));
+        btnBossHow.setIcon(boss);
+        Icon uno = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/unoEn.png"));
+        btnUnoHow.setIcon(uno);
+        Icon cat = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/cat.png"));
+        btnCatHow.setIcon(cat);
+        Icon salem = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/salem.png"));
+        btnSalemHow.setIcon(salem);
+        
+        jPHowtoplay.removeAll();
+        String game = "UNO" ;
+            try {
+                Component add = jPHowtoplay.add(new JPHowtoPlay(game));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        jPHowtoplay.revalidate(); 
+        jPHowtoplay.repaint(); 
+    }//GEN-LAST:event_btnUnoHowMouseClicked
+
+    private void btnCatHowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCatHowMouseClicked
+        Icon were = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/were.png"));
+        btnWereHow1.setIcon(were);
+        Icon splendor = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/splen.png"));
+        btnsplendorHow.setIcon(splendor);
+        Icon spy = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/spyfall.png"));
+        btnSpyHow.setIcon(spy);
+        Icon duck = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/duck.png"));
+        btnDuckHow.setIcon(duck);
+        Icon boss = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/boss.png"));
+        btnBossHow.setIcon(boss);
+        Icon uno = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/uno.png"));
+        btnUnoHow.setIcon(uno);
+        Icon cat = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/catEn.png"));
+        btnCatHow.setIcon(cat);
+        Icon salem = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/salem.png"));
+        btnSalemHow.setIcon(salem);
+        
+        jPHowtoplay.removeAll();
+        String game = "Exploding kittens" ;
+            try {
+                Component add = jPHowtoplay.add(new JPHowtoPlay(game));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        jPHowtoplay.revalidate(); 
+        jPHowtoplay.repaint(); 
+    }//GEN-LAST:event_btnCatHowMouseClicked
+
+    private void btnSalemHowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalemHowMouseClicked
+        Icon were = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/were.png"));
+        btnWereHow1.setIcon(were);
+        Icon splendor = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/splen.png"));
+        btnsplendorHow.setIcon(splendor);
+        Icon spy = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/spyfall.png"));
+        btnSpyHow.setIcon(spy);
+        Icon duck = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/duck.png"));
+        btnDuckHow.setIcon(duck);
+        Icon boss = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/boss.png"));
+        btnBossHow.setIcon(boss);
+        Icon uno = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/uno.png"));
+        btnUnoHow.setIcon(uno);
+        Icon cat = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/cat.png"));
+        btnCatHow.setIcon(cat);
+        Icon salem = new ImageIcon(getClass().getResource("/bulibrary/image/HTPicon/salemEn.png"));
+        btnSalemHow.setIcon(salem);
+        
+        jPHowtoplay.removeAll();
+        String game = "Salem 1692" ;
+            try {
+                Component add = jPHowtoplay.add(new JPHowtoPlay(game));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        jPHowtoplay.revalidate(); 
+        jPHowtoplay.repaint(); 
+    }//GEN-LAST:event_btnSalemHowMouseClicked
+
+    private void btnSplendorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSplendorMouseClicked
+        opacity1.setVisible(true);
+        String room = "Splendor";
+       
+        String email = UserData.getInstane().getEmail();
+        String id = UserData.getInstane().getStudentId();
+        String user = UserData.getInstane().getUser();
+        
+        BookingRoom book = new BookingRoom(new javax.swing.JFrame(), true,room,user,id,email);
+        book.setVisible(true);
+        opacity1.setVisible(false);
+    }//GEN-LAST:event_btnSplendorMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1446,21 +2350,33 @@ public class StartMenu extends javax.swing.JPanel {
     private javax.swing.JLabel Bg;
     private javax.swing.JLabel Bgmain;
     private javax.swing.JPanel Booking;
+    private javax.swing.JLabel CheckBoos;
+    private javax.swing.JLabel CheckDuck;
+    private javax.swing.JLabel CheckKitten;
+    private javax.swing.JLabel CheckSalem;
+    private javax.swing.JLabel CheckSalendor;
+    private javax.swing.JLabel CheckSpyfall;
+    private javax.swing.JLabel CheckWerewolf;
+    private javax.swing.JLabel Duck;
     private javax.swing.JPanel Menubar;
     private javax.swing.JPanel Pbooking;
     private javax.swing.JPanel PbookingCompleted;
     private javax.swing.JPanel Room;
     private javax.swing.JScrollPane ScrollBActvie;
     private javax.swing.JScrollPane ScrollBComplet;
+    private javax.swing.JScrollPane ScrollHOwtoplay;
     private javax.swing.JScrollPane ScrollRoom;
+    private javax.swing.JLabel Uno;
     private javax.swing.JPanel User;
     private javax.swing.JLabel active;
-    private javax.swing.JLabel bg;
     private javax.swing.JLabel bgRoom;
     private javax.swing.JLabel bgRoom1;
+    private javax.swing.JLabel bgRoom2;
     private javax.swing.JLabel btnBookGame;
+    private javax.swing.JLabel btnBookgame;
     private javax.swing.JLabel btnBooking;
     private javax.swing.JLabel btnBookroom;
+    private javax.swing.JLabel btnBossHow;
     private javax.swing.JLabel btnC1;
     private javax.swing.JLabel btnC10;
     private javax.swing.JLabel btnC2;
@@ -1471,7 +2387,11 @@ public class StartMenu extends javax.swing.JPanel {
     private javax.swing.JLabel btnC7;
     private javax.swing.JLabel btnC8;
     private javax.swing.JLabel btnC9;
+    private javax.swing.JLabel btnCatHow;
+    private javax.swing.JLabel btnDuckHow;
     private javax.swing.JLabel btnExite;
+    private javax.swing.JLabel btnExploding;
+    private javax.swing.JLabel btnHowtoplay;
     private javax.swing.JLabel btnLogo;
     private javax.swing.JLabel btnR1;
     private javax.swing.JLabel btnR10;
@@ -1483,27 +2403,46 @@ public class StartMenu extends javax.swing.JPanel {
     private javax.swing.JLabel btnR7;
     private javax.swing.JLabel btnR8;
     private javax.swing.JLabel btnR9;
+    private javax.swing.JLabel btnSalemHow;
+    private javax.swing.JLabel btnSittingDuck;
+    private javax.swing.JLabel btnSplendor;
+    private javax.swing.JLabel btnSpyHow;
+    private javax.swing.JLabel btnUno;
+    private javax.swing.JLabel btnUnoHow;
     private javax.swing.JLabel btnUpdate;
     private javax.swing.JLabel btnUser;
+    private javax.swing.JLabel btnWereHow1;
+    private javax.swing.JLabel btnboss;
+    private javax.swing.JLabel btnsalem;
+    private javax.swing.JLabel btnsplendorHow;
+    private javax.swing.JLabel btnspyfall;
+    private javax.swing.JLabel btnwerewolf;
     private javax.swing.JLabel completed;
+    private javax.swing.JLabel exploding;
     private javax.swing.JPanel game;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPHowtoplay;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPbookgame;
+    private javax.swing.JPanel jPtoplay;
     private javax.swing.JPanel mainmenu;
     private javax.swing.JLabel opacity1;
-    private javax.swing.JScrollPane scroll;
+    private javax.swing.JLabel salem;
     private javax.swing.JScrollPane scrollMainmenu;
+    private javax.swing.JLabel splendor;
+    private javax.swing.JLabel spyfall;
+    private javax.swing.JLabel theboox;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFname;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtlname;
+    private javax.swing.JLabel uno;
+    private javax.swing.JLabel werewolf;
     // End of variables declaration//GEN-END:variables
 }

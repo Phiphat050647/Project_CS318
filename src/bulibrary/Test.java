@@ -3,7 +3,10 @@ package bulibrary;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.net.URISyntaxException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -12,7 +15,7 @@ import javax.swing.JPanel;
 public class Test extends javax.swing.JFrame {
 
 
-    public Test() {
+    public Test() throws URISyntaxException {
         setUndecorated(true);
         initComponents();
         setPreferredSize(new Dimension(1536, 864)); // กำหนดขนาด JFrame เป็น 800x600 pixels
@@ -20,8 +23,9 @@ public class Test extends javax.swing.JFrame {
 
         Container c = getContentPane();
         c.removeAll();
-        startMenu1.setVisible(true);
-        c.add(startMenu1);
+        String game = "Spyfall" ;
+        JPHowtoPlay how = new JPHowtoPlay(game);
+        c.add(how);
         pack();
         
     }
@@ -30,21 +34,17 @@ public class Test extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        startMenu1 = new bulibrary.StartMenu();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(startMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 1536, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(startMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 864, Short.MAX_VALUE)
         );
 
         pack();
@@ -55,12 +55,15 @@ public class Test extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Test().setVisible(true);
+                try {
+                    new Test().setVisible(true);
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private bulibrary.StartMenu startMenu1;
     // End of variables declaration//GEN-END:variables
 }

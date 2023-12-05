@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 public class JPbookComplet extends javax.swing.JPanel {
 
     private Component Pbooking;
+    
     public JPbookComplet(String user,String id,String stime,String etime,String room,String date,Component Pbooking) {
         initComponents();
         nameBook.setText(room);

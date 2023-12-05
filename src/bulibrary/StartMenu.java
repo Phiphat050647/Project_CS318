@@ -33,7 +33,7 @@ public class StartMenu extends javax.swing.JPanel {
         private String phoneNumber;
         private String password;
         private static StartMenu instance = null;
-
+        
         
     public StartMenu() {
         initComponents();
@@ -65,6 +65,8 @@ public class StartMenu extends javax.swing.JPanel {
         opacity1.setVisible(false);
         Pbooking.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
         PbookingCompleted.setLayout(new MigLayout("inset 0, fillx, wrap", "[fill]"));
+        setSting();
+        
     }
     
     public static StartMenu getInstane(){
@@ -73,7 +75,24 @@ public class StartMenu extends javax.swing.JPanel {
         }
         return instance;
     }
-    
+    public void setSting(){
+        txtEmail.setText(UserData.getInstane().getEmail());
+        txtFname.setText(UserData.getInstane().getFirstName());
+        txtlname.setText(UserData.getInstane().getLastName());
+        txtID.setText(UserData.getInstane().getStudentId());
+        txtPhone.setText(UserData.getInstane().getPhoneNumber());
+        txtPass.setText(UserData.getInstane().getPassword());
+        setData();
+    }
+    public  void setData(){
+        this.firstName = UserData.getInstane().getFirstName();
+        this.lastName = UserData.getInstane().getLastName();
+        this.studentId = UserData.getInstane().getStudentId();
+        this.email = UserData.getInstane().getEmail();
+        this.phoneNumber = UserData.getInstane().getPhoneNumber();
+        this.password = UserData.getInstane().getPassword();
+        
+    }
     public void setScroll(boolean isActive,boolean isCompleted){
         ScrollBActvie.setVisible(false);
     }
@@ -81,23 +100,6 @@ public class StartMenu extends javax.swing.JPanel {
     public void setvisible(boolean isSet){
         setVisible(isSet);
     }
-    public void setString(UserData user){
-        firstName = user.getFirstName();
-        lastName = user.getLastName();
-        email = user.getEmail();
-        studentId = user.getStudentId();
-        phoneNumber = user.getPhoneNumber();
-        password = user.getPassword();
-        setTxtProfile();
-    }
-    public void setTxtProfile(){
-        txtFname.setText(firstName);
-        txtlname.setText(lastName);
-        txtEmail.setText(email);
-        txtID.setText(studentId);
-        txtPhone.setText(phoneNumber);
-        txtPass.setText(password);
-   }
     public  void setMenu(boolean isUser,boolean isGmae,boolean isRoom,boolean isbooking,boolean ismain){
         User.setVisible(isUser);
         game.setVisible(isGmae);
@@ -315,7 +317,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         ScrollBActvie.setViewportView(Pbooking);
 
-        Booking.add(ScrollBActvie, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1170, 780));
+        Booking.add(ScrollBActvie, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1170, 760));
 
         ScrollBComplet.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         ScrollBComplet.setAutoscrolls(true);
@@ -337,7 +339,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         ScrollBComplet.setViewportView(PbookingCompleted);
 
-        Booking.add(ScrollBComplet, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1170, 780));
+        Booking.add(ScrollBComplet, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1170, 760));
 
         active.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bulibrary/image/booking/Active.png"))); // NOI18N
         active.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -934,16 +936,21 @@ public class StartMenu extends javax.swing.JPanel {
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/UserEn.png"));
         btnUser.setIcon(icon);
         setMenu(true,false,false,false,false);
-        
-        
         Icon icongame = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/BookingGame.png"));
         Icon iconbook = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/LIstBooking.png"));
         Icon iconroom = new ImageIcon(getClass().getResource("/bulibrary/image/Iconmenubar/booking room.png"));
-        
+          
         btnBookGame.setIcon(icongame);
         btnBooking.setIcon(iconbook);
         btnBookroom.setIcon(iconroom);
-
+        // อัพเดธข้อมูล
+        txtEmail.setText(UserData.getInstane().getEmail());
+        txtFname.setText(UserData.getInstane().getFirstName());
+        txtlname.setText(UserData.getInstane().getLastName());
+        txtID.setText(UserData.getInstane().getStudentId());
+        txtPhone.setText(UserData.getInstane().getPhoneNumber());
+        txtPass.setText(UserData.getInstane().getPassword());
+        
     }//GEN-LAST:event_btnUserMouseClicked
 
     private void btnBookroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookroomMouseClicked
@@ -977,6 +984,7 @@ public class StartMenu extends javax.swing.JPanel {
 
     private void btnBookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingMouseClicked
         Pbooking.removeAll(); 
+        setSting();
         SetScroll(true, false);
         Icon active = new ImageIcon(getClass().getResource("/bulibrary/image/booking/ActiveEx.png"));
         this.active.setIcon(active);
@@ -1105,15 +1113,12 @@ public class StartMenu extends javax.swing.JPanel {
                 user.setPhoneNumber(txtPhone.getText());
                 user.setStudentId(txtID.getText());
                 user.setPassword(txtPass.getText());
-                
-                setString(user);
                  String warning = "Are you confirm ChangeProfile";
-                DialogUpdate dialog = new DialogUpdate(new javax.swing.JFrame(), true, user,warning,email);
+                DialogUpdate dialog = new DialogUpdate(new javax.swing.JFrame(), true, user,warning,UserData.getInstane().getEmail());
                 dialog.setVisible(true);
                 opacity1.setVisible(false);
-                
         }
-   
+        
     }//GEN-LAST:event_btnUpdateMouseClicked
 
     private void btnExiteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExiteMouseClicked

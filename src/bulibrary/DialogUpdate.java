@@ -135,9 +135,34 @@ public class DialogUpdate extends javax.swing.JDialog {
         Icon icon = new ImageIcon(getClass().getResource("/bulibrary/image/CANCEL_EXTED.png"));
         btnCancel.setIcon(icon);
     }//GEN-LAST:event_btnCancelMouseExited
-
-    private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
+    public void ChangeDataBooking(){
+        System.out.println(emailold);
+        String user = firstName + lastName ;
         
+        String updateQuery = "UPDATE booking SET user = ?, id = ?, email = ? WHERE email = ?";
+        DBConnect conn = new DBConnect();
+
+        try {
+            PreparedStatement updateStatement = conn.prepareStatement(updateQuery);
+            updateStatement.setString(1, user);
+            updateStatement.setString(2, studentId);
+            updateStatement.setString(3, email);
+            updateStatement.setString(4, emailold); // ใช้ email เดิมเป็นเงื่อนไขในการอัปเดต
+
+            int rowsUpdated = updateStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("ข้อมูลถูกอัปเดตเรียบร้อยแล้ว");
+            } else {
+                System.out.println("ไม่พบข้อมูลที่ต้องการอัปเดต");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+    private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
+
         String updateQuery = "UPDATE user SET fname=?, lname=?,Email=?,studentid=? ,phone=?, password=? WHERE Email=?";
         DBConnect conn = new DBConnect();
         ResultSet rs = null;
@@ -168,8 +193,7 @@ public class DialogUpdate extends javax.swing.JDialog {
                 user.setPassword(password);
                 user.setPhoneNumber(phoneNumber);
                 user.setStudentId(studentId);
-                
-                
+                ChangeDataBooking();
             } else {
                 System.out.println("No data found to update.");
             }
@@ -177,7 +201,7 @@ public class DialogUpdate extends javax.swing.JDialog {
             ex.printStackTrace();
         } finally {
         }
-
+       
     }//GEN-LAST:event_btnConfirmMouseClicked
 
     private void btnConfirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseEntered

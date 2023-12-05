@@ -788,12 +788,14 @@ public class game extends javax.swing.JFrame {
         SeleetSplwndor.setIcon(icon);
     }//GEN-LAST:event_SeleetSplwndorMouseExited
 
+<<<<<<< Updated upstream
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
-        Howtoplay howplay = new Howtoplay() ;
+        Howtoplay howplay = new Howtoplay();
         howplay.setVisible(true);
+}
     }//GEN-LAST:event_jLabel1MouseClicked
-
+=======
     private void Buttonbordgame1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buttonbordgame1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_Buttonbordgame1MouseEntered
@@ -865,6 +867,7 @@ public class game extends javax.swing.JFrame {
     private void SeleetSplwndor1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeleetSplwndor1MouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_SeleetSplwndor1MouseExited
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments

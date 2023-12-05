@@ -866,7 +866,7 @@ public class StartApp extends javax.swing.JFrame {
                     WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(), true, url, text);
                     warnmessage.setVisible(true);
                     changePanelVisibility(false, false,true);
-                    startMenu1.setString(user);
+                    startMenu1.setSting();
                 } else {
                     // คำนวณเงื่อนไขเมื่อเข้าสู่ระบบไม่สำเร็จ
                     String text = "Invalid email or password.";

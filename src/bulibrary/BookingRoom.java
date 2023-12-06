@@ -268,11 +268,11 @@ public class BookingRoom extends javax.swing.JDialog {
             String url = "/bulibrary/image/crossAnimat.png";
             WarningMessage warnmessage = new WarningMessage(new javax.swing.JFrame(),true,url,text);
             warnmessage.setVisible(true);
-            } else {
+        } else {
             String date = txtDate.getText();
             String stime = comboBoxSuggestion1.getSelectedItem().toString();
             String etime = comboBoxSuggestion2.getSelectedItem().toString();
-
+        
             String insertQuery = "INSERT INTO booking (user, porpose, id, room, date, stime, etime,email) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
 
             DBConnect conn = new DBConnect();

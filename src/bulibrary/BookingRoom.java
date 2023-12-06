@@ -156,7 +156,19 @@ public class BookingRoom extends javax.swing.JDialog {
             } else {
                 
             }
-
+        } else if (selectedDate.isBefore(Thaidatenow)){
+                comboBoxSuggestion1.removeItem("08:30"); 
+                comboBoxSuggestion1.removeItem("10:00");
+                comboBoxSuggestion1.removeItem("12:00");
+                comboBoxSuggestion1.removeItem("14:00");
+                comboBoxSuggestion1.removeItem("16:00");
+                comboBoxSuggestion1.removeItem("18:00");
+                comboBoxSuggestion2.removeItem("10:00");
+                comboBoxSuggestion2.removeItem("12:00");
+                comboBoxSuggestion2.removeItem("14:00");
+                comboBoxSuggestion2.removeItem("16:00");
+                comboBoxSuggestion2.removeItem("18:00");
+                comboBoxSuggestion2.removeItem("20:00");
         }
         }
     @SuppressWarnings("unchecked")

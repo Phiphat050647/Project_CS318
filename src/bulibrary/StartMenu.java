@@ -18,6 +18,7 @@ import net.miginfocom.swing.MigLayout;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.chrono.ThaiBuddhistDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -1405,13 +1406,23 @@ public class StartMenu extends javax.swing.JPanel {
                     
                     
                     if (dateFromDB.isAfter(LocalDate.parse(lastDate, ThaiFormatter)) || dateFromDB.isEqual(LocalDate.parse(lastDate, ThaiFormatter))) {
-                        System.out.println(dateFromDB);
-                        System.out.println(lastDate);
-
-                        // กระทำเมื่อ dateFromDB อยู่ในอนาคต
-                        String user = firstName + lastName;
-                        Component panel = Pbooking;
-                        Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime, room, date, panel));
+                        LocalTime now = LocalTime.now();
+                        LocalTime time1 = LocalTime.parse(endTime, DateTimeFormatter.ofPattern("HH:mm"));
+                        
+                        System.out.println(time1);
+                        System.out.println(now);
+                        
+                        if (dateFromDB.isEqual(LocalDate.parse(lastDate, ThaiFormatter))) {
+                            if (now.isBefore(time1)) {
+                                String user = firstName + lastName;
+                                Component panel = Pbooking;
+                                Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime, room, date, panel));
+                            }  
+                        } else {
+                                String user = firstName + lastName;
+                                Component panel = Pbooking;
+                                Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime, room, date, panel));
+                        }
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -1743,15 +1754,29 @@ public class StartMenu extends javax.swing.JPanel {
                     String lastDate = thaiBuddhistDate.toString().substring(thaiBuddhistDate.toString().length() - 10);
                     
                     
-                    if (dateFromDB.isBefore(LocalDate.parse(lastDate, ThaiFormatter))) {
-                        System.out.println(dateFromDB);
-                        System.out.println(lastDate);
-
-                        // กระทำเมื่อ dateFromDB อยู่ในอดีต
-                        String user = firstName + lastName;
-                        Component panel = Pbooking;
-                        Component add = PbookingCompleted.add(new JPbookComplet(user, studentId, startTime, endTime, room, date, panel));
-                    }
+                    if (dateFromDB.isBefore(LocalDate.parse(lastDate, ThaiFormatter)) || (dateFromDB.isEqual(LocalDate.parse(lastDate, ThaiFormatter)))) {
+                        LocalTime now = LocalTime.now();
+                        LocalTime time1 = LocalTime.parse(endTime, DateTimeFormatter.ofPattern("HH:mm"));
+                        System.out.println(now);
+                        System.out.println(time1);
+                        if  (dateFromDB.isEqual(LocalDate.parse(lastDate, ThaiFormatter))) {
+                            System.out.println("เข้ามาแล้ว");
+                            if (now.isAfter(time1)) {
+                                System.out.println("Print");
+                                String user = firstName + lastName;
+                                Component panel = Pbooking;
+                                Component add = PbookingCompleted.add(new JPbookComplet(user, studentId, startTime, endTime, room, date, panel));
+                            } else {
+                                System.out.println("No");
+                            } 
+                        } else {
+                                String user = firstName + lastName;
+                                Component panel = Pbooking;
+                                Component add = PbookingCompleted.add(new JPbookComplet(user, studentId, startTime, endTime, room, date, panel));
+                            }
+                        }
+                     
+                            
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -1798,13 +1823,23 @@ public class StartMenu extends javax.swing.JPanel {
                     
                     
                     if (dateFromDB.isAfter(LocalDate.parse(lastDate, ThaiFormatter)) || dateFromDB.isEqual(LocalDate.parse(lastDate, ThaiFormatter))) {
-                        System.out.println(dateFromDB);
-                        System.out.println(lastDate);
-
-                        // กระทำเมื่อ dateFromDB อยู่ในอนาคต
-                        String user = firstName + lastName;
-                        Component panel = Pbooking;
-                        Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime, room, date, panel));
+                        LocalTime now = LocalTime.now();
+                        LocalTime time1 = LocalTime.parse(endTime, DateTimeFormatter.ofPattern("HH:mm"));
+                        
+                        System.out.println(time1);
+                        System.out.println(now);
+                        
+                        if (dateFromDB.isEqual(LocalDate.parse(lastDate, ThaiFormatter))) {
+                            if (now.isBefore(time1)) {
+                                String user = firstName + lastName;
+                                Component panel = Pbooking;
+                                Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime, room, date, panel));
+                            }  
+                        } else {
+                                String user = firstName + lastName;
+                                Component panel = Pbooking;
+                                Component add = Pbooking.add(new JPbooking(user, studentId, startTime, endTime, room, date, panel));
+                        }
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -1837,7 +1872,7 @@ public class StartMenu extends javax.swing.JPanel {
         setjPboardgame(false, true);
         
         jPHowtoplay.removeAll();
-        String game = "Spyfall" ;
+        String game = "Werewolf" ;
             try {
                 Component add = jPHowtoplay.add(new JPHowtoPlay(game));
             } catch (URISyntaxException ex) {

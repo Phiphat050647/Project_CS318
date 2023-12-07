@@ -371,6 +371,7 @@ public class BookingRoom extends javax.swing.JDialog {
         LocalDate Thaidatenow = LocalDate.parse(lastDate,ThaiFormatter);
         LocalDate selectedDate = LocalDate.parse(date, formatter);
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        
         LocalTime selectedStartTime = LocalTime.parse(stime.replace(".", ":"), timeFormatter);
         LocalTime selectedEndTime = LocalTime.parse(etime.replace(".", ":"), timeFormatter);
 
@@ -388,13 +389,15 @@ public class BookingRoom extends javax.swing.JDialog {
             System.out.println(selectedEndTime);
             System.out.println(currentTime);
             ErrorMessage.setText("Start time must be before end time.");
-            
+        } else if (selectedStartTime.equals(selectedEndTime))  {
+            System.out.println(selectedStartTime);
+            System.out.println(selectedEndTime);
+            System.out.println(currentTime);
+            ErrorMessage.setText("Start time must be equal end time.");
         } else if (selectedDate.isAfter(Thaidatenow) || (selectedDate.isEqual(Thaidatenow))) {
-
-            if (selectedStartTime.isAfter(currentTime)) {
                 String insertQuery = "INSERT INTO booking (user, porpose, id, room, date, stime, etime,email) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
-
                 DBConnect conn = new DBConnect();
+                
                 try {
                     PreparedStatement statement = conn.prepareStatement(insertQuery);
                     statement.setString(1, txtUser.getText());
@@ -417,19 +420,14 @@ public class BookingRoom extends javax.swing.JDialog {
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                }  
-            } else {
-                ErrorMessage.setText("This time period cannot be reserved.");
-            }
-            
+                }    
         } else {
             ErrorMessage.setText("Start time and date must be before end time.");
             System.out.println(selectedStartTime);
             System.out.println(selectedEndTime);
             System.out.println(currentTime);
             System.out.println(Thaidatenow);
-            System.out.println(selectedDate);
-            
+            System.out.println(selectedDate);          
         }
 
     }//GEN-LAST:event_btnConfirmMouseClicked

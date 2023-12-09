@@ -12,6 +12,7 @@ import bulibrary.StartApp;
  * @author Mr.Phiphat
  */
 public class UserData {
+    
     private String firstName;
     private String lastName;
     private String email;
@@ -32,6 +33,7 @@ public class UserData {
     public String getFirstName() {
         return firstName;
     }
+    
     public String getUser(){
         return firstName + lastName ;
     }

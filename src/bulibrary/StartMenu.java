@@ -2153,7 +2153,7 @@ public class StartMenu extends javax.swing.JPanel {
         jPHowtoplay.removeAll();
         String game = "Werewolf" ;
             try {
-                Component add = jPHowtoplay.add(new JPHowtoPlay(game));
+                Component add = jPHowtoplay.add(new JPHowtoPlay(game));          
             } catch (URISyntaxException ex) {
                 Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -40,11 +40,11 @@ public class BookingRoom extends javax.swing.JDialog {
         this.email = email;
         this.room = room;
         
-        for (int i = 0; i < comboBoxSuggestion1.getItemCount(); i++) {
-            originalStartTimes.add(comboBoxSuggestion1.getItemAt(i).toString());
+        for (int i = 0; i < ComboStartTime.getItemCount(); i++) {
+            originalStartTimes.add(ComboStartTime.getItemAt(i).toString());
         }
-        for (int i = 0; i < comboBoxSuggestion2.getItemCount(); i++) {
-            originalEndTimes.add(comboBoxSuggestion2.getItemAt(i).toString());
+        for (int i = 0; i < ComboEndTime.getItemCount(); i++) {
+            originalEndTimes.add(ComboEndTime.getItemAt(i).toString());
         }
         String date = txtDate.getText();
         ArrayList<String> bookedStartTimes = new ArrayList<>();
@@ -71,13 +71,13 @@ public class BookingRoom extends javax.swing.JDialog {
             ex.printStackTrace();
         }
          for (String startTime : bookedStartTimes) {
-            comboBoxSuggestion1.removeItem(startTime);
+            ComboStartTime.removeItem(startTime);
         }
 
         for (String endTime : bookedEndTimes) {
-            comboBoxSuggestion2.removeItem(endTime);
+            ComboEndTime.removeItem(endTime);
         }
-        if (comboBoxSuggestion1.getSelectedItem() == null && comboBoxSuggestion2.getSelectedItem() == null) {
+        if (ComboStartTime.getSelectedItem() == null && ComboEndTime.getSelectedItem() == null) {
             Message.setText("The room is full.");
         } else{
             Message.setText("");
@@ -105,70 +105,70 @@ public class BookingRoom extends javax.swing.JDialog {
             LocalTime time5 = LocalTime.parse("16:00", DateTimeFormatter.ofPattern("HH:mm"));
             LocalTime time6 = LocalTime.parse("18:00", DateTimeFormatter.ofPattern("HH:mm"));
             if (now.isAfter(time6)) {
-                comboBoxSuggestion1.removeItem("08:30"); 
-                comboBoxSuggestion1.removeItem("10:00");
-                comboBoxSuggestion1.removeItem("12:00");
-                comboBoxSuggestion1.removeItem("14:00");
-                comboBoxSuggestion1.removeItem("16:00");
-                comboBoxSuggestion1.removeItem("18:00");
-                comboBoxSuggestion2.removeItem("10:00");
-                comboBoxSuggestion2.removeItem("12:00");
-                comboBoxSuggestion2.removeItem("14:00");
-                comboBoxSuggestion2.removeItem("16:00");
-                comboBoxSuggestion2.removeItem("18:00");
-                comboBoxSuggestion2.removeItem("20:00");
+                ComboStartTime.removeItem("08:30"); 
+                ComboStartTime.removeItem("10:00");
+                ComboStartTime.removeItem("12:00");
+                ComboStartTime.removeItem("14:00");
+                ComboStartTime.removeItem("16:00");
+                ComboStartTime.removeItem("18:00");
+                ComboEndTime.removeItem("10:00");
+                ComboEndTime.removeItem("12:00");
+                ComboEndTime.removeItem("14:00");
+                ComboEndTime.removeItem("16:00");
+                ComboEndTime.removeItem("18:00");
+                ComboEndTime.removeItem("20:00");
             } else if (now.isAfter(time5)) {
-                comboBoxSuggestion1.removeItem("08:30"); 
-                comboBoxSuggestion1.removeItem("10:00");
-                comboBoxSuggestion1.removeItem("12:00");
-                comboBoxSuggestion1.removeItem("14:00");
-                comboBoxSuggestion1.removeItem("16:00");
-                comboBoxSuggestion2.removeItem("10:00");
-                comboBoxSuggestion2.removeItem("12:00");
-                comboBoxSuggestion2.removeItem("14:00");
-                comboBoxSuggestion2.removeItem("16:00");
-                comboBoxSuggestion2.removeItem("18:00");
+                ComboStartTime.removeItem("08:30"); 
+                ComboStartTime.removeItem("10:00");
+                ComboStartTime.removeItem("12:00");
+                ComboStartTime.removeItem("14:00");
+                ComboStartTime.removeItem("16:00");
+                ComboEndTime.removeItem("10:00");
+                ComboEndTime.removeItem("12:00");
+                ComboEndTime.removeItem("14:00");
+                ComboEndTime.removeItem("16:00");
+                ComboEndTime.removeItem("18:00");
             } else if (now.isAfter(time4)) {
-                comboBoxSuggestion1.removeItem("08:30"); 
-                comboBoxSuggestion1.removeItem("10:00");
-                comboBoxSuggestion1.removeItem("12:00");
-                comboBoxSuggestion1.removeItem("14:00");
-                comboBoxSuggestion2.removeItem("10:00");
-                comboBoxSuggestion2.removeItem("12:00");
-                comboBoxSuggestion2.removeItem("14:00");
-                comboBoxSuggestion2.removeItem("16:00");
+                ComboStartTime.removeItem("08:30"); 
+                ComboStartTime.removeItem("10:00");
+                ComboStartTime.removeItem("12:00");
+                ComboStartTime.removeItem("14:00");
+                ComboEndTime.removeItem("10:00");
+                ComboEndTime.removeItem("12:00");
+                ComboEndTime.removeItem("14:00");
+                ComboEndTime.removeItem("16:00");
             } else if (now.isAfter(time3)) {
-                comboBoxSuggestion1.removeItem("08:30"); 
-                comboBoxSuggestion1.removeItem("10:00");
-                comboBoxSuggestion1.removeItem("12:00");
-                comboBoxSuggestion2.removeItem("10:00");
-                comboBoxSuggestion2.removeItem("12:00");
-                comboBoxSuggestion2.removeItem("14:00");
+                ComboStartTime.removeItem("08:30"); 
+                ComboStartTime.removeItem("10:00");
+                ComboStartTime.removeItem("12:00");
+                ComboEndTime.removeItem("10:00");
+                ComboEndTime.removeItem("12:00");
+                ComboEndTime.removeItem("14:00");
             } else if (now.isAfter(time2)) {
-                comboBoxSuggestion1.removeItem("08:30"); 
-                comboBoxSuggestion1.removeItem("10:00");
-                comboBoxSuggestion2.removeItem("10:00");
-                comboBoxSuggestion2.removeItem("12:00");
+                ComboStartTime.removeItem("08:30"); 
+                ComboStartTime.removeItem("10:00");
+                ComboEndTime.removeItem("10:00");
+                ComboEndTime.removeItem("12:00");
             } else if (now.isAfter(time1)) {
-                comboBoxSuggestion1.removeItem("08:30"); 
-                comboBoxSuggestion2.removeItem("10:00");
+                ComboStartTime.removeItem("08:30"); 
+                ComboEndTime.removeItem("10:00");
             
             } else {
                 
             }
         } else if (selectedDate.isBefore(Thaidatenow)){
-                comboBoxSuggestion1.removeItem("08:30"); 
-                comboBoxSuggestion1.removeItem("10:00");
-                comboBoxSuggestion1.removeItem("12:00");
-                comboBoxSuggestion1.removeItem("14:00");
-                comboBoxSuggestion1.removeItem("16:00");
-                comboBoxSuggestion1.removeItem("18:00");
-                comboBoxSuggestion2.removeItem("10:00");
-                comboBoxSuggestion2.removeItem("12:00");
-                comboBoxSuggestion2.removeItem("14:00");
-                comboBoxSuggestion2.removeItem("16:00");
-                comboBoxSuggestion2.removeItem("18:00");
-                comboBoxSuggestion2.removeItem("20:00");
+                ComboStartTime.removeItem("08:30"); 
+                ComboStartTime.removeItem("10:00");
+                ComboStartTime.removeItem("12:00");
+                ComboStartTime.removeItem("14:00");
+                ComboStartTime.removeItem("16:00");
+                ComboStartTime.removeItem("18:00");
+                ComboEndTime.removeItem("10:00");
+                ComboEndTime.removeItem("12:00");
+                ComboEndTime.removeItem("14:00");
+                ComboEndTime.removeItem("16:00");
+                ComboEndTime.removeItem("18:00");
+                ComboEndTime.removeItem("20:00");
         }
         }
     @SuppressWarnings("unchecked")
@@ -176,8 +176,8 @@ public class BookingRoom extends javax.swing.JDialog {
     private void initComponents() {
 
         dateChooser1 = new com.raven.datechooser.DateChooser();
-        comboBoxSuggestion1 = new bulibrary.ClassJava.ComboBoxSuggestion();
-        comboBoxSuggestion2 = new bulibrary.ClassJava.ComboBoxSuggestion();
+        ComboStartTime = new bulibrary.ClassJava.ComboBoxSuggestion();
+        ComboEndTime = new bulibrary.ClassJava.ComboBoxSuggestion();
         txtDate = new javax.swing.JTextField();
         txtId = new javax.swing.JTextField();
         txtPurpose = new javax.swing.JTextField();
@@ -195,15 +195,15 @@ public class BookingRoom extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        comboBoxSuggestion1.setBorder(null);
-        comboBoxSuggestion1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08:30", "10:00", "12:00", "14:00", "16:00", "18:00" }));
-        comboBoxSuggestion1.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        getContentPane().add(comboBoxSuggestion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 191, 160, 20));
+        ComboStartTime.setBorder(null);
+        ComboStartTime.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08:30", "10:00", "12:00", "14:00", "16:00", "18:00" }));
+        ComboStartTime.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
+        getContentPane().add(ComboStartTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 191, 160, 20));
 
-        comboBoxSuggestion2.setBorder(null);
-        comboBoxSuggestion2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10:00", "12:00", "14:00", "16:00", "18:00", "20:00" }));
-        comboBoxSuggestion2.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        getContentPane().add(comboBoxSuggestion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 193, 160, 20));
+        ComboEndTime.setBorder(null);
+        ComboEndTime.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10:00", "12:00", "14:00", "16:00", "18:00", "20:00" }));
+        ComboEndTime.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
+        getContentPane().add(ComboEndTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 193, 160, 20));
 
         txtDate.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         txtDate.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -301,13 +301,13 @@ public class BookingRoom extends javax.swing.JDialog {
 
     private void icondateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icondateMouseClicked
         dateChooser1.showPopup();
-        comboBoxSuggestion1.removeAllItems();
-        comboBoxSuggestion2.removeAllItems();
+        ComboStartTime.removeAllItems();
+        ComboEndTime.removeAllItems();
         for (String startTime : originalStartTimes) {
-            comboBoxSuggestion1.addItem(startTime);
+            ComboStartTime.addItem(startTime);
         }
         for (String endTime : originalEndTimes) {
-            comboBoxSuggestion2.addItem(endTime);
+            ComboEndTime.addItem(endTime);
         }
         
         String date = txtDate.getText();
@@ -336,14 +336,14 @@ public class BookingRoom extends javax.swing.JDialog {
         }
         
         for (String startTime : bookedStartTimes) {
-            comboBoxSuggestion1.removeItem(startTime);
+            ComboStartTime.removeItem(startTime);
         }
 
         for (String endTime : bookedEndTimes) {
-            comboBoxSuggestion2.removeItem(endTime);
+            ComboEndTime.removeItem(endTime);
         }
         
-        if (comboBoxSuggestion1.getSelectedItem() == null && comboBoxSuggestion2.getSelectedItem() == null) {
+        if (ComboStartTime.getSelectedItem() == null && ComboEndTime.getSelectedItem() == null) {
             Message.setText("The room is full.");
         } else{
             Message.setText("");
@@ -355,8 +355,8 @@ public class BookingRoom extends javax.swing.JDialog {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
-        String stime = comboBoxSuggestion1.getSelectedItem().toString();
-        String etime = comboBoxSuggestion2.getSelectedItem().toString();
+        String stime = ComboStartTime.getSelectedItem().toString();
+        String etime = ComboEndTime.getSelectedItem().toString();
         String date = txtDate.getText();
         
         // เวลาปัจจุบัน
@@ -376,7 +376,7 @@ public class BookingRoom extends javax.swing.JDialog {
         LocalTime selectedEndTime = LocalTime.parse(etime.replace(".", ":"), timeFormatter);
 
         
-        if (txtDate.getText().isEmpty() || txtId.getText().isEmpty() || txtPurpose.getText().isEmpty() || txtUser.getText().isEmpty() || comboBoxSuggestion1.getSelectedItem() == null || comboBoxSuggestion2.getSelectedItem() == null){
+        if (txtDate.getText().isEmpty() || txtId.getText().isEmpty() || txtPurpose.getText().isEmpty() || txtUser.getText().isEmpty() || ComboStartTime.getSelectedItem() == null || ComboEndTime.getSelectedItem() == null){
             ErrorMessage.setText("Please fill out the information completely.");
             System.out.println(selectedStartTime);
             System.out.println(selectedEndTime);
@@ -484,14 +484,14 @@ public class BookingRoom extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         for (String startTime : bookedStartTimes) {
-            comboBoxSuggestion1.removeItem(startTime);
+            ComboStartTime.removeItem(startTime);
         }
 
         // ตรวจสอบ ComboBox ของเวลาสิ้นสุด
         for (String endTime : bookedEndTimes) {
-            comboBoxSuggestion2.removeItem(endTime);
+            ComboEndTime.removeItem(endTime);
         }
-        if (comboBoxSuggestion1.getSelectedItem() == null && comboBoxSuggestion2.getSelectedItem() == null) {
+        if (ComboStartTime.getSelectedItem() == null && ComboEndTime.getSelectedItem() == null) {
             Message.setText("The room is full.");
         } else{
             Message.setText("");
@@ -499,13 +499,13 @@ public class BookingRoom extends javax.swing.JDialog {
     }//GEN-LAST:event_BgMouseEntered
 
     private void txtDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDateMouseClicked
-        comboBoxSuggestion1.removeAllItems();
-        comboBoxSuggestion2.removeAllItems();
+        ComboStartTime.removeAllItems();
+        ComboEndTime.removeAllItems();
         for (String startTime : originalStartTimes) {
-            comboBoxSuggestion1.addItem(startTime);
+            ComboStartTime.addItem(startTime);
         }
         for (String endTime : originalEndTimes) {
-            comboBoxSuggestion2.addItem(endTime);
+            ComboEndTime.addItem(endTime);
         }
         
         String date = txtDate.getText();
@@ -533,14 +533,14 @@ public class BookingRoom extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         for (String startTime : bookedStartTimes) {
-            comboBoxSuggestion1.removeItem(startTime);
+            ComboStartTime.removeItem(startTime);
         }
 
         for (String endTime : bookedEndTimes) {
-            comboBoxSuggestion2.removeItem(endTime);
+            ComboEndTime.removeItem(endTime);
         }
         
-        if (comboBoxSuggestion1.getSelectedItem() == null && comboBoxSuggestion2.getSelectedItem() == null) {
+        if (ComboStartTime.getSelectedItem() == null && ComboEndTime.getSelectedItem() == null) {
             Message.setText("The room is full.");
         } else{
             Message.setText("");
@@ -591,13 +591,13 @@ public class BookingRoom extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bg;
+    private bulibrary.ClassJava.ComboBoxSuggestion ComboEndTime;
+    private bulibrary.ClassJava.ComboBoxSuggestion ComboStartTime;
     private javax.swing.JLabel ErrorMessage;
     private javax.swing.JLabel Message;
     private javax.swing.JLabel Room;
     private javax.swing.JLabel btnCancel;
     private javax.swing.JLabel btnConfirm;
-    private bulibrary.ClassJava.ComboBoxSuggestion comboBoxSuggestion1;
-    private bulibrary.ClassJava.ComboBoxSuggestion comboBoxSuggestion2;
     private com.raven.datechooser.DateChooser dateChooser1;
     private javax.swing.JLabel icondate;
     private javax.swing.JTextField txtDate;

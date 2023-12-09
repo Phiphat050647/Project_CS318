@@ -34,7 +34,7 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="bulibrary.ClassJava.ComboBoxSuggestion" name="comboBoxSuggestion1">
+    <Component class="bulibrary.ClassJava.ComboBoxSuggestion" name="ComboStartTime">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -59,7 +59,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="bulibrary.ClassJava.ComboBoxSuggestion" name="comboBoxSuggestion2">
+    <Component class="bulibrary.ClassJava.ComboBoxSuggestion" name="ComboEndTime">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
